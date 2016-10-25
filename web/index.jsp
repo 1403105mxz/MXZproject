@@ -10,6 +10,14 @@
   <head>
     <title>主页</title>
   </head>
+<<<<<<< HEAD
   <body>
+=======
+    <title>传说中的主页</title>
+  </head>
+  <body>
+  <INPUT name="login" type="button" value="登陆" onclick="location.href='login.jsp'">
+  <INPUT name="create" type="button" value="注册" onclick="location.href='signin.jsp'">
+>>>>>>> login
   </body>
 </html>
