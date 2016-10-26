@@ -31,5 +31,15 @@
             <result name = "input">/editpassword.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
+		 <action name="searchInvoice" class="action.SearchInvoice" method="searchInvoice">
+            <result name="success">searchInvoiceResult.jsp</result>
+            <result name="error">searchNoneResult.jsp</result>
+        </action>
+        <action name="addInvoice" class="action.AddInvoice" method="addInvoice">
+            <result name="success">addInvoiceSuccess.jsp</result>
+            <result name="error">addInvoiceError.jsp</result>
+            <result name="null">addInvoiceError.jsp</result>
+            <result name="input">addInvoice.jsp</result>
+        </action>
     </package>
 </struts>
