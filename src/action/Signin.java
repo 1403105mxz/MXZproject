@@ -43,7 +43,6 @@ public class Signin {
     }
     public String sign(){
         Connection conn;
-
         int num = 1 ;
         try {
             if (signinUser.getUsername().length() > 20 || signinUser.getUsername().length() < 6) {
