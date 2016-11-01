@@ -6,6 +6,9 @@ import data.Invoice;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by 祥根_2 on 2016/10/25.
  */
@@ -41,7 +44,7 @@ public class SearchDao {
         return invoice;
     }
 
-    public static Invoice searchAllInvoice(String code, String id) {
+    public static Invoice searchInvoiceInAll(String code, String id) {
         String codeId = code + id;
         String sql = "select * from invoice where codeid = ?";
         PreparedStatement pst;
@@ -69,5 +72,24 @@ public class SearchDao {
             e.printStackTrace();
         }
         return invoice;
+    }
+
+    public static List<String> searchAllInvoice(String account) {
+        String sql = "select codeid from invoice where account = ?";
+        PreparedStatement pst;
+        List<String> codeidList = new ArrayList<String>();
+        Connection conn;
+        try {
+            conn = DatabaseConn.getConn();
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, account);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                codeidList.add(resultSet.getString(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return codeidList;
     }
 }

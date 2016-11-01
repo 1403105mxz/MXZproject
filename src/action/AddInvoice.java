@@ -123,15 +123,15 @@ public class AddInvoice extends ActionSupport{
                 || drawer.isEmpty()) {
             return "null";
         }
-        String codeId = code + id;
-        if (codeId.length() > 20 || date.length() > 10
+        if (code.length() != 10 && code.length() != 12
+                || id.length() != 8 || date.length() > 10
                 || payer.length() > 45 || items.length() > 45
                 || remark.length() > 45 || payee.length() > 45
                 || drawer.length() > 45) {
             return INPUT;
         }
         //// TODO: 2016/10/26 前端需要保证输入的price是double，number是int，其余数据的长度在限制内
-        Invoice invoice = SearchDao.searchAllInvoice(code, id);
+        Invoice invoice = SearchDao.searchInvoiceInAll(code, id);
         if (invoice == null) {
             double total = price * number;
             AddDao.addInvoice(code, id, date, payer,

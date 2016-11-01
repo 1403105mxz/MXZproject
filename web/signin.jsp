@@ -14,7 +14,7 @@
 ${tips2}
 <form name = "login" action ="Signin.action" method="post">
     <tr>
-    <td>用户名<input type = "text" name ="signinUser.username"></td>
+    <td>用户名<input type = "text" name ="signinUser.username" value=${signinUser.username}></td>
     </tr>
     <br/>
     <tr>
@@ -23,13 +23,14 @@ ${tips2}
     <br/>
     确认密码<input type = "password" name ="signinPassword">
     <br/>
-    姓名<input type = "text" name ="signinUser.name">
+    姓名<input type = "text" name ="signinUser.name"value=${signinUser.name}>
     <br/>
-    安全问题<input type = "text" name ="signinUser.question">
+    安全问题<input type = "text" name ="signinUser.question"value=${signinUser.question}>
     <br/>
-    安全问题答案<input type = "text" name ="signinUser.answer">
+    安全问题答案<input type = "text" name ="signinUser.answer"value=${signinUser.answer}>
     <br/>
     <input type = "submit" name = "mySubmit" value = "注册" >
+    <INPUT name="back" type="button" value="返回" onclick="location.href='index.jsp'">
 </form>
 </body>
 </html>

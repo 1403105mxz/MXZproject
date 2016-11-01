@@ -24,5 +24,6 @@ ${tips3}
     <s:hidden name="fpUser.question" value="%{fpUser.question}"></s:hidden>
     <input type = "submit" name = "mySubmit" value = "确定" >
 </form>
+<INPUT name="back" type="button" value="返回" onclick="location.href='index.jsp'">
 </body>
 </html>

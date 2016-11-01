@@ -80,7 +80,6 @@ public class Login {
                         request.getSession().setAttribute("newid",User.getId());
                         request.getSession().setAttribute("newquestion",User.getQuestion());
                         request.getSession().setAttribute("newanswer",User.getAnswer());
-
                         return SUCCESS;
                     }
                     else
@@ -97,5 +96,13 @@ public class Login {
             e.printStackTrace();
             return ERROR;
         }
+    }
+
+    public String logout(){
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletResponse response = ServletActionContext.getResponse();
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return SUCCESS;
     }
 }

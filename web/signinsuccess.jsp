@@ -11,6 +11,6 @@
     <title>注册成功</title>
 </head>
 <body>
-    注册成功
+    注册成功<INPUT name="back" type="button" value="返回" onclick="location.href='index.jsp'">
 </body>
 </html>

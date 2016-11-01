@@ -11,7 +11,6 @@
     <title>导航页</title>
 </head>
 <body>
-<input type="button" onclick="location.href='searchInvoice'" value="搜索发票"/>
-<input type="button" onclick="location.href='addInvoice.jsp'" value="添加发票"/>
+<input type="button" onclick="location.href='invoiceOperation'" value="发票管理"/>
 </body>
 </html>

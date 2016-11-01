@@ -26,5 +26,6 @@
   <br/>
   <INPUT name="login" type="button" value="登陆" onclick="location.href='login.jsp'">
   <INPUT name="create" type="button" value="注册" onclick="location.href='signin.jsp'">
+  <INPUT name="logout" type="button" value="退出登录" onclick="location.href='Logout.action'">
   </body>
 </html>

@@ -1,7 +1,6 @@
 package action;
 import data.user;
 import org.DatabaseConn;
-import action.Login;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

@@ -14,12 +14,13 @@
 <body>
 ${tips}
 <form name = "login" action ="Login.action" method="post">
-    用户名<input type = "text" name ="username">
+    用户名<input type = "text" name ="username" value =${username}>
     <br/>
     密码<input type = "password" name ="password">
     <br/>
     <input type = "submit" name = "mySubmit" value = "登陆" >
 </form>
 <input type = "button" name = "find" value = "找回密码" onclick="location.href = 'findpassword.jsp'">
+<INPUT name="back" type="button" value="返回" onclick="location.href='index.jsp'">
 </body>
 </html>

@@ -6,11 +6,14 @@
 
 <struts>
     <package name="default" extends="struts-default">
-     <action name="Login" class = "action.Login" method="login">
-        <result name = "success">/logsuccess.jsp</result>
-        <result name = "input">/login.jsp</result>
-        <result name ="error">/error.jsp</result>
-    </action>
+         <action name="Login" class = "action.Login" method="login">
+            <result name = "success">/logsuccess.jsp</result>
+            <result name = "input">/login.jsp</result>
+            <result name ="error">/error.jsp</result>
+        </action>
+        <action name="Logout" class="action.Login" method="logout">
+            <result name="success">/index.jsp</result>
+        </action>
         <action name="Signin" class = "action.Signin" method="sign">
             <result name = "success">/signinsuccess.jsp</result>
             <result name = "input">/signin.jsp</result>
@@ -41,6 +44,9 @@
             <result name="error">addInvoiceError.jsp</result>
             <result name="null">addInvoiceError.jsp</result>
             <result name="input">addInvoice.jsp</result>
+        </action>
+        <action name="invoiceOperation" class="action.InvoiceOperation">
+            <result name="success">invoiceOperation.jsp</result>
         </action>
     </package>
 </struts>
