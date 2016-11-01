@@ -1,7 +1,12 @@
 package action;
 import data.user;
 import org.DatabaseConn;
+import action.Login;
+import org.apache.struts2.ServletActionContext;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -65,7 +70,6 @@ public class Signin {
             Statement st2 = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM user");
             while(rs.next()){
-                num ++;
                 if (signinUser.getUsername().equals(rs.getString(1))){
                     tips2 = "用户名已存在。";
                     return INPUT;

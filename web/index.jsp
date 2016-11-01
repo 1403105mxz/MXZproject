@@ -10,13 +10,24 @@
   <head>
     <title>主页</title>
   </head>
-  <body>
     <title>传说中的主页</title>
   </head>
   <body>
+  当前登录用户：
+  用户名：<%=request.getSession().getAttribute("newusername")%>
+  <br/>
+  密码：<%=request.getSession().getAttribute("newpassword")%>
+  <br/>
+  姓名：<%=request.getSession().getAttribute("newname")%>
+  <br/>
+  权限等级：<%=request.getSession().getAttribute("newid")%>
+  <br/>
+  安全问题：<%=request.getSession().getAttribute("newquestion")%>
+  <br/>
+  安全问题答案：<%=request.getSession().getAttribute("newanswer")%>
+  <br/>
   <INPUT name="login" type="button" value="登陆" onclick="location.href='login.jsp'">
   <INPUT name="create" type="button" value="注册" onclick="location.href='signin.jsp'">
-    <input type="button" onclick="location.href='searchInvoice.jsp'" value="搜索发票"/>
-  <input type="button" onclick="location.href='addInvoice.jsp'" value="添加发票"/>
+  <INPUT name="logout" type="button" value="退出登录" onclick="location.href='Logout.action'">
   </body>
 </html>

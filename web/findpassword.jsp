@@ -17,5 +17,6 @@ ${tips3}
     <br/>
     <input type = "submit" name = "mySubmit" value = "确定" >
 </form>
+<INPUT name="back" type="button" value="返回" onclick="location.href='index.jsp'">
 </body>
 </html>

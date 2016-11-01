@@ -12,5 +12,6 @@
 </head>
 <body>
 欢迎你，${User.name}
+<INPUT name="back" type="button" value="返回" onclick="location.href='index.jsp'">
 </body>
 </html>

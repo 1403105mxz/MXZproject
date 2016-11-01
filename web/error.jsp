@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-页面丢失了哦噢噢噢噢
+页面丢失了哦噢噢噢噢<INPUT name="back" type="button" value="返回" onclick="location.href='index.jsp'">
 </body>
 </html>
