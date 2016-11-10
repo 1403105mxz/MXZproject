@@ -24,6 +24,15 @@ public class AddInvoice extends ActionSupport{
     private String payee;
     private String drawer;
     private String account;
+    private String tip = "";
+
+    public String getTip() {
+        return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
+    }
 
     public String getCode() {
         return code;
@@ -117,11 +126,11 @@ public class AddInvoice extends ActionSupport{
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         account = (String)session.getAttribute("newusername");
-        if (code.isEmpty() || id.isEmpty()
+        if (code==null || id.isEmpty()
                 || date.isEmpty() || payer.isEmpty()
                 || items.isEmpty() || payee.isEmpty()
                 || drawer.isEmpty()) {
-            return "null";
+            return INPUT;
         }
         if (code.length() != 10 && code.length() != 12
                 || id.length() != 8 || date.length() > 10
@@ -137,8 +146,10 @@ public class AddInvoice extends ActionSupport{
             AddDao.addInvoice(code, id, date, payer,
                     items, number, price, remark,
                     total, payee, drawer, account);
+            tip = "success";
             return SUCCESS;
         }
-        return ERROR;
+        tip = "repeat";
+        return INPUT;
     }
 }
