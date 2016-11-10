@@ -40,9 +40,7 @@
             <result name="error">searchNoneResult.jsp</result>
         </action>
         <action name="addInvoice" class="action.AddInvoice" method="addInvoice">
-            <result name="success">addInvoiceSuccess.jsp</result>
-            <result name="error">addInvoiceError.jsp</result>
-            <result name="null">addInvoiceError.jsp</result>
+            <result name="success">invoiceOperation.jsp</result>
             <result name="input">addInvoice.jsp</result>
         </action>
         <action name="invoiceOperation" class="action.InvoiceOperation">

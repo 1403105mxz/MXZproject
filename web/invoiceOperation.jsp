@@ -10,9 +10,16 @@
 <html>
 <head>
     <title>发票管理</title>
+    <script>
+        function onLoad() {
+            if("${tip}" == "success") {
+                alert("success");
+            }
+        }
+    </script>
 </head>
-<body>
-<input type="button" value="添加发票" onclick="location.href='addInvoice.jsp'"/>
+<body onload="onLoad()">
+<input type="button" value="添加发票" onclick="location.href='addInvoice'"/>
 <input type="button" value="搜索发票" onclick="location.href='searchInvoice'"/>
 <table>
     <s:iterator value="codeidList" var="x">
