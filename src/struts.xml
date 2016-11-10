@@ -15,7 +15,7 @@
             <result name="success">/index.jsp</result>
         </action>
         <action name="Signin" class = "action.Signin" method="sign">
-            <result name = "success">/signinsuccess.jsp</result>
+            <result name = "success">/success.jsp</result>
             <result name = "input">/signin.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
@@ -27,10 +27,10 @@
         <action name="Findanswer" class = "action.FindPassword" method="FindAnswer">
             <result name = "success">/editpassword.jsp</result>
             <result name = "input">/findanswer.jsp</result>
-            <result name ="error">/error.jsp</result>
+            <result name = "error">/error.jsp</result>
         </action>
         <action name="Editpassword" class = "action.FindPassword" method="Editpassword">
-            <result name = "success">/index.jsp</result>
+            <result name = "success">/success.jsp</result>
             <result name = "input">/editpassword.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>

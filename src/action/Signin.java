@@ -16,6 +16,11 @@ public class Signin {
     private user signinUser = new user();
     private String signinPassword;
     private String tips2 = "";
+    private String successTips = "";
+
+    public String getSuccessTips() {
+        return successTips;
+    }
 
     public void setTips2(String tips2) {
         this.tips2 = tips2;
@@ -74,6 +79,7 @@ public class Signin {
                     "('"+signinUser.getUsername()+"','"+signinUser.getPassword()+"','"+signinUser.getName()+"','"+num
                     +"','"+signinUser.getQuestion()+"','"+signinUser.getAnswer()+"')";
             st2.executeUpdate(sql);
+            successTips = "注册成功";
             return SUCCESS;
         }
         catch(Exception e){

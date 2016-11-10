@@ -21,6 +21,11 @@ public class FindPassword {
     private String fpUsername;
     private String tips3;
     private String fpAnswer;
+    private String successTips;
+
+    public String getSuccessTips() {
+        return successTips;
+    }
 
     public void setFpAnswer(String fpAnswer) {
         this.fpAnswer = fpAnswer;
@@ -100,10 +105,9 @@ public class FindPassword {
             try {
                 conn = DatabaseConn.getConnection();
                 Statement st = conn.createStatement();
-                String sql = "UPDATE user SET username = '" + fpUser.getUsername() + "', password ='" + fpUser.getPassword() +
-                        "', name = '" + fpUser.getName() + "', id ='" + fpUser.getId() + "', question = '" + fpUser.getQuestion() +
-                        "', answer = '" + fpUser.getAnswer() + "'where username = '" + fpUser.getUsername() + "'";
+                String sql = "UPDATE user SET password ='" + fpUser.getPassword() + "'where username = '" + fpUser.getUsername() + "'";
                 st.executeUpdate(sql);
+                successTips = "成功找回密码";
                 return SUCCESS;
             } catch (Exception e) {
                 e.printStackTrace();
