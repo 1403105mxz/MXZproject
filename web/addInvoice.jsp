@@ -55,7 +55,7 @@
             <td><input type="text" name="remark" id="remark"/></td>
         </tr>
         <tr>
-            <td><label for="payee">付款方：</label></td>
+            <td><label for="payee">收款方：</label></td>
             <td><input type="text" name="payee" id="payee" required/></td>
         </tr>
         <tr>
