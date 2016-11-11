@@ -21,6 +21,7 @@
 <body onload="onLoad()">
 <input type="button" value="添加发票" onclick="location.href='addInvoice'"/>
 <input type="button" value="搜索发票" onclick="location.href='searchInvoice'"/>
+<INPUT name="logout" type="button" value="退出登录" onclick="location.href='Logout.action'">
 <table>
     <s:iterator value="codeidList" var="x">
         <tr>
