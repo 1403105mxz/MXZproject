@@ -87,7 +87,7 @@ public class SearchDao {
     }
 
     public static List<Invoice> searchAllInvoice(String account) {
-        String sql = "select codeid from invoice where account = ?";
+        String sql = "select * from invoice where account = ?";
         PreparedStatement pst;
         List<Invoice> codeidList = new ArrayList<Invoice>();
         Connection conn;
@@ -104,8 +104,8 @@ public class SearchDao {
                     code = resultSet.getString(1).substring(0, 11);
                     id = resultSet.getString(1).substring(12, 20);
                 } else {
-                    code = resultSet.getString(1).substring(0, 9);
-                    id = resultSet.getString(1).substring(10, 17);
+                    code = resultSet.getString(1).substring(0, 10);
+                    id = resultSet.getString(1).substring(10, 18);
                 }
                 Invoice invoice = makeInvoice(code, id, resultSet.getString(2),
                         resultSet.getString(3), resultSet.getString(4),
