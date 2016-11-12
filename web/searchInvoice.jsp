@@ -10,13 +10,33 @@
 <html>
 <head>
     <title>搜索发票</title>
+    <style>
+        table {
+            margin: 20em auto;
+            table-layout: fixed;
+            text-align: center;
+        }
+        td {
+            width: 175px;
+        }
+    </style>
 </head>
 <body>
-<s:form action="searchInvoice" method="POST">
-    <s:textfield name="code" label="类别代码"/>
-    <s:textfield name="id" label="发票编号"/>
-    <s:submit value="搜索"/>
-</s:form>
+    <form action="searchInvoice" method="POST">
+        <table>
+            <tr>
+                <td><label for="code">类别代码</label></td>
+                <td><label for="id">发票编号</label></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="text" name="code" id="code" pattern="([0-9]{10})|([0-9]{12})"
+                                       title="10或12位数字" maxlength="12" placeholder="10或12位数字"/>-<input
+                        type="text" name="id" id="id" pattern="[0-9]{8}" maxlength="8" title="8位数字"
+                        placeholder="8位数字"/></td>
+                <td><input type="submit" value="搜索"/></td>
+            </tr>
+        </table>
+    </form>
 <a href="operationIndex.jsp">返回主页</a>
 </body>
 </html>

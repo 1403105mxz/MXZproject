@@ -10,20 +10,59 @@
 <html>
 <head>
     <title>搜索结果</title>
+    <style>
+        table {
+            margin: 20em auto;
+            table-layout: fixed;
+            width: 250px;
+        }
+    </style>
 </head>
 <body>
 <table>
-    <tr><td><s:property value="invoice.code"/></td></tr>
-    <tr><td><s:property value="invoice.id"/></td></tr>
-    <tr><td><s:property value="invoice.date"/></td></tr>
-    <tr><td><s:property value="invoice.payer"/></td></tr>
-    <tr><td><s:property value="invoice.items"/></td></tr>
-    <tr><td><s:property value="invoice.number"/></td></tr>
-    <tr><td><s:property value="invoice.price"/></td></tr>
-    <tr><td><s:property value="invoice.remark"/></td></tr>
-    <tr><td><s:property value="invoice.total"/></td></tr>
-    <tr><td><s:property value="invoice.payee"/></td></tr>
-    <tr><td><s:property value="invoice.drawer"/></td></tr>
+    <tr>
+        <td>类别代码：</td>
+        <td>${invoice.code}</td>
+    </tr>
+    <tr>
+        <td>发票编号：</td>
+        <td>${invoice.id}</td></tr>
+    <tr>
+        <td>日期：</td>
+        <td>${invoice.date}</td>
+    </tr>
+    <tr>
+        <td>付款方：</td>
+        <td>${invoice.payer}</td>
+    </tr>
+    <tr>
+        <td>付款项：</td>
+        <td>${invoice.items}</td>
+    </tr>
+    <tr>
+        <td>数量：</td>
+        <td>${invoice.number}</td>
+    </tr>
+    <tr>
+        <td>单价(人民币)：</td>
+        <td>${invoice.price}</td>
+    </tr>
+    <tr>
+        <td>备注：</td>
+        <td>${invoice.remark}</td>
+    </tr>
+    <tr>
+        <td>总价：</td>
+        <td>${invoice.total}</td>
+    </tr>
+    <tr>
+        <td>收款方：</td>
+        <td>${invoice.payee}</td>
+    </tr>
+    <tr>
+        <td>开票人：</td>
+        <td>${invoice.drawer}</td>
+    </tr>
     <tr><td><input type = "button" value = "作废"
                    onclick="location.href='deleteInvoice.action?code=${code}&id=${id}'"></td></tr>
     <td><input type = "button" value = "编辑"

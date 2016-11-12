@@ -10,15 +10,16 @@
 <html>
 <head>
     <title>发票管理</title>
-    <script>
-        function onLoad() {
-            if("${tip}" == "success") {
-                alert("success");
-            }
-        }
-    </script>
 </head>
-<body onload="onLoad()">
+<body>
+<script>
+    if("${tip}" == "success") {
+        var r = confirm("添加成功\n是否继续添加？");
+        if(r == true){
+            location.href = "addInvoice";
+        }
+    }
+</script>
 <input type="button" value="添加发票" onclick="location.href='addInvoice'"/>
 <input type="button" value="搜索发票" onclick="location.href='searchInvoice'"/>
 <INPUT name="logout" type="button" value="退出登录" onclick="location.href='Logout.action'">

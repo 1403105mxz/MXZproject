@@ -110,6 +110,7 @@ public class AddInvoice extends ActionSupport{
         this.drawer = drawer;
     }
 
+
     public String addInvoice() {
         String account = (String)ActionContext.getContext().getSession().get("newusername");
         if (code == null || id.isEmpty()
@@ -122,6 +123,7 @@ public class AddInvoice extends ActionSupport{
                 || id.length() != 8 || date.length() > 10
                 || payer.length() > 45 || items.length() > 45
                 || remark.length() > 45 || payee.length() > 45
+
                 || drawer.length() > 45 || number <= 0 || price < 0.0) {
             return INPUT;
         }
