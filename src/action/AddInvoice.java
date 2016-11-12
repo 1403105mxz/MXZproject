@@ -20,7 +20,6 @@ public class AddInvoice extends ActionSupport{
     private String remark;
     private String payee;
     private String drawer;
-    private String account;
     private String tip = "";
 
     public String getTip() {
@@ -111,17 +110,9 @@ public class AddInvoice extends ActionSupport{
         this.drawer = drawer;
     }
 
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
     public String addInvoice() {
-        account = (String)ActionContext.getContext().getSession().get("newusername");
-        if (code==null || id.isEmpty()
+        String account = (String)ActionContext.getContext().getSession().get("newusername");
+        if (code == null || id.isEmpty()
                 || date.isEmpty() || payer.isEmpty()
                 || items.isEmpty() || payee.isEmpty()
                 || drawer.isEmpty()) {

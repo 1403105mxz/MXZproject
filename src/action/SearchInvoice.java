@@ -11,16 +11,7 @@ import org.SearchDao;
 public class SearchInvoice extends ActionSupport {
     private String code;
     private String id;
-    private String account;
     private Invoice invoice;
-
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
 
     public Invoice getInvoice() {
         return invoice;
@@ -47,13 +38,22 @@ public class SearchInvoice extends ActionSupport {
     }
 
     public String searchInvoice() {
-        account = (String) ActionContext.getContext().getSession().get("newusername");
+        String account = (String) ActionContext.getContext().getSession().get("newusername");
         if (code == null && id == null) {
             return "jump";
         }
         invoice = SearchDao.searchInvoice(code, id, account);
         if (invoice == null)
             return ERROR;
+        return SUCCESS;
+    }
+
+    public String detailInvoice() {
+        String account = (String) ActionContext.getContext().getSession().get("newusername");
+        invoice = SearchDao.searchInvoice(code, id, account);
+        if (invoice == null) {
+            return ERROR;
+        }
         return SUCCESS;
     }
 }

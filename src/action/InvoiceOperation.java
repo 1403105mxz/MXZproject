@@ -12,8 +12,6 @@ import java.util.List;
  * Created by 祥根_2 on 2016/11/1.
  */
 public class InvoiceOperation extends ActionSupport {
-    private String account;
-
     private List<Invoice> codeidList = new ArrayList<Invoice>();
 
     public List<Invoice> getCodeidList() {
@@ -24,17 +22,9 @@ public class InvoiceOperation extends ActionSupport {
         this.codeidList = codeidList;
     }
 
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
     @Override
     public String execute() {
-        account = (String) ActionContext.getContext().getSession().get("newusername");
+        String account = (String) ActionContext.getContext().getSession().get("newusername");
         codeidList = SearchDao.searchAllInvoice(account);
         return SUCCESS;
     }

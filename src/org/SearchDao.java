@@ -101,7 +101,7 @@ public class SearchDao {
                 String code;
                 String id;
                 if (len == 20) {
-                    code = resultSet.getString(1).substring(0, 11);
+                    code = resultSet.getString(1).substring(0, 12);
                     id = resultSet.getString(1).substring(12, 20);
                 } else {
                     code = resultSet.getString(1).substring(0, 10);

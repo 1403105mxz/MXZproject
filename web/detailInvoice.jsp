@@ -2,14 +2,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: 祥根_2
-  Date: 2016/10/25
-  Time: 21:51
+  Date: 2016/11/12
+  Time: 17:29
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>搜索结果</title>
+    <title>发票详情</title>
 </head>
 <body>
 <table>
