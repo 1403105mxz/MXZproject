@@ -30,9 +30,11 @@
             <td><s:property value="items"/></td>
             <td><s:property value="total"/></td>
             <td><input type = "button" value = "作废"
-                       onclick="location.href='deleteInvoice.action?code=${code}&id=${id}'"></td>
+                       onclick="location.href='deleteInvoice?code=${code}&id=${id}'"></td>
             <td><input type = "button" value = "详情"
-                       onclick="location.href='detailInvoice.action?code=${code}&id=${id}'"></td>
+                       onclick="location.href='detailInvoice?code=${code}&id=${id}'"></td>
+            <td><input type = "button" value = "编辑"
+                       onclick="location.href='editInvoice?code=${code}&id=${id}&firstTime=${'firstTime'}'"></td>
         </tr>
     </s:iterator>
 </table>

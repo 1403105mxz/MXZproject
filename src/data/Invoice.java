@@ -150,24 +150,4 @@ public class Invoice {
     public void setAccount(String account) {
         this.account = account;
     }
-
-    /*
-    public Invoice(String code, String id, String date,
-                   String payer, String items, int number,
-                   double price, String remark, double total,
-                   String payee, String drawer, String account) {
-        this.code = code;
-        this.id = id;
-        this.date = date;
-        this.payer = payer;
-        this.items = items;
-        this.number = number;
-        this.price = price;
-        this.remark = remark;
-        this.total = total;
-        this.payee = payee;
-        this.drawer = drawer;
-        this.account = account;
-    }
-    */
 }

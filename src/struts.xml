@@ -52,5 +52,9 @@
         <action name="detailInvoice" class="action.SearchInvoice" method="detailInvoice">
             <result name="success">detailInvoice.jsp</result>
         </action>
+        <action name="editInvoice" class="action.EditInvoice" method="execute">
+            <result name="input">editInvoice.jsp</result>
+            <result type="chain" name="success">invoiceOperation</result>
+        </action>
     </package>
 </struts>
