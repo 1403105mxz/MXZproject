@@ -1,6 +1,9 @@
 package action;
 
+import com.opensymphony.xwork2.ActionChainResult;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import data.Invoice;
 import org.SearchDao;
 import org.apache.struts2.ServletActionContext;
 
@@ -14,13 +17,14 @@ import java.util.List;
  */
 public class InvoiceOperation extends ActionSupport {
     private String account;
-    List<String> codeidList = new ArrayList<String>();
 
-    public List<String> getCodeidList() {
+    List<Invoice> codeidList = new ArrayList<Invoice>();
+
+    public List<Invoice> getCodeidList() {
         return codeidList;
     }
 
-    public void setCodeidList(List<String> codeidList) {
+    public void setCodeidList(List<Invoice> codeidList) {
         this.codeidList = codeidList;
     }
 
@@ -34,9 +38,7 @@ public class InvoiceOperation extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        account = (String)session.getAttribute("newusername");
+        account = (String)ActionContext.getContext().getSession().get("newusername");
         codeidList = SearchDao.searchAllInvoice(account);
         return SUCCESS;
     }

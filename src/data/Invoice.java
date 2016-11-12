@@ -151,6 +151,7 @@ public class Invoice {
         this.account = account;
     }
 
+    /*
     public Invoice(String code, String id, String date,
                    String payer, String items, int number,
                    double price, String remark, double total,
@@ -168,4 +169,5 @@ public class Invoice {
         this.drawer = drawer;
         this.account = account;
     }
+    */
 }

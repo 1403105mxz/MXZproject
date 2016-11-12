@@ -13,6 +13,28 @@ import java.util.List;
  * Created by 祥根_2 on 2016/10/25.
  */
 public class SearchDao {
+    private static Invoice makeInvoice(String code, String id,
+                                    String date, String payer,
+                                    String items, int number,
+                                    double price, String remark,
+                                    double total, String payee,
+                                    String drawer, String account) {
+        Invoice invoice = new Invoice();
+        invoice.setCode(code);
+        invoice.setId(id);
+        invoice.setDate(date);
+        invoice.setPayer(payer);
+        invoice.setItems(items);
+        invoice.setNumber(number);
+        invoice.setPrice(price);
+        invoice.setRemark(remark);
+        invoice.setTotal(total);
+        invoice.setPayee(payee);
+        invoice.setDrawer(drawer);
+        invoice.setAccount(account);
+        return invoice;
+    }
+
     public static Invoice searchInvoice(String code, String id, String account) {
         String codeId = code + id;
         String sql = "select * from invoice where codeid = ? AND account = ?";
@@ -25,20 +47,15 @@ public class SearchDao {
             pst.setString(1, codeId);
             pst.setString(2, account);
             ResultSet resultSet = pst.executeQuery();
-            while(resultSet.next()) {
-                invoice = new Invoice(code, id,
-                        resultSet.getString(2),
-                        resultSet.getString(3),
-                        resultSet.getString(4),
-                        resultSet.getInt(5),
-                        resultSet.getDouble(6),
-                        resultSet.getString(7),
-                        resultSet.getDouble(8),
-                        resultSet.getString(9),
-                        resultSet.getString(10),
+            while (resultSet.next()) {
+                invoice = makeInvoice(code, id, resultSet.getString(2),
+                        resultSet.getString(3), resultSet.getString(4),
+                        resultSet.getInt(5), resultSet.getDouble(6),
+                        resultSet.getString(7), resultSet.getDouble(8),
+                        resultSet.getString(9), resultSet.getString(10),
                         resultSet.getString(11));
             }
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
         }
         return invoice;
@@ -55,17 +72,12 @@ public class SearchDao {
             pst = conn.prepareStatement(sql);
             pst.setString(1, codeId);
             ResultSet resultSet = pst.executeQuery();
-            while(resultSet.next()) {
-                invoice = new Invoice(code, id,
-                        resultSet.getString(2),
-                        resultSet.getString(3),
-                        resultSet.getString(4),
-                        resultSet.getInt(5),
-                        resultSet.getDouble(6),
-                        resultSet.getString(7),
-                        resultSet.getDouble(8),
-                        resultSet.getString(9),
-                        resultSet.getString(10),
+            while (resultSet.next()) {
+                invoice = makeInvoice(code, id, resultSet.getString(2),
+                        resultSet.getString(3), resultSet.getString(4),
+                        resultSet.getInt(5), resultSet.getDouble(6),
+                        resultSet.getString(7), resultSet.getDouble(8),
+                        resultSet.getString(9), resultSet.getString(10),
                         resultSet.getString(11));
             }
         } catch (Exception e) {
@@ -74,10 +86,10 @@ public class SearchDao {
         return invoice;
     }
 
-    public static List<String> searchAllInvoice(String account) {
+    public static List<Invoice> searchAllInvoice(String account) {
         String sql = "select codeid from invoice where account = ?";
         PreparedStatement pst;
-        List<String> codeidList = new ArrayList<String>();
+        List<Invoice> codeidList = new ArrayList<Invoice>();
         Connection conn;
         try {
             conn = DatabaseConn.getConn();
@@ -85,7 +97,23 @@ public class SearchDao {
             pst.setString(1, account);
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
-                codeidList.add(resultSet.getString(1));
+                int len = resultSet.getString(1).length();
+                String code;
+                String id;
+                if (len == 20) {
+                    code = resultSet.getString(1).substring(0, 11);
+                    id = resultSet.getString(1).substring(12, 20);
+                } else {
+                    code = resultSet.getString(1).substring(0, 9);
+                    id = resultSet.getString(1).substring(10, 17);
+                }
+                Invoice invoice = makeInvoice(code, id, resultSet.getString(2),
+                        resultSet.getString(3), resultSet.getString(4),
+                        resultSet.getInt(5), resultSet.getDouble(6),
+                        resultSet.getString(7), resultSet.getDouble(8),
+                        resultSet.getString(9), resultSet.getString(10),
+                        resultSet.getString(11));
+                codeidList.add(invoice);
             }
         } catch (Exception e) {
             e.printStackTrace();

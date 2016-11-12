@@ -24,7 +24,10 @@
 <table>
     <s:iterator value="codeidList" var="x">
         <tr>
-            <td><s:property value="x"/></td>
+            <td><s:property value="code"/></td>
+            <td><s:property value="id"/></td>
+            <td><s:property value="items"/></td>
+            <td><s:property value="total"/></td>
         </tr>
     </s:iterator>
 </table>

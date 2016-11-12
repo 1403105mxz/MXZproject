@@ -1,13 +1,9 @@
 package action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import data.Invoice;
 import org.SearchDao;
-import org.apache.struts2.ServletActionContext;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by 祥根_2 on 2016/10/25.
@@ -51,9 +47,7 @@ public class SearchInvoice extends ActionSupport {
     }
 
     public String searchInvoice() {
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        account = (String)session.getAttribute("newusername");
+        account = (String) ActionContext.getContext().getSession().get("newusername");
         if (code == null && id == null) {
             return "jump";
         }
