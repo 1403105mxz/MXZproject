@@ -1,13 +1,10 @@
 package action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import data.Invoice;
 import org.AddDao;
 import org.SearchDao;
-import org.apache.struts2.ServletActionContext;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by 祥根_2 on 2016/10/25.
@@ -23,7 +20,6 @@ public class AddInvoice extends ActionSupport{
     private String remark;
     private String payee;
     private String drawer;
-    private String account;
     private String tip = "";
 
     public String getTip() {
@@ -114,19 +110,10 @@ public class AddInvoice extends ActionSupport{
         this.drawer = drawer;
     }
 
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
 
     public String addInvoice() {
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        account = (String)session.getAttribute("newusername");
-        if (code==null || id.isEmpty()
+        String account = (String)ActionContext.getContext().getSession().get("newusername");
+        if (code == null || id.isEmpty()
                 || date.isEmpty() || payer.isEmpty()
                 || items.isEmpty() || payee.isEmpty()
                 || drawer.isEmpty()) {
@@ -136,10 +123,10 @@ public class AddInvoice extends ActionSupport{
                 || id.length() != 8 || date.length() > 10
                 || payer.length() > 45 || items.length() > 45
                 || remark.length() > 45 || payee.length() > 45
-                || drawer.length() > 45) {
+
+                || drawer.length() > 45 || number <= 0 || price < 0.0) {
             return INPUT;
         }
-        //// TODO: 2016/10/26 前端需要保证输入的price是double，number是int，其余数据的长度在限制内
         Invoice invoice = SearchDao.searchInvoiceInAll(code, id);
         if (invoice == null) {
             double total = price * number;

@@ -34,17 +34,23 @@
             <result name = "input">/editpassword.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
-		 <action name="searchInvoice" class="action.SearchInvoice" method="searchInvoice">
-             <result name="jump">searchInvoice.jsp</result>
+        <action name="searchInvoice" class="action.SearchInvoice" method="searchInvoice">
+            <result name="jump">searchInvoice.jsp</result>
             <result name="success">searchInvoiceResult.jsp</result>
             <result name="error">searchNoneResult.jsp</result>
         </action>
         <action name="addInvoice" class="action.AddInvoice" method="addInvoice">
-            <result name="success">invoiceOperation.jsp</result>
+            <result type="chain" name="success">invoiceOperation</result>
             <result name="input">addInvoice.jsp</result>
         </action>
-        <action name="invoiceOperation" class="action.InvoiceOperation">
+        <action name="invoiceOperation" class="action.InvoiceOperation" method="execute">
             <result name="success">invoiceOperation.jsp</result>
+        </action>
+        <action name="deleteInvoice" class="action.DeleteInvoice" method="execute">
+            <result type="chain" name="success">invoiceOperation</result>
+        </action>
+        <action name="detailInvoice" class="action.SearchInvoice" method="detailInvoice">
+            <result name="success">detailInvoice.jsp</result>
         </action>
         <action name="Showbranch" class = "action.Jurisdiction" method="showbranch">
             <result name = "success">/showbranch.jsp</result>

@@ -72,8 +72,6 @@ public class Login {
                         User.setQuestion(rs.getString(5));
                         User.setAnswer( rs.getString(6));
                         HttpServletRequest request = ServletActionContext.getRequest();
-                        HttpServletResponse response = ServletActionContext.getResponse();
-                        HttpSession session = request.getSession();
                         request.getSession().setAttribute("newusername",username);     //用Session保存用户名
                         request.getSession().setAttribute("newpassword",password);
                         request.getSession().setAttribute("newname",User.getName());
@@ -100,7 +98,6 @@ public class Login {
 
     public String logout(){
         HttpServletRequest request = ServletActionContext.getRequest();
-        HttpServletResponse response = ServletActionContext.getResponse();
         HttpSession session = request.getSession();
         session.invalidate();
         return SUCCESS;

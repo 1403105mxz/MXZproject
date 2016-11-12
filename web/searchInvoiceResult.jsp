@@ -63,6 +63,8 @@
         <td>开票人：</td>
         <td>${invoice.drawer}</td>
     </tr>
+    <tr><td><input type = "button" value = "作废"
+                   onclick="location.href='deleteInvoice.action?code=${code}&id=${id}'"></td></tr>
 </table>
 <a href="operationIndex.jsp">返回主页</a>
 </body>
