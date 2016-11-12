@@ -43,7 +43,7 @@
             <result name="success">invoiceOperation.jsp</result>
             <result name="input">addInvoice.jsp</result>
         </action>
-        <action name="invoiceOperation" class="action.InvoiceOperation">
+        <action name="invoiceOperation" class="action.InvoiceOperation" method="execute">
             <result name="success">invoiceOperation.jsp</result>
         </action>
     </package>
