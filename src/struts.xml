@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="default" extends="struts-default">
+         <action name="Login" class = "action.Login" method="login">
+            <result name = "success">/logsuccess.jsp</result>
+            <result name = "input">/login.jsp</result>
+            <result name ="error">/error.jsp</result>
+        </action>
+        <action name="Logout" class="action.Login" method="logout">
+            <result name="success">/index.jsp</result>
+        </action>
+        <action name="Signin" class = "action.Signin" method="sign">
+            <result name = "success">/success.jsp</result>
+            <result name = "input">/signin.jsp</result>
+            <result name ="error">/error.jsp</result>
+        </action>
+        <action name="Findpassword" class = "action.FindPassword" method="FindPassword">
+            <result name = "success">/findanswer.jsp</result>
+            <result name = "input">/findpassword.jsp</result>
+            <result name ="error">/error.jsp</result>
+        </action>
+        <action name="Findanswer" class = "action.FindPassword" method="FindAnswer">
+            <result name = "success">/editpassword.jsp</result>
+            <result name = "input">/findanswer.jsp</result>
+            <result name = "error">/error.jsp</result>
+        </action>
+        <action name="Editpassword" class = "action.FindPassword" method="Editpassword">
+            <result name = "success">/success.jsp</result>
+            <result name = "input">/editpassword.jsp</result>
+            <result name ="error">/error.jsp</result>
+        </action>
+		 <action name="searchInvoice" class="action.SearchInvoice" method="searchInvoice">
+             <result name="jump">searchInvoice.jsp</result>
+            <result name="success">searchInvoiceResult.jsp</result>
+            <result name="error">searchNoneResult.jsp</result>
+        </action>
+        <action name="addInvoice" class="action.AddInvoice" method="addInvoice">
+            <result name="success">invoiceOperation.jsp</result>
+            <result name="input">addInvoice.jsp</result>
+        </action>
+        <action name="invoiceOperation" class="action.InvoiceOperation">
+            <result name="success">invoiceOperation.jsp</result>
+        </action>
+        <action name="Showbranch" class = "action.Jurisdiction" method="showbranch">
+            <result name = "success">/showbranch.jsp</result>
+            <result name = "input">/operationIndex.jsp</result>
+            <result name ="error">/error.jsp</result>
+        </action>
+        <action name="Gochangeid" class = "action.Jurisdiction" method="gotochangeid">
+            <result name = "success">/changeid.jsp</result>
+        </action>
+        <action name="Changeid" class = "action.Jurisdiction" method="changeid">
+            <result name = "success">/showbranch.jsp</result>
+            <result name = "input">/changeid.jsp</result>
+            <result name ="error">/error.jsp</result>
+        </action>
+    </package>
+</struts>
