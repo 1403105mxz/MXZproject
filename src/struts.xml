@@ -57,6 +57,11 @@
             <result name = "input">/operationIndex.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
+        <action name="Showbranchinvoice" class = "action.Jurisdiction" method="showbranchinvoice">
+            <result name = "success">/showbranchinvoice.jsp</result>
+            <result name = "input">/showbranch.jsp</result>
+            <result name ="error">/error.jsp</result>
+        </action>
         <action name="Gochangeid" class = "action.Jurisdiction" method="gotochangeid">
             <result name = "success">/changeid.jsp</result>
         </action>
@@ -64,6 +69,10 @@
             <result name = "success">/showbranch.jsp</result>
             <result name = "input">/changeid.jsp</result>
             <result name ="error">/error.jsp</result>
+        </action>
+        <action name="editInvoice" class="action.EditInvoice" method="execute">
+            <result name="input">editInvoice.jsp</result>
+            <result type="chain" name="success">invoiceOperation</result>
         </action>
     </package>
 </struts>

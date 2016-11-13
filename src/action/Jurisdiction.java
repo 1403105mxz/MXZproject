@@ -1,7 +1,9 @@
 package action;
 
+import data.Invoice;
 import data.user;
 import org.DatabaseConn;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.struts2.ServletActionContext;
 import org.omg.PortableInterceptor.SUCCESSFUL;
 
@@ -17,16 +19,26 @@ import java.util.List;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import static java.util.jar.Pack200.Packer.ERROR;
+import static org.SearchDao.searchAllInvoice;
 
 /**
  * Created by dell on 2016/11/12.
  */
 public class Jurisdiction {
     private List<user> branch;
+    private List<Invoice> branchinvoice;
     private String tips4 = "";
     private int newpower = 0;
     private String changep;
     private String high;
+
+    public List<Invoice> getBranchinvoice() {
+        return branchinvoice;
+    }
+
+    public void setBranchinvoice(List<Invoice> branchinvoice) {
+        this.branchinvoice = branchinvoice;
+    }
 
     public String getHigh() {
         return high;
@@ -148,4 +160,16 @@ public class Jurisdiction {
         return SUCCESS;
     }
 
+    public String showbranchinvoice(){
+        Connection conn;
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        branchinvoice = searchAllInvoice(changep);
+        if (branchinvoice == null){
+            return ERROR;
+        }
+        else{
+            return SUCCESS;
+        }
+    }
 }
