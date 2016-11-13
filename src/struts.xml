@@ -7,9 +7,9 @@
 <struts>
     <package name="default" extends="struts-default">
          <action name="Login" class = "action.Login" method="login">
-            <result name = "success">/logsuccess.jsp</result>
+            <result name = "success">/operationIndex.jsp</result>
             <result name = "input">/login.jsp</result>
-            <result name ="error">/error.jsp</result>
+            <result name = "error">/error.jsp</result>
         </action>
         <action name="Logout" class="action.Login" method="logout">
             <result name="success">/index.jsp</result>
@@ -36,11 +36,11 @@
         </action>
         <action name="searchInvoice" class="action.SearchInvoice" method="searchInvoice">
             <result name="jump">searchInvoice.jsp</result>
-            <result name="success">searchInvoiceResult.jsp</result>
+            <result name="success">detailInvoice.jsp</result>
             <result name="error">searchNoneResult.jsp</result>
         </action>
         <action name="addInvoice" class="action.AddInvoice" method="addInvoice">
-            <result type="chain" name="success">invoiceOperation</result>
+            <result name="success">addInvoiceSuccess.jsp</result>
             <result name="input">addInvoice.jsp</result>
         </action>
         <action name="invoiceOperation" class="action.InvoiceOperation" method="execute">

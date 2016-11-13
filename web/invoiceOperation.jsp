@@ -10,32 +10,55 @@
 <html>
 <head>
     <title>发票管理</title>
+    <style>
+        table {
+            border-style: solid;
+            border-collapse: collapse;
+        }
+        tr {
+            background-color: #CCCCCC;
+        }
+        th {
+            border-style: solid;
+        }
+        td {
+            border-style: solid;
+        }
+    </style>
+    <script>
+        function del(code, id) {
+            var r = confirm("确认作废该发票吗？");
+            if(r == true) {
+                location.href = "deleteInvoice?code=" + code + "&id=" + id;
+            }
+        }
+    </script>
 </head>
 <body>
-<script>
-    if("${tip}" == "success") {
-        var r = confirm("添加成功\n是否继续添加？");
-        if(r == true){
-            location.href = "addInvoice";
-        }
-    }
-</script>
 <input type="button" value="添加发票" onclick="location.href='addInvoice'"/>
 <input type="button" value="搜索发票" onclick="location.href='searchInvoice'"/>
-<INPUT name="logout" type="button" value="退出登录" onclick="location.href='Logout.action'">
-<table>
+<input name="logout" type="button" value="退出登录" onclick="location.href='Logout.action'">
+<tablee>
+    <thead>
+        <tr>
+            <th>类别代码</th>
+            <th>发票编号</th>
+            <th>付款项</th>
+            <th>总额</th>
+            <th></th>
+        </tr>
+    </thead>
     <s:iterator value="codeidList" status="st">
         <tr>
-            <td><s:property value="code"/></td>
-            <td><s:property value="id"/></td>
-            <td><s:property value="items"/></td>
-            <td><s:property value="total"/></td>
-            <td><input type = "button" value = "作废"
-                       onclick="location.href='deleteInvoice?code=${code}&id=${id}'"></td>
-            <td><input type = "button" value = "详情"
+            <td>${code}</td>
+            <td>${id}</td>
+            <td>${items}</td>
+            <td>${total}</td>
+            <td><input type = "button" value = "作废" onclick="del('${code}', '${id}')"/>
+                <input type = "button" value = "详情"
                        onclick="location.href='detailInvoice?code=${code}&id=${id}'"></td>
         </tr>
     </s:iterator>
-</table>
+</tablee>
 </body>
 </html>
