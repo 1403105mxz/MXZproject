@@ -1,0 +1,41 @@
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
+    font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}
+
+body.signin {
+
+}
+
+div.m {
+    position: absolute;
+    top: 20%;
+}
+
+div.signin {
+    padding: 20px;
+    border-style: solid;
+    border-color: #cacaca;
+    border-radius: 30px ;
+}
+
+input.signin {
+    margin: 2em auto;
+}
+
+button.signin {
+}
+
+h1.logo {
+    margin: 20px auto;
+    font-family: 华文琥珀;
+    font-weight: 100;
+    font-size: 50px;
+    color: #0f88eb;
+    box-shadow: #0f0f0f;
+}
+
+i.warning {
+    font-style: normal;
+    color: red;
+    display: none;
+}
