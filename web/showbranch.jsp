@@ -28,7 +28,7 @@ ${tips4}
             <td><s:property value="username"></s:property> </td>
             <td><s:property value="name"></s:property></td>
             <td><s:property value="id"></s:property> </td>
-            <td><a href = "Changeid.action?changep=${username}">查看</a></td>
+            <td><a href = "Showbranchinvoice.action?changep=${username}">查看</a></td>
             <td><a href = "Gochangeid.action?changep=${username}">修改权限</a></td>
         </tr>
     </s:iterator>

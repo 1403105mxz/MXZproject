@@ -8,7 +8,7 @@
     <package name="default" extends="struts-default">
          <action name="Login" class = "action.Login" method="login">
             <result name = "success">/operationIndex.jsp</result>
-            <result name = "input">/login.jsp</result>
+            <result name = "input">/index.jsp</result>
             <result name = "error">/error.jsp</result>
         </action>
         <action name="Logout" class="action.Login" method="logout">

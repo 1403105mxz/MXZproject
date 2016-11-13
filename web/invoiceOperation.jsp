@@ -38,7 +38,7 @@
 <input type="button" value="添加发票" onclick="location.href='addInvoice'"/>
 <input type="button" value="搜索发票" onclick="location.href='searchInvoice'"/>
 <input name="logout" type="button" value="退出登录" onclick="location.href='Logout.action'">
-<tablee>
+<table>
     <thead>
         <tr>
             <th>类别代码</th>
@@ -56,11 +56,11 @@
             <td>${total}</td>
             <td><input type = "button" value = "作废" onclick="del('${code}', '${id}')"/>
                 <input type = "button" value = "详情"
-                       onclick="location.href='detailInvoice?code=${code}&id=${id}'"></td>
-            <td><input type = "button" value = "编辑"
+                       onclick="location.href='detailInvoice?code=${code}&id=${id}'">
+                <input type = "button" value = "编辑"
                        onclick="location.href='editInvoice?code=${code}&id=${id}&firstTime=${'firstTime'}'"></td>
         </tr>
     </s:iterator>
-</tablee>
+</table>
 </body>
 </html>

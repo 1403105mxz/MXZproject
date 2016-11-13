@@ -29,17 +29,20 @@ public class LoginFilter implements Filter {
         HttpServletRequest servletRequest = (HttpServletRequest) request;
         HttpServletResponse servletResponse = (HttpServletResponse) response;
         HttpSession session = servletRequest.getSession();
-
         String path = servletRequest.getRequestURI();
         String user = (String) session.getAttribute("newusername");
-        String NoFilter_Pages[] = {"/index.jsp", "/findanswer.jsp", "/findpassword.jsp", "/logsuccess.jsp", "/signin.jsp",
+        String NoFilter_Pages[] = {"/test.jsp", "/index.jsp", "/findanswer.jsp", "/findpassword.jsp", "/logsuccess.jsp", "/signin.jsp",
                 "/signinsuccess.jsp", "/error.jsp" , "/editpassword.jsp" , "/login.jsp", "Login.action", "Signin.action",
                 "Findpassword.action", "Editpassword.action", "Findanswer.action"};
 
+        if (path.endsWith(".css") || path.endsWith(".js") || path.endsWith(".jpg")) {
+            chain.doFilter(servletRequest, servletResponse);
+            return;
+        }
         Boolean judge = false;
         for (int i = 0; i < NoFilter_Pages.length; i++) {
 
-            if (path.indexOf(NoFilter_Pages[i]) > -1 && judge == false) {
+            if (path.equals("/") || path.indexOf(NoFilter_Pages[i]) > -1 && judge == false) {
                 judge = true;
             }
         }
