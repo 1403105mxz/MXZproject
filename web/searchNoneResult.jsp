@@ -11,7 +11,7 @@
     <title>搜索结果不存在</title>
 </head>
 <body>
-空空哒
+您搜索的发票不存在
 <a href="operationIndex.jsp">返回主页</a>
 </body>
 </html>

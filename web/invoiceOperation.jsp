@@ -32,6 +32,16 @@
                 location.href = "deleteInvoice?code=" + code + "&id=" + id;
             }
         }
+        function fmoney(s, n) {
+            n = n > 0 && n <= 20 ? n : 2;
+            s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+            var l = s.split(".")[0].split("").reverse(), r = s.split(".")[1];
+            t = "";
+            for (i = 0; i < l.length; i++) {
+                t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+            }
+            return t.split("").reverse().join("") + "." + r;
+        }
     </script>
 </head>
 <body>
@@ -53,7 +63,9 @@
             <td>${code}</td>
             <td>${id}</td>
             <td>${items}</td>
-            <td>${total}</td>
+            <td><script>
+                document.write(fmoney(${total},2));
+            </script></td>
             <td><input type = "button" value = "作废" onclick="del('${code}', '${id}')"/>
                 <input type = "button" value = "详情"
                        onclick="location.href='detailInvoice?code=${code}&id=${id}'">

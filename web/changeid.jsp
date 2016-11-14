@@ -12,7 +12,7 @@
 </head>
 <body>
 <form name = "myForm" action ="Changeid.action" method="post">
-    输入你的密码：<input name = "high" type = "text">
+    输入你的密码：<input name = "high" type = "password">
     新的权限等级：<input name = "newpower" type = "text">
     <input name = "changep" type = "hidden" value="${changep}">
     <input type = "submit" name = "check" value = "修改"><br/>

@@ -34,7 +34,7 @@
         <i id="error" class="warning">用户名或密码错误</i>
       </div>
       <div class="checkbox">
-        <a onclick="location.href='findpassword.jsp'">找回密码</a>
+        <a href="findpassword.jsp">找回密码</a>
       </div>
       <div class="col-md-6">
         <button class="btn btn-lg btn-block" type="submit">登录</button>

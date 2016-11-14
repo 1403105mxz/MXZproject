@@ -24,6 +24,16 @@
                 location.href = "deleteInvoice?code=" + code + "&id=" + id;
             }
         }
+        function fmoney(s, n) {
+            n = n > 0 && n <= 20 ? n : 2;
+            s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+            var l = s.split(".")[0].split("").reverse(), r = s.split(".")[1];
+            t = "";
+            for (i = 0; i < l.length; i++) {
+                t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+            }
+            return t.split("").reverse().join("") + "." + r;
+        }
     </script>
 </head>
 <body>
@@ -49,7 +59,9 @@
     </tr>
     <tr>
         <td>数量：</td>
-        <td>${invoice.number}</td>
+        <td><script>
+            document.write(fmoney(${invoice.number},0));
+        </script></td>
     </tr>
     <tr>
         <td>单价(人民币)：</td>
@@ -61,7 +73,9 @@
     </tr>
     <tr>
         <td>总额：</td>
-        <td>${invoice.total}</td>
+        <td><script>
+            document.write(fmoney(${invoice.total},2));
+        </script></td>
     </tr>
     <tr>
         <td>收款方：</td>

@@ -31,11 +31,12 @@ public class LoginFilter implements Filter {
         HttpSession session = servletRequest.getSession();
         String path = servletRequest.getRequestURI();
         String user = (String) session.getAttribute("newusername");
-        String NoFilter_Pages[] = {"/test.jsp", "/index.jsp", "/findanswer.jsp", "/findpassword.jsp", "/logsuccess.jsp", "/signin.jsp",
+        String NoFilter_Pages[] = {"/index.jsp", "/findanswer.jsp", "/findpassword.jsp", "/logsuccess.jsp", "/signin.jsp",
                 "/signinsuccess.jsp", "/error.jsp" , "/editpassword.jsp" , "/login.jsp", "Login.action", "Signin.action",
                 "Findpassword.action", "Editpassword.action", "Findanswer.action"};
 
-        if (path.endsWith(".css") || path.endsWith(".js") || path.endsWith(".jpg")) {
+        if (path.endsWith(".css") || path.endsWith(".js") || path.endsWith(".jpg")|| path.endsWith(".eot") ||
+                path.endsWith(".svg") || path.endsWith(".ttf") || path.endsWith(".woff")) {
             chain.doFilter(servletRequest, servletResponse);
             return;
         }
