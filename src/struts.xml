@@ -74,5 +74,15 @@
             <result name="input">editInvoice.jsp</result>
             <result type="chain" name="success">invoiceOperation</result>
         </action>
+        <action name="Changepassword" class = "action.Editinfo" method="Editpassword">
+            <result name = "success">/operationIndex.jsp</result>
+            <result name = "input">/changepassword.jsp</result>
+            <result name ="error">/error.jsp</result>
+        </action>
+        <action name="Changename" class = "action.Editinfo" method="Editname">
+            <result name = "success">/operationIndex.jsp</result>
+            <result name = "input">/changename.jsp</result>
+            <result name ="error">/error.jsp</result>
+        </action>
     </package>
 </struts>
