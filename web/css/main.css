@@ -3,7 +3,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 }
 
 body.signin {
-
+    background-image: url("/img/登陆界面.png");
 }
 
 div.m {
@@ -27,7 +27,7 @@ button.signin {
 
 h1.logo {
     margin: 20px auto;
-    font-family: 华文琥珀;
+    font-family: 宋体;
     font-weight: 100;
     font-size: 50px;
     color: #0f88eb;
