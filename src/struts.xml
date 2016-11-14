@@ -84,5 +84,6 @@
             <result name = "input">/changename.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
+
     </package>
 </struts>
