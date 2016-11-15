@@ -2,7 +2,7 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import data.Invoice;
-import org.SearchDao;
+import org.InvoiceDao;
 
 import com.opensymphony.xwork2.ActionContext;
 
@@ -43,7 +43,7 @@ public class SearchInvoice extends ActionSupport {
         if (code == null && id == null) {
             return "jump";
         }
-        invoice = SearchDao.searchInvoice(code, id, account);
+        invoice = InvoiceDao.searchInvoice(code, id, account);
         if (invoice == null)
             return ERROR;
         return SUCCESS;
@@ -51,7 +51,7 @@ public class SearchInvoice extends ActionSupport {
 
     public String detailInvoice() {
         String account = (String) ActionContext.getContext().getSession().get("newusername");
-        invoice = SearchDao.searchInvoice(code, id, account);
+        invoice = InvoiceDao.searchInvoice(code, id, account);
         if (invoice == null) {
             return ERROR;
         }

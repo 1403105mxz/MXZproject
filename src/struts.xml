@@ -74,6 +74,9 @@
             <result name = "input">/changeid.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
+        <action name="goEditInvoice" class="action.EditInvoice" method="goEditInvoice">
+            <result name="success">editInvoice.jsp</result>
+        </action>
         <action name="editInvoice" class="action.EditInvoice" method="execute">
             <result name="input">editInvoice.jsp</result>
             <result type="redirect" name="success">invoiceOperation</result>
