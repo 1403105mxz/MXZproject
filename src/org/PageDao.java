@@ -1,5 +1,7 @@
 package org;
 
+import data.Dealer;
+import data.Goods;
 import data.Invoice;
 
 import java.sql.Connection;
@@ -11,28 +13,30 @@ import java.util.List;
 /**
  * Created by meng on 2016/11/14.
  */
-public class PageDao {
+public class PageDao extends SuperDao {
     public static List<Invoice> allInvoice(int pageNumber, int pageSize, String account) {
-        Connection conn = DatabaseConn.getConn();
         List<Invoice> invoiceList = new ArrayList<Invoice>();
         String sql = "select * from invoice WHERE account = ? AND limit ?, ?";
-        PreparedStatement pst;
+        PreparedStatement pst = setPreparedStatement(sql, account,
+                (pageNumber - 1) * pageSize, pageSize);
         try {
-            pst = conn.prepareStatement(sql);
-            pst.setString(1, account);
-            pst.setInt(2, (pageNumber - 1) * pageSize);
-            pst.setInt(3, pageSize);
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 String codeId = resultSet.getString(1);
                 String code = Invoice.separateCodeId(codeId)[0];
                 String id = Invoice.separateCodeId(codeId)[1];
+                Dealer payer = Dealer.makeDealer(resultSet.getString(3), resultSet.getString(4),
+                        resultSet.getString(5), resultSet.getString(6),
+                        resultSet.getString(7), resultSet.getString(8));
+                Dealer payee = Dealer.makeDealer(resultSet.getString(15), resultSet.getString(16),
+                        resultSet.getString(17), resultSet.getString(18),
+                        resultSet.getString(19), resultSet.getString(20));
+                Goods items = Goods.makeGoods(resultSet.getString(9), resultSet.getString(10),
+                        resultSet.getString(11), resultSet.getInt(12),
+                        resultSet.getDouble(13), resultSet.getDouble(14));
                 Invoice invoice = Invoice.makeInvoice(code, id, resultSet.getString(2),
-                        resultSet.getString(3), resultSet.getString(4),
-                        resultSet.getInt(5), resultSet.getDouble(6),
-                        resultSet.getString(7), resultSet.getDouble(8),
-                        resultSet.getString(9), resultSet.getString(10),
-                        resultSet.getString(11));
+                        payer, items, payee, resultSet.getString(21),
+                        resultSet.getString(22), resultSet.getString(23));
                 invoiceList.add(invoice);
             }
         } catch (Exception e) {

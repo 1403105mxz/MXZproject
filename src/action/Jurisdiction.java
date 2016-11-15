@@ -16,7 +16,7 @@ import java.util.List;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import static java.util.jar.Pack200.Packer.ERROR;
-import static org.SearchDao.allInvoice;
+import static org.InvoiceDao.allInvoice;
 
 /**
  * Created by dell on 2016/11/12.

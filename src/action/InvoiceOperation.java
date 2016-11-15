@@ -1,8 +1,7 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.PageDao;
-import org.SearchDao;
+import org.InvoiceDao;
 import com.opensymphony.xwork2.ActionContext;
 import data.Invoice;
 
@@ -45,7 +44,7 @@ public class InvoiceOperation extends ActionSupport {
     public String execute() {
         int pageSize = 10;
         String account = (String) ActionContext.getContext().getSession().get("newusername");
-        invoiceList = SearchDao.allInvoice(account);
+        invoiceList = InvoiceDao.allInvoice(account);
         //invoiceList = PageDao.allInvoice(pageNumber, pageSize, account);
         return SUCCESS;
     }

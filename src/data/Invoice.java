@@ -2,6 +2,7 @@ package data;
 /**
  * Created by 祥根_2 on 2016/10/25.
  */
+
 /**.
  * 发票类
  */
@@ -21,31 +22,19 @@ public class Invoice {
     /**.
      *付款方
      */
-    private String payer;
+    private Dealer payer = new Dealer();
     /**.
      * 付款项
      */
-    private String items;
+    private Goods items = new Goods();
     /**.
-     * 付款项数量
+     * 收款方
      */
-    private int number;
-    /**.
-     * 付款项单价(人民币)
-     */
-    private double price;
+    private Dealer payee = new Dealer();
     /**.
      * 备注
      */
     private String remark;
-    /**.
-     * 合计金额
-     */
-    private double total;
-    /**.
-     * 收款方
-     */
-    private String payee;
     /**.
      * 开票人
      */
@@ -79,36 +68,28 @@ public class Invoice {
         this.date = date;
     }
 
-    public String getPayer() {
+    public Dealer getPayer() {
         return payer;
     }
 
-    public void setPayer(String payer) {
+    public void setPayer(Dealer payer) {
         this.payer = payer;
     }
 
-    public String getItems() {
+    public Goods getItems() {
         return items;
     }
 
-    public void setItems(String items) {
+    public void setItems(Goods items) {
         this.items = items;
     }
 
-    public int getNumber() {
-        return number;
+    public Dealer getPayee() {
+        return payee;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPayee(Dealer payee) {
+        this.payee = payee;
     }
 
     public String getRemark() {
@@ -117,22 +98,6 @@ public class Invoice {
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public String getPayee() {
-        return payee;
-    }
-
-    public void setPayee(String payee) {
-        this.payee = payee;
     }
 
     public String getDrawer() {
@@ -152,21 +117,17 @@ public class Invoice {
     }
 
     public static Invoice makeInvoice(String code, String id,
-                                       String date, String payer,
-                                       String items, int number,
-                                       double price, String remark,
-                                       double total, String payee,
-                                       String drawer, String account) {
+                                      String date, Dealer payer,
+                                      Goods items, Dealer payee,
+                                      String remark, String drawer,
+                                      String account) {
         Invoice invoice = new Invoice();
         invoice.setCode(code);
         invoice.setId(id);
         invoice.setDate(date);
         invoice.setPayer(payer);
         invoice.setItems(items);
-        invoice.setNumber(number);
-        invoice.setPrice(price);
         invoice.setRemark(remark);
-        invoice.setTotal(total);
         invoice.setPayee(payee);
         invoice.setDrawer(drawer);
         invoice.setAccount(account);

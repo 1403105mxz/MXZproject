@@ -2,9 +2,12 @@ package action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import data.Dealer;
+import data.Goods;
 import data.Invoice;
-import org.AddDao;
-import org.SearchDao;
+import org.InvoiceDao;
+
+import java.math.BigDecimal;
 
 /**
  * Created by 祥根_2 on 2016/10/25.
@@ -13,22 +16,27 @@ public class AddInvoice extends ActionSupport{
     private String code;
     private String id;
     private String date;
-    private String payer;
-    private String items;
-    private int number;
-    private double price;
+    private String payerName;
+    private String payerId;
+    private String payerAddress;
+    private String payerPhoneNumber;
+    private String payerBank;
+    private String payerBankId;
+    private String itemsName;
+    private String itemsModel;
+    private String itemsUnit;
+    private int itemsAmount;
+    private double itemsPrice;
+    private double itemsTaxRate;
+    private String payeeName;
+    private String payeeId;
+    private String payeeAddress;
+    private String payeePhoneNumber;
+    private String payeeBank;
+    private String payeeBankId;
     private String remark;
-    private String payee;
     private String drawer;
     private String tip = "";
-
-    public String getTip() {
-        return tip;
-    }
-
-    public void setTip(String tip) {
-        this.tip = tip;
-    }
 
     public String getCode() {
         return code;
@@ -54,36 +62,148 @@ public class AddInvoice extends ActionSupport{
         this.date = date;
     }
 
-    public String getPayer() {
-        return payer;
+    public String getPayerName() {
+        return payerName;
     }
 
-    public void setPayer(String payer) {
-        this.payer = payer;
+    public void setPayerName(String payerName) {
+        this.payerName = payerName;
     }
 
-    public String getItems() {
-        return items;
+    public String getPayerId() {
+        return payerId;
     }
 
-    public void setItems(String items) {
-        this.items = items;
+    public void setPayerId(String payerId) {
+        this.payerId = payerId;
     }
 
-    public int getNumber() {
-        return number;
+    public String getPayerAddress() {
+        return payerAddress;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setPayerAddress(String payerAddress) {
+        this.payerAddress = payerAddress;
     }
 
-    public double getPrice() {
-        return price;
+    public String getPayerPhoneNumber() {
+        return payerPhoneNumber;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPayerPhoneNumber(String payerPhoneNumber) {
+        this.payerPhoneNumber = payerPhoneNumber;
+    }
+
+    public String getPayerBank() {
+        return payerBank;
+    }
+
+    public void setPayerBank(String payerBank) {
+        this.payerBank = payerBank;
+    }
+
+    public String getPayerBankId() {
+        return payerBankId;
+    }
+
+    public void setPayerBankId(String payerBankId) {
+        this.payerBankId = payerBankId;
+    }
+
+    public String getItemsName() {
+        return itemsName;
+    }
+
+    public void setItemsName(String itemsName) {
+        this.itemsName = itemsName;
+    }
+
+    public String getItemsModel() {
+        return itemsModel;
+    }
+
+    public void setItemsModel(String itemsModel) {
+        this.itemsModel = itemsModel;
+    }
+
+    public String getItemsUnit() {
+        return itemsUnit;
+    }
+
+    public void setItemsUnit(String itemsUnit) {
+        this.itemsUnit = itemsUnit;
+    }
+
+    public int getItemsAmount() {
+        return itemsAmount;
+    }
+
+    public void setItemsAmount(int itemsAmount) {
+        this.itemsAmount = itemsAmount;
+    }
+
+    public double getItemsPrice() {
+        return itemsPrice;
+    }
+
+    public void setItemsPrice(double itemsPrice) {
+        this.itemsPrice = itemsPrice;
+    }
+
+    public double getItemsTaxRate() {
+        return itemsTaxRate;
+    }
+
+    public void setItemsTaxRate(double itemsTaxRate) {
+        this.itemsTaxRate = itemsTaxRate;
+    }
+
+    public String getPayeeName() {
+        return payeeName;
+    }
+
+    public void setPayeeName(String payeeName) {
+        this.payeeName = payeeName;
+    }
+
+    public String getPayeeId() {
+        return payeeId;
+    }
+
+    public void setPayeeId(String payeeId) {
+        this.payeeId = payeeId;
+    }
+
+    public String getPayeeAddress() {
+        return payeeAddress;
+    }
+
+    public void setPayeeAddress(String payeeAddress) {
+        this.payeeAddress = payeeAddress;
+    }
+
+    public String getPayeePhoneNumber() {
+        return payeePhoneNumber;
+    }
+
+    public void setPayeePhoneNumber(String payeePhoneNumber) {
+        this.payeePhoneNumber = payeePhoneNumber;
+    }
+
+    public String getPayeeBank() {
+        return payeeBank;
+    }
+
+    public void setPayeeBank(String payeeBank) {
+        this.payeeBank = payeeBank;
+    }
+
+    public String getPayeeBankId() {
+        return payeeBankId;
+    }
+
+    public void setPayeeBankId(String payeeBankId) {
+        this.payeeBankId = payeeBankId;
     }
 
     public String getRemark() {
@@ -94,14 +214,6 @@ public class AddInvoice extends ActionSupport{
         this.remark = remark;
     }
 
-    public String getPayee() {
-        return payee;
-    }
-
-    public void setPayee(String payee) {
-        this.payee = payee;
-    }
-
     public String getDrawer() {
         return drawer;
     }
@@ -110,28 +222,38 @@ public class AddInvoice extends ActionSupport{
         this.drawer = drawer;
     }
 
+    public String getTip() {
+        return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
+    }
 
     public String addInvoice() {
-        String account = (String)ActionContext.getContext().getSession().get("newusername");
-        if (code == null || id.isEmpty()
-                || date.isEmpty() || payer.isEmpty()
-                || items.isEmpty() || payee.isEmpty()
-                || drawer.isEmpty()) {
+        if (code == null) {
             return INPUT;
         }
         if (code.length() != 10 && code.length() != 12
                 || id.length() != 8 || date.length() > 10
-                || payer.length() > 45 || items.length() > 45
-                || remark.length() > 45 || payee.length() > 45
-                || drawer.length() > 45 || number <= 0 || price < 0.0) {
+                || payerName.length() > 45 || itemsName.length() > 45
+                || remark.length() > 45 || payeeName.length() > 45
+                || drawer.length() > 45 || itemsAmount <= 0 || itemsPrice < 0.0) {
             return INPUT;
         }
-        Invoice invoice = SearchDao.searchInvoice(code, id);
+        BigDecimal tmp = new BigDecimal(itemsPrice);
+        itemsPrice = tmp.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        String account = (String)ActionContext.getContext().getSession().get("newusername");
+        Invoice invoice = InvoiceDao.searchInvoice(code, id);
         if (invoice == null) {
-            double total = price * number;
-            AddDao.addInvoice(code, id, date, payer,
-                    items, number, price, remark,
-                    total, payee, drawer, account);
+            Dealer payer = Dealer.makeDealer(payerName, payerId, payerAddress,
+                    payerPhoneNumber, payerBank, payerBankId);
+            Dealer payee = Dealer.makeDealer(payeeName, payeeId, payeeAddress,
+                    payeePhoneNumber, payeeBank, payeeBankId);
+            Goods items = Goods.makeGoods(itemsName, itemsModel, itemsUnit,
+                    itemsAmount, itemsPrice, itemsTaxRate);
+            InvoiceDao.addInvoice(code, id, date, payer, items, payee,
+                    remark, drawer, account);
             tip = "success";
             return SUCCESS;
         }
