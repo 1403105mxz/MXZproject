@@ -8,7 +8,7 @@
 <struts>
     <package name="default" extends="struts-default">
          <action name="Login" class = "action.Login" method="login">
-            <result name = "success">/operationIndex.jsp</result>
+            <result type="redirect" name = "success">GoOperationIndex</result>
             <result name = "input">/index.jsp</result>
             <result name = "error">/error.jsp</result>
         </action>
@@ -34,6 +34,9 @@
             <result name = "success">/success.jsp</result>
             <result name = "input">/editpassword.jsp</result>
             <result name ="error">/error.jsp</result>
+        </action>
+        <action name="GoOperationIndex" class="action.Go" method="goOperationIndex">
+            <result name="success">/operationIndex.jsp</result>
         </action>
         <action name="searchInvoice" class="action.SearchInvoice" method="searchInvoice">
             <result name="jump">searchInvoice.jsp</result>
@@ -73,18 +76,17 @@
         </action>
         <action name="editInvoice" class="action.EditInvoice" method="execute">
             <result name="input">editInvoice.jsp</result>
-            <result type="chain" name="success">invoiceOperation</result>
+            <result type="redirect" name="success">invoiceOperation</result>
         </action>
         <action name="Changepassword" class = "action.Editinfo" method="Editpassword">
-            <result name = "success">/operationIndex.jsp</result>
-            <result name = "input">/changepassword.jsp</result>
+            <result type="redirect" name = "success">GoOperationIndex</result>
+            <result type="chain" name = "input">GoOperationIndex</result>
             <result name ="error">/error.jsp</result>
         </action>
         <action name="Changename" class = "action.Editinfo" method="Editname">
-            <result name = "success">/operationIndex.jsp</result>
+            <result type="redirect" name = "success">GoOperationIndex</result>
             <result name = "input">/changename.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
-
     </package>
 </struts>

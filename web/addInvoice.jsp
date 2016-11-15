@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
@@ -8,9 +7,17 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="header.jsp"%>
 <html>
 <head>
     <title>添加发票</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
     <style>
         table {
             margin: 20em auto;
@@ -29,92 +36,128 @@
         *.第二列 {
             width: 173px;
         }
+        *.inputError {
+            display: none;
+            color: red;
+        }
     </style>
     <script>
         function check() {
             if("${tip}" == "repeat") {
-                document.getElementById("codeidRepeat").style.display = "inline";
+                document.getElementById("codeidRepeat").style.display = "block";
             }
             var d = new Date();
-            if("${date}" != "") {
+            if("${date}" == "") {
                 document.getElementById("date").value = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
             }
         }
         function onBlur(id) {
             var input = document.getElementById(id);
             var idError = document.getElementById(id+"Error");
-            document.getElementById("codeidRepeat").style.display = "none";
-            if(id == "code") {
+            if(id == "invoiceCode") {
                 if(input.value.length != 10 && input.value.length != 12) {
-                    idError.style.display = "inline";
+                    idError.style.display = "block";
                 }
                 else {
                     idError.style.display = "none";
                 }
             }
-            else if(id == "id"){
+            else if(id == "invoiceId"){
                 if (input.value.length != 8) {
-                    idError.style.display = "inline";
+                    idError.style.display = "block";
                 }
                 else {
                     idError.style.display = "none";
                 }
             }
         }
+        function test() {
+            alert(document.getElementById("test").value);
+        }
     </script>
 </head>
 <body onload="check()">
-<form action="addInvoice" method="POST">
-    <table>
-        <tr>
-            <td class="第一列"><label for="code">类别代码：</label></td>
-            <td class="第二列"><input type="text" name="code" id="code" pattern="([0-9]{10})|([0-9]{12})" title="10或12位数字" maxlength="12" placeholder="10或12位数字" onblur="onBlur('code')" required value="${code}"/></td>
-            <td><i id="codeError">应为10或12位数字</i><i id="codeidRepeat">编号代码已存在</i></td>
-        </tr>
-        <tr>
-            <td><label for="id">发票编号：</label></td>
-            <td><input type="text" name="id" id="id" pattern="[0-9]{8}" title="8位数字" maxlength="8" placeholder="8位数字" onblur="onBlur('id')" required value="${id}"/></td>
-            <td><i id="idError">应为8位数字</i></td>
-        </tr>
-        <tr>
-            <td><label for="date">日期：</label></td>
-            <td><input type="date" name="date" id="date"
-                       pattern="^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-))$"
-                       placeholder="以YYYY-MM-DD格式输入" required value="${date}"/></td>
-        </tr>
-        <tr>
-            <td><label for="payer">付款方：</label></td>
-            <td><input type="text" name="payer" id="payer" maxlength="45" required value="${payer}"/></td>
-        </tr>
-        <tr>
-            <td><label for="items">付款项：</label></td>
-            <td><input type="text" name="items" id="items" maxlength="45" required value="${items}"/></td>
-        </tr>
-        <tr>
-            <td><label for="number">数量：</label></td>
-            <td><input type="number" name="number" id="number" min="1" required value="${number}"/></td>
-        </tr>
-        <tr>
-            <td><label for="price">单价(人民币)：</label></td>
-            <td><input type="text" name="price" id="price" pattern="[0-9]+(.[0-9]+)?" title="不小于零的数字" required value="${price}"/></td>
-        </tr>
-        <tr>
-            <td><label for="remark">备注：</label></td>
-            <td><input type="text" name="remark" id="remark" maxlength="45" value="${remark}"/></td>
-        </tr>
-        <tr>
-            <td><label for="payee">收款方：</label></td>
-            <td><input type="text" name="payee" id="payee" maxlength="45" required value="${payee}"/></td>
-        </tr>
-        <tr>
-            <td><label for="drawer">开票人：</label></td>
-            <td><input type="text" name="drawer" id="drawer" maxlength="45" required value="${drawer}"></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" value="添加"/></td>
-        </tr>
-    </table>
-</form>
-<a href="operationIndex.jsp">返回主页</a>
+    <div class="container bs-docs-container">
+        <h1 id="overview" class="page-header">添加发票</h1>
+        <form class="form-horizontal" action="addInvoice.action" method="POST">
+            <div class="form-group">
+                <label for="invoiceCode" class="col-sm-2 control-label">类别代码</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="code" id="invoiceCode" pattern="([0-9]{10})|([0-9]{12})" title="10或12位数字" maxlength="12" placeholder="10或12位数字" onblur="onBlur('invoiceCode')" required value="${code}">
+                </div>
+                <div class="inputError col-sm-4" id="invoiceCodeError">
+                    <label class="control-label">应为10或12位数字</label>
+                </div>
+                <div class="inputError col-sm-4" id="codeidRepeat">
+                    <label class="control-label">发票代码编号已存在</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="invoiceId" class="col-sm-2 control-label">发票编号</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="id" id="invoiceId" pattern="[0-9]{8}" title="8位数字" maxlength="8" placeholder="8位数字" onblur="onBlur('invoiceId')" required value="${id}"/>
+                </div>
+                <div class="inputError col-sm-4" id="invoiceIdError">
+                    <label class="control-label">应为8位数字</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id" class="col-sm-2 control-label">日期</label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control" name="date" id="date" pattern="^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-))$"
+                           placeholder="以YYYY-MM-DD格式输入" value="${date}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="code" class="col-sm-2 control-label">付款方</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="payer" id="payer" maxlength="45" required value="${payer}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="code" class="col-sm-2 control-label">付款项</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="items" id="items" maxlength="45" required value="${items}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="code" class="col-sm-2 control-label">数量</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" name="number" id="number" min="1" required value="${number}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="code" class="col-sm-2 control-label">单价(人民币)</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="price" id="price" pattern="[0-9]+(.[0-9]+)?" title="不小于零的数字" required value="${price}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="code" class="col-sm-2 control-label">备注</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="remark" id="remark" maxlength="45" value="${remark}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="code" class="col-sm-2 control-label">收款方</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="payee" id="payee" maxlength="45" required value="${payee}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="code" class="col-sm-2 control-label">开票人</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="drawer" id="drawer" maxlength="45" required value="${drawer}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">添加</button>
+                </div>
+            </div>
+        </form>
+    </div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -31,8 +31,8 @@ public class LoginFilter implements Filter {
         HttpSession session = servletRequest.getSession();
         String path = servletRequest.getRequestURI();
         String user = (String) session.getAttribute("newusername");
-        String NoFilter_Pages[] = {"/index.jsp", "/findanswer.jsp", "/findpassword.jsp", "/logsuccess.jsp", "/signin.jsp",
-                "/signinsuccess.jsp", "/error.jsp" , "/editpassword.jsp" , "/login.jsp", "Login.action", "Signin.action",
+        String NoFilter_Pages[] = {"/index.jsp", "/findanswer.jsp", "/findpassword.jsp",  "/signin.jsp", "success.jsp",
+                "/error.jsp" , "/editpassword.jsp" , "Login.action", "Signin.action",
                 "Findpassword.action", "Editpassword.action", "Findanswer.action"};
 
         if (path.endsWith(".css") || path.endsWith(".js") || path.endsWith(".jpg") || path.endsWith(".png") ||
@@ -54,7 +54,7 @@ public class LoginFilter implements Filter {
                 chain.doFilter(servletRequest, servletResponse);
                 return;
             } else {
-                servletResponse.sendRedirect("operationIndex.jsp");
+                servletResponse.sendRedirect("GoOperationIndex");
             }
         }
         else{

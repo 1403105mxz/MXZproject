@@ -31,6 +31,15 @@ public class Jurisdiction {
     private int newpower = 0;
     private String changep;
     private String high;
+    private String changeName;
+
+    public String getChangeName() {
+        return changeName;
+    }
+
+    public void setChangeName(String changeName) {
+        this.changeName = changeName;
+    }
 
     public List<Invoice> getBranchinvoice() {
         return branchinvoice;

@@ -1,24 +1,26 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 祥根_2
-  Date: 2016/11/1
-  Time: 14:57
+  User: 54333
+  Date: 2016/11/13
+  Time: 16:21
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ include file="header.jsp"%>
+<html lang="zh-CN">
 <head>
-    <title>导航页</title>
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-当前用户：<%=request.getSession().getAttribute("newname")%>
-<br/>
-权限等级：<%=request.getSession().getAttribute("newid")%>
-<br/>
-${tips4}
-<br/>
-<input type="button" onclick="location.href='invoiceOperation'" value="发票管理"/>
-<INPUT name="showbranch" type="button" value="查看下属" onclick="location.href='Showbranch.action'">
-<INPUT name="logout" type="button" value="退出登录" onclick="location.href='Logout.action'">
+    <img src="/img/wrth.png" style="margin: 200px 500px"/>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

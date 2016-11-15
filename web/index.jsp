@@ -37,13 +37,15 @@
         <a href="findpassword.jsp">找回密码</a>
       </div>
       <div class="col-md-6">
-        <button class="btn btn-lg btn-block" type="submit">登录</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
       </div>
       <div class="col-md-6">
-        <button class="btn btn-lg btn-block" type="button" onclick="location.href='signin.jsp'">注册</button>
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="location.href='signin.jsp'">注册</button>
       </div>
     </form>
   </div>
 </div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

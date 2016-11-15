@@ -28,4 +28,5 @@ public class InvoiceOperation extends ActionSupport {
         codeidList = SearchDao.searchAllInvoice(account);
         return SUCCESS;
     }
+
 }

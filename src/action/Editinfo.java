@@ -77,6 +77,7 @@ public class Editinfo {
     public String Editpassword() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
+        username = (String) session.getAttribute("newusername");
         String temp = (String) session.getAttribute("newpassword");
         if (!temp.equals(Oldpassword)) {
             tip = "原密码错误！";
@@ -96,6 +97,7 @@ public class Editinfo {
             Statement st = conn.createStatement();
             String sql = "UPDATE user SET password ='" + Editpassword + "'where username = '" + username+"'";
             st.executeUpdate(sql);
+            request.getSession().setAttribute("newpassword",Editpassword);
             tip = "修改成功";
             return SUCCESS;
         } catch (Exception e) {
@@ -107,7 +109,7 @@ public class Editinfo {
     public String Editname() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        String temp = (String) session.getAttribute("newname");
+        username = (String) session.getAttribute("newusername");
         if (Editname.length() > 20 || Editname.length() < 2) {
             tip = "姓名的长度为2-20个字符";
             return INPUT;
@@ -118,6 +120,7 @@ public class Editinfo {
             Statement st = conn.createStatement();
             String sql = "UPDATE user SET name ='" + Editname + "'where username = '" + username+"'";
             st.executeUpdate(sql);
+            request.getSession().setAttribute("newname",Editname);
             tip = "修改成功";
             return SUCCESS;
         } catch (Exception e) {
