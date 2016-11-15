@@ -27,6 +27,6 @@
     <s:textfield name="date" label="日期" value="%{invoice.date}"/>
     <s:submit value="提交"/>
 </s:form>
-<s:a href="search.action?name=%{author.name}">返回</s:a>
+<s:a href="invoiceOperation">返回</s:a>
 </body>
 </html>

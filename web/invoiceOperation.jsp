@@ -48,7 +48,7 @@
             <th></th>
         </tr>
     </thead>
-    <s:iterator value="codeidList" status="st">
+    <s:iterator value="invoiceList" status="st">
         <tr>
             <td>${code}</td>
             <td>${id}</td>

@@ -150,4 +150,39 @@ public class Invoice {
     public void setAccount(String account) {
         this.account = account;
     }
+
+    public static Invoice makeInvoice(String code, String id,
+                                       String date, String payer,
+                                       String items, int number,
+                                       double price, String remark,
+                                       double total, String payee,
+                                       String drawer, String account) {
+        Invoice invoice = new Invoice();
+        invoice.setCode(code);
+        invoice.setId(id);
+        invoice.setDate(date);
+        invoice.setPayer(payer);
+        invoice.setItems(items);
+        invoice.setNumber(number);
+        invoice.setPrice(price);
+        invoice.setRemark(remark);
+        invoice.setTotal(total);
+        invoice.setPayee(payee);
+        invoice.setDrawer(drawer);
+        invoice.setAccount(account);
+        return invoice;
+    }
+
+    public static String[] separateCodeId(String codeId) {
+        String[] result = new String[2];
+        int len = codeId.length();
+        if (len == 20) {
+            result[0] = codeId.substring(0, 12);
+            result[1] = codeId.substring(12, 20);
+        } else {
+            result[0] = codeId.substring(0, 10);
+            result[1] = codeId.substring(10, 18);
+        }
+        return result;
+    }
 }

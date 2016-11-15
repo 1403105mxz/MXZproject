@@ -35,7 +35,7 @@ public class LoginFilter implements Filter {
                 "/signinsuccess.jsp", "/error.jsp" , "/editpassword.jsp" , "/login.jsp", "Login.action", "Signin.action",
                 "Findpassword.action", "Editpassword.action", "Findanswer.action"};
 
-        if (path.endsWith(".css") || path.endsWith(".js") || path.endsWith(".jpg")) {
+        if (path.endsWith(".css") || path.endsWith(".js") || path.endsWith(".png")) {
             chain.doFilter(servletRequest, servletResponse);
             return;
         }

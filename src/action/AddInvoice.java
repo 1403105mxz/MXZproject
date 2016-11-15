@@ -123,11 +123,10 @@ public class AddInvoice extends ActionSupport{
                 || id.length() != 8 || date.length() > 10
                 || payer.length() > 45 || items.length() > 45
                 || remark.length() > 45 || payee.length() > 45
-
                 || drawer.length() > 45 || number <= 0 || price < 0.0) {
             return INPUT;
         }
-        Invoice invoice = SearchDao.searchInvoiceInAll(code, id);
+        Invoice invoice = SearchDao.searchInvoice(code, id);
         if (invoice == null) {
             double total = price * number;
             AddDao.addInvoice(code, id, date, payer,

@@ -3,12 +3,9 @@ package action;
 import data.Invoice;
 import data.user;
 import org.DatabaseConn;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.struts2.ServletActionContext;
-import org.omg.PortableInterceptor.SUCCESSFUL;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,7 +16,7 @@ import java.util.List;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import static java.util.jar.Pack200.Packer.ERROR;
-import static org.SearchDao.searchAllInvoice;
+import static org.SearchDao.allInvoice;
 
 /**
  * Created by dell on 2016/11/12.
@@ -164,7 +161,7 @@ public class Jurisdiction {
         Connection conn;
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        branchinvoice = searchAllInvoice(changep);
+        branchinvoice = allInvoice(changep);
         if (branchinvoice == null){
             return ERROR;
         }
