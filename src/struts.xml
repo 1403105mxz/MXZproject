@@ -91,5 +91,8 @@
         <action name="GoAddInvoice" class="action.Go" method="goAddInvoice">
             <result name="success">/addInvoice.jsp</result>
         </action>
+        <action name="GoChangeId" class="action.Go" method="goChangeid">
+            <result name="success">/changeId.jsp</result>
+        </action>
     </package>
 </struts>

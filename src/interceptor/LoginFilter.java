@@ -31,7 +31,7 @@ public class LoginFilter implements Filter {
         HttpSession session = servletRequest.getSession();
         String path = servletRequest.getRequestURI();
         String user = (String) session.getAttribute("newusername");
-        String NoFilter_Pages[] = {"/index.jsp", "/findAnswer.jsp", "/findPassword.jsp",  "/register.jsp", "success.jsp",
+        String NoFilter_Pages[] = {"/index.jsp", "/findAnswer.jsp", "/findPassword.jsp",  "/register.jsp", "/success.jsp",
                 "/error.jsp" , "/editPassword.jsp" , "SignIn.action", "Register.action",
                 "FindPassword.action", "EditPassword.action", "FindAnswer.action"};
 

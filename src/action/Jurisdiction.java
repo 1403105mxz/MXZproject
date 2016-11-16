@@ -3,7 +3,9 @@ package action;
 import data.Invoice;
 import data.User;
 import org.DatabaseConn;
+import org.UserDao;
 import org.apache.struts2.ServletActionContext;
+import service.SignService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -88,78 +90,33 @@ public class Jurisdiction {
 
     public String showBranch() {
         Connection conn;
-        try {
-            HttpServletRequest request = ServletActionContext.getRequest();
-            HttpSession session = request.getSession();
-            int id = (int)session.getAttribute("newid");
-            if (id == 1){
-                tips4 = "你的权限无法进行此操作。";
-                return INPUT;
-            }
-            branch = new ArrayList<>();
-            conn = DatabaseConn.getConnection();
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM user");
-            while (rs.next()){
-                if (rs.getInt(4) < id){
-                    User temp = new User();
-                    temp.setUsername(rs.getString(1));
-                    temp.setPassword(rs.getString(2));
-                    temp.setName(rs.getString(3));
-                    temp.setId(rs.getInt(4));
-                    temp.setQuestion(rs.getString(5));
-                    temp.setAnswer(rs.getString(6));
-                    branch.add(temp);
-                }
-            }
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        int id = (int)session.getAttribute("newid");
+        if (id == 1){
+            tips4 = "你的权限无法进行此操作。";
+            return INPUT;
         }
-        catch(Exception e){
-            e.printStackTrace();
-            return ERROR;
-        }
+        branch = UserDao.getBranch(id);
         return SUCCESS;
     }
 
     public String changeid(){
-        Connection conn;
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         int id = (int)session.getAttribute("newid");
         String password = (String)session.getAttribute("newpassword");
-        if(!high.equals(password)){
-            tips4 = "密码不正确";
+        if (!SignService.passwordCompare(high, password)) {
+            tips4 = "密码错误";
             return INPUT;
         }
         if (newpower >= id || newpower <= 0) {
             tips4 = "新的权限等级不可以小于0也不可以大于你自身的等级";
             return INPUT;
         }
-        try {
-            branch = new ArrayList<>();
-            conn = DatabaseConn.getConnection();
-            Statement st = conn.createStatement();
-            String sql = "UPDATE user SET id ='" + newpower + "'where username = '" + changep + "'";
-            st.executeUpdate(sql);
-            Statement st2 = conn.createStatement();
-            ResultSet rs = st2.executeQuery("SELECT * FROM user");
-            while (rs.next()){
-                if (rs.getInt(4) < id){
-                    User temp = new User();
-                    temp.setUsername(rs.getString(1));
-                    temp.setPassword(rs.getString(2));
-                    temp.setName(rs.getString(3));
-                    temp.setId(rs.getInt(4));
-                    temp.setQuestion(rs.getString(5));
-                    temp.setAnswer(rs.getString(6));
-                    branch.add(temp);
-                }
-            }
-            return SUCCESS;
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            return ERROR;
-        }
+        UserDao.changeID(newpower, changep);
+        branch = UserDao.getBranch(id);
+        return SUCCESS;
     }
 
 
