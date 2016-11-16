@@ -7,9 +7,17 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="header.jsp"%>
 <html>
 <head>
     <title>搜索结果</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, User-scalable=no">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
     <style>
         table {
             margin: 20em auto;
@@ -23,6 +31,16 @@
             if(r == true) {
                 location.href = "deleteInvoice?code=" + code + "&id=" + id;
             }
+        }
+        function fmoney(s, n) {
+            n = n > 0 && n <= 20 ? n : 2;
+            s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+            var l = s.split(".")[0].split("").reverse(), r = s.split(".")[1];
+            t = "";
+            for (i = 0; i < l.length; i++) {
+                t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+            }
+            return t.split("").reverse().join("") + "." + r;
         }
     </script>
 </head>
@@ -61,7 +79,9 @@
     </tr>
     <tr>
         <td>总额：</td>
-        <td>${invoice.total}</td>
+        <td><script>
+            document.write(fmoney(${invoice.total},2));
+        </script></td>
     </tr>
     <tr>
         <td>收款方：</td>
@@ -71,10 +91,13 @@
         <td>开票人：</td>
         <td>${invoice.drawer}</td>
     </tr>
-    <tr><td><input type = "button" value = "作废" onclick="del(${code},${id})"></td></tr>
-    <td><input type = "button" value = "编辑"
+    <tr><td colspan="2"><input type = "button" value = "作废" onclick="del(${code},${id})">　　
+                        <input type = "button" value = "编辑"
                onclick="location.href='editInvoice?code=${code}&id=${id}&firstTime=${'firstTime'}'"></td>
+    </tr>
 </table>
 <a href="operationIndex.jsp">返回主页</a>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

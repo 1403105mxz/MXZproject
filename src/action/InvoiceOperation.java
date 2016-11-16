@@ -48,4 +48,5 @@ public class InvoiceOperation extends ActionSupport {
         //invoiceList = PageDao.allInvoice(pageNumber, pageSize, account);
         return SUCCESS;
     }
+
 }

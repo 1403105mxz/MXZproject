@@ -7,13 +7,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="header.jsp"%>
 <html>
 <head>
     <title>发票管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, User-scalable=no">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
     <style>
         table {
             border-style: solid;
             border-collapse: collapse;
+            margin: 100px auto;
         }
         tr {
             background-color: #CCCCCC;
@@ -32,12 +41,19 @@
                 location.href = "deleteInvoice?code=" + code + "&id=" + id;
             }
         }
+        function fmoney(s, n) {
+            n = n > 0 && n <= 20 ? n : 2;
+            s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+            var l = s.split(".")[0].split("").reverse(), r = s.split(".")[1];
+            t = "";
+            for (i = 0; i < l.length; i++) {
+                t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+            }
+            return t.split("").reverse().join("") + "." + r;
+        }
     </script>
 </head>
 <body>
-<input type="button" value="添加发票" onclick="location.href='addInvoice'"/>
-<input type="button" value="搜索发票" onclick="location.href='searchInvoice'"/>
-<input name="logout" type="button" value="退出登录" onclick="location.href='Logout.action'">
 <table>
     <thead>
         <tr>
@@ -53,7 +69,9 @@
             <td>${code}</td>
             <td>${id}</td>
             <td>${items}</td>
-            <td>${total}</td>
+            <td><script>
+                document.write(fmoney(${total},2));
+            </script></td>
             <td><input type = "button" value = "作废" onclick="del('${code}', '${id}')"/>
                 <input type = "button" value = "详情"
                        onclick="location.href='detailInvoice?code=${code}&id=${id}'">
@@ -62,5 +80,7 @@
         </tr>
     </s:iterator>
 </table>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 package action;
 
 import data.Invoice;
-import data.user;
+import data.User;
 import org.DatabaseConn;
 import org.apache.struts2.ServletActionContext;
 
@@ -22,12 +22,21 @@ import static org.InvoiceDao.allInvoice;
  * Created by dell on 2016/11/12.
  */
 public class Jurisdiction {
-    private List<user> branch;
+    private List<User> branch;
     private List<Invoice> branchinvoice;
     private String tips4 = "";
     private int newpower = 0;
     private String changep;
     private String high;
+    private String changeName;
+
+    public String getChangeName() {
+        return changeName;
+    }
+
+    public void setChangeName(String changeName) {
+        this.changeName = changeName;
+    }
 
     public List<Invoice> getBranchinvoice() {
         return branchinvoice;
@@ -69,15 +78,15 @@ public class Jurisdiction {
         this.tips4 = tips4;
     }
 
-    public List<user> getBranch() {
+    public List<User> getBranch() {
         return branch;
     }
 
-    public void setBranch(List<user> branch) {
+    public void setBranch(List<User> branch) {
         this.branch = branch;
     }
 
-    public String showbranch() {
+    public String showBranch() {
         Connection conn;
         try {
             HttpServletRequest request = ServletActionContext.getRequest();
@@ -93,7 +102,7 @@ public class Jurisdiction {
             ResultSet rs = st.executeQuery("SELECT * FROM user");
             while (rs.next()){
                 if (rs.getInt(4) < id){
-                    user temp = new user();
+                    User temp = new User();
                     temp.setUsername(rs.getString(1));
                     temp.setPassword(rs.getString(2));
                     temp.setName(rs.getString(3));
@@ -135,7 +144,7 @@ public class Jurisdiction {
             ResultSet rs = st2.executeQuery("SELECT * FROM user");
             while (rs.next()){
                 if (rs.getInt(4) < id){
-                    user temp = new user();
+                    User temp = new User();
                     temp.setUsername(rs.getString(1));
                     temp.setPassword(rs.getString(2));
                     temp.setName(rs.getString(3));
@@ -153,9 +162,6 @@ public class Jurisdiction {
         }
     }
 
-    public String gotochangeid(){
-        return SUCCESS;
-    }
 
     public String showbranchinvoice(){
         Connection conn;

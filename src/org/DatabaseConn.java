@@ -19,9 +19,9 @@ public class DatabaseConn {
     public static Connection getConnection() throws
             SQLException,NamingException{
         try {
-            String url = String.format("jdbc:mysql://localhost:3306/user");
+            String url = String.format("jdbc:mysql://localhost:3306/User");
             String username = "root";
-            String password = "123456";
+            String password = "wjsw5945@";
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection(url, username, password);
         }

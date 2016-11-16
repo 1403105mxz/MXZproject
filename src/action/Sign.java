@@ -1,6 +1,5 @@
 package action;
-import com.opensymphony.xwork2.ActionContext;
-import data.user;
+import data.User;
 import org.DatabaseConn;
 import org.apache.struts2.ServletActionContext;
 
@@ -8,7 +7,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
@@ -17,10 +15,10 @@ import static java.util.jar.Pack200.Packer.ERROR;
 /**
  * Created by dell on 2016/10/24.
  */
-public class Login {
+public class Sign {
     private String username;
     private String password;
-    private user User;
+    private User user;
     private String tips ="";
 
     public void setTips(String tips) {
@@ -47,37 +45,37 @@ public class Login {
         return password;
     }
 
-    public void setUser(user user) {
-        User = user;
+    public void setUser(User user) {
+        user = user;
     }
 
-    public user getUser() {
-        return User;
+    public User getUser() {
+        return user;
     }
 
-    public String login(){
+    public String signIn(){
         Connection conn;
         try {
-            User = new user();
+            user = new User();
             conn = DatabaseConn.getConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM user");
             while(rs.next()){
                 if (username.equals(rs.getString(1))){
                     if(password.equals((rs.getString(2)))){
-                        User.setUsername(rs.getString(1));
-                        User.setPassword(rs.getString(2));
-                        User.setName(rs.getString(3));
-                        User.setId(rs.getInt(4));
-                        User.setQuestion(rs.getString(5));
-                        User.setAnswer( rs.getString(6));
+                        user.setUsername(rs.getString(1));
+                        user.setPassword(rs.getString(2));
+                        user.setName(rs.getString(3));
+                        user.setId(rs.getInt(4));
+                        user.setQuestion(rs.getString(5));
+                        user.setAnswer( rs.getString(6));
                         HttpServletRequest request = ServletActionContext.getRequest();
                         request.getSession().setAttribute("newusername",username);     //用Session保存用户名
                         request.getSession().setAttribute("newpassword",password);
-                        request.getSession().setAttribute("newname",User.getName());
-                        request.getSession().setAttribute("newid",User.getId());
-                        request.getSession().setAttribute("newquestion",User.getQuestion());
-                        request.getSession().setAttribute("newanswer",User.getAnswer());
+                        request.getSession().setAttribute("newname", user.getName());
+                        request.getSession().setAttribute("newid", user.getId());
+                        request.getSession().setAttribute("newquestion", user.getQuestion());
+                        request.getSession().setAttribute("newanswer", user.getAnswer());
                         return SUCCESS;
                     }
                     else
@@ -96,7 +94,7 @@ public class Login {
         }
     }
 
-    public String logout(){
+    public String signOut(){
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         session.invalidate();
