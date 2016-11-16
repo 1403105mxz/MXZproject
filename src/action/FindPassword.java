@@ -1,6 +1,8 @@
 package action;
 import data.User;
 import org.DatabaseConn;
+import org.UserDao;
+import service.SignService;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -55,30 +57,14 @@ public class FindPassword {
         return fpUser;
     }
     public String FindPassword(){
-        Connection conn;
-        try {
-            conn = DatabaseConn.getConnection();
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM user");
-            while(rs.next()){
-                if (!fpUsername.equals(rs.getString(1))) {
-                        continue;
-                }
-                fpUser.setUsername(rs.getString(1));
-                fpUser.setPassword(rs.getString(2));
-                fpUser.setName(rs.getString(3));
-                fpUser.setId(rs.getInt(4));
-                fpUser.setQuestion(rs.getString(5));
-                fpUser.setAnswer( rs.getString(6));
-                return SUCCESS;
-            }
+        fpUser = UserDao.findPassword(fpUsername);
+        if(fpUser == null) {
+            tips3 = "用户名不存在。";
+            return INPUT;
         }
-        catch(Exception e){
-            e.printStackTrace();
-            return ERROR;
+        else {
+            return SUCCESS;
         }
-        tips3 = "用户名不存在。";
-        return INPUT;
     }
 
     public String FindAnswer(){
@@ -92,23 +78,15 @@ public class FindPassword {
     }
 
     public String Editpassword() {
-        if (fpUser.getPassword().length() > 20 || fpUser.getPassword().length() < 6) {
+        if (!SignService.checkLength(fpUser.getPassword())) {
             tips3 = "密码的长度为6-20个字符";
             return INPUT;
         }
-        if(fpUsername.equals(fpUser.getPassword())) {
-            Connection conn;
-            try {
-                conn = DatabaseConn.getConnection();
-                Statement st = conn.createStatement();
-                String sql = "UPDATE user SET password ='" + fpUser.getPassword() + "'where username = '" + fpUser.getUsername() + "'";
-                st.executeUpdate(sql);
-                successTips = "成功找回密码";
-                return SUCCESS;
-            } catch (Exception e) {
-                e.printStackTrace();
-                return ERROR;
-            }
+        if(SignService.passwordCompare(fpUsername, fpUser.getPassword())) {
+            UserDao.findAndChangePassword(fpUser);
+            successTips = "成功找回密码";
+            return SUCCESS;
+
         }
         else{
             tips3 = "两次输入的密码不一致";
