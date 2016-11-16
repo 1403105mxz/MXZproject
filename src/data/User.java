@@ -3,7 +3,7 @@ package data;
 /**
  * Created by dell on 2016/10/24.
  */
-public class user {
+public class User {
     private String username;
     private String password;
     private String name;

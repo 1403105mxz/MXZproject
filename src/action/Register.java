@@ -1,5 +1,5 @@
 package action;
-import data.user;
+import data.User;
 import org.DatabaseConn;
 
 import java.sql.Connection;
@@ -12,8 +12,8 @@ import static java.util.jar.Pack200.Packer.ERROR;
 /**
  * Created by dell on 2016/10/25.
  */
-public class Signin {
-    private user signinUser = new user();
+public class Register {
+    private User signinUser = new User();
     private String signinPassword;
     private String tips2 = "";
     private String successTips = "";
@@ -38,14 +38,14 @@ public class Signin {
         return signinPassword;
     }
 
-    public void setSigninUser(user signinUser) {
+    public void setSigninUser(User signinUser) {
         this.signinUser = signinUser;
     }
 
-    public user getSigninUser() {
+    public User getSigninUser() {
         return signinUser;
     }
-    public String sign(){
+    public String register(){
         Connection conn;
         int num = 1 ;
         try {

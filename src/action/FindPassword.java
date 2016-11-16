@@ -1,11 +1,7 @@
 package action;
-import data.user;
+import data.User;
 import org.DatabaseConn;
-import org.apache.struts2.ServletActionContext;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -17,7 +13,7 @@ import static java.util.jar.Pack200.Packer.ERROR;
  * Created by dell on 2016/10/25.
  */
 public class FindPassword {
-    private user fpUser = new user();
+    private User fpUser = new User();
     private String fpUsername;
     private String tips3;
     private String fpAnswer;
@@ -43,7 +39,7 @@ public class FindPassword {
         return tips3;
     }
 
-    public void setFpUser(user fpUser) {
+    public void setFpUser(User fpUser) {
         this.fpUser = fpUser;
     }
 
@@ -55,7 +51,7 @@ public class FindPassword {
         this.fpUsername = fpUsername;
     }
 
-    public user getFpUser() {
+    public User getFpUser() {
         return fpUser;
     }
     public String FindPassword(){

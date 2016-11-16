@@ -7,89 +7,89 @@
 
 <struts>
     <package name="default" extends="struts-default">
-         <action name="Login" class = "action.Login" method="login">
+         <action name="SignIn" class = "action.Sign" method="signIn">
             <result type="redirect" name = "success">GoOperationIndex</result>
             <result name = "input">/index.jsp</result>
             <result name = "error">/error.jsp</result>
         </action>
-        <action name="Logout" class="action.Login" method="logout">
+        <action name="SignOut" class="action.Sign" method="signOut">
             <result name="success">/index.jsp</result>
         </action>
-        <action name="Signin" class = "action.Signin" method="sign">
+        <action name="Register" class = "action.Register" method="register">
             <result name = "success">/success.jsp</result>
-            <result name = "input">/signin.jsp</result>
+            <result name = "input">/register.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
-        <action name="Findpassword" class = "action.FindPassword" method="FindPassword">
-            <result name = "success">/findanswer.jsp</result>
-            <result name = "input">/findpassword.jsp</result>
+        <action name="FindPassword" class = "action.FindPassword" method="FindPassword">
+            <result name = "success">/findAnswer.jsp</result>
+            <result name = "input">/findPassword.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
-        <action name="Findanswer" class = "action.FindPassword" method="FindAnswer">
-            <result name = "success">/editpassword.jsp</result>
-            <result name = "input">/findanswer.jsp</result>
+        <action name="FindAnswer" class = "action.FindPassword" method="FindAnswer">
+            <result name = "success">/editPassword.jsp</result>
+            <result name = "input">/findAnswer.jsp</result>
             <result name = "error">/error.jsp</result>
         </action>
-        <action name="Editpassword" class = "action.FindPassword" method="Editpassword">
+        <action name="EditPassword" class = "action.FindPassword" method="Editpassword">
             <result name = "success">/success.jsp</result>
-            <result name = "input">/editpassword.jsp</result>
+            <result name = "input">/editPassword.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
         <action name="GoOperationIndex" class="action.Go" method="goOperationIndex">
             <result name="success">/operationIndex.jsp</result>
         </action>
-        <action name="searchInvoice" class="action.SearchInvoice" method="searchInvoice">
+        <action name="SearchInvoice" class="action.SearchInvoice" method="searchInvoice">
             <result name="jump">searchInvoice.jsp</result>
             <result name="success">detailInvoice.jsp</result>
             <result name="error">searchNoneResult.jsp</result>
         </action>
-        <action name="addInvoice" class="action.AddInvoice" method="addInvoice">
+        <action name="AddInvoice" class="action.AddInvoice" method="addInvoice">
             <result name="success">addInvoiceSuccess.jsp</result>
             <result name="input">addInvoice.jsp</result>
         </action>
-        <action name="invoiceOperation" class="action.InvoiceOperation" method="execute">
+        <action name="InvoiceOperation" class="action.InvoiceOperation" method="execute">
             <result name="success">invoiceOperation.jsp</result>
         </action>
-        <action name="deleteInvoice" class="action.DeleteInvoice" method="execute">
+        <action name="DeleteInvoice" class="action.DeleteInvoice" method="execute">
             <result type="chain" name="success">invoiceOperation</result>
         </action>
-        <action name="detailInvoice" class="action.SearchInvoice" method="detailInvoice">
+        <action name="DetailInvoice" class="action.SearchInvoice" method="detailInvoice">
             <result name="success">detailInvoice.jsp</result>
         </action>
-        <action name="Showbranch" class = "action.Jurisdiction" method="showbranch">
-            <result name = "success">/showbranch.jsp</result>
+        <action name="ShowBranch" class = "action.Jurisdiction" method="showBranch">
+            <result name = "success">/showBranch.jsp</result>
             <result name = "input">/operationIndex.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
-        <action name="Showbranchinvoice" class = "action.Jurisdiction" method="showbranchinvoice">
-            <result name = "success">/showbranchinvoice.jsp</result>
-            <result name = "input">/showbranch.jsp</result>
+        <action name="ShowBranchInvoice" class = "action.Jurisdiction" method="showbranchinvoice">
+            <result name = "success">/showBranchInvoice.jsp</result>
+            <result name = "input">/showBranch.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
-        <action name="Gochangeid" class = "action.Jurisdiction" method="gotochangeid">
-            <result name = "success">/changeid.jsp</result>
-        </action>
-        <action name="Changeid" class = "action.Jurisdiction" method="changeid">
-            <result name = "success">/showbranch.jsp</result>
-            <result name = "input">/changeid.jsp</result>
+        <action name="ChangeId" class = "action.Jurisdiction" method="changeid">
+            <result name = "success">/showBranch.jsp</result>
+            <result name = "input">/changeId.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
-        <action name="goEditInvoice" class="action.EditInvoice" method="goEditInvoice">
+        <action name="GoEditInvoice" class="action.Go" method="goEditInvoice">
             <result name="success">editInvoice.jsp</result>
         </action>
-        <action name="editInvoice" class="action.EditInvoice" method="execute">
+        <action name="EditInvoice" class="action.EditInvoice" method="execute">
             <result name="input">editInvoice.jsp</result>
             <result type="redirect" name="success">invoiceOperation</result>
         </action>
-        <action name="Changepassword" class = "action.Editinfo" method="Editpassword">
+        <action name="ChangePassword" class = "action.EditInfo" method="editPassword">
             <result type="redirect" name = "success">GoOperationIndex</result>
             <result type="chain" name = "input">GoOperationIndex</result>
             <result name ="error">/error.jsp</result>
         </action>
-        <action name="Changename" class = "action.Editinfo" method="Editname">
+        <action name="ChangeName" class = "action.EditInfo" method="editName">
             <result type="redirect" name = "success">GoOperationIndex</result>
-            <result name = "input">/changename.jsp</result>
+            <result name = "input">/changeName.jsp</result>
             <result name ="error">/error.jsp</result>
+        </action>
+        <action name="GoAddInvoice" class="action.Go" method="goAddInvoice">
+            <result name="success">/addInvoice.jsp</result>
         </action>
     </package>
 </struts>

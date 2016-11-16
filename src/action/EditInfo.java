@@ -1,13 +1,10 @@
 package action;
-import data.user;
 import org.DatabaseConn;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
 
 import static com.opensymphony.xwork2.Action.INPUT;
@@ -16,12 +13,12 @@ import static java.util.jar.Pack200.Packer.ERROR;
 /**
  * Created by 59783 on 2016/11/14.
  */
-public class Editinfo {
-    private String Editname;
-    private String Editpassword;
-    private String Editpassword2;
-    private String Oldpassword;
-    private String tip;
+public class EditInfo {
+        private String Editname;
+        private String Editpassword;
+        private String Editpassword2;
+        private String Oldpassword;
+        private String tip;
     private String username;
 
     public String getUsername() {
@@ -74,7 +71,7 @@ public class Editinfo {
         Oldpassword = oldpassword;
     }
 
-    public String Editpassword() {
+    public String editPassword() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         username = (String) session.getAttribute("newusername");
@@ -106,7 +103,7 @@ public class Editinfo {
         }
     }
 
-    public String Editname() {
+    public String editName() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         username = (String) session.getAttribute("newusername");

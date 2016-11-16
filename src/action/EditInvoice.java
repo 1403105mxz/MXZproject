@@ -236,7 +236,4 @@ public class EditInvoice extends ActionSupport {
         return SUCCESS;
     }
 
-    public String goEditInvoice() {
-        return SUCCESS;
-    }
 }

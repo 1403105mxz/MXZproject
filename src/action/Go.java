@@ -9,4 +9,14 @@ public class Go extends ActionSupport{
     public String goOperationIndex() {
         return SUCCESS;
     }
+
+    public String goEditInvoice() {
+        return SUCCESS;
+    }
+
+    public String goAddInvoice()  {
+        return SUCCESS;
+    }
 }
+
+
