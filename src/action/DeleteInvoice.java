@@ -2,7 +2,7 @@ package action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import org.InvoiceDao;
+import service.InvoiceService;
 
 /**
  * Created by 祥根_2 on 2016/11/10.
@@ -29,7 +29,9 @@ public class DeleteInvoice extends ActionSupport{
 
     public String execute() {
         String account = (String) ActionContext.getContext().getSession().get("newusername");
-        InvoiceDao.deleteInvoice(code, id, account);
-        return SUCCESS;
+        if (InvoiceService.deleteInvoice(code, id, account)) {
+            return SUCCESS;
+        }
+        return ERROR;
     }
 }

@@ -14,22 +14,24 @@ import java.util.List;
  */
 
 public class InvoiceDao extends SuperDao {
-    public static int addInvoice(String code, String id, String date,
-                                 Dealer payer, Goods items, Dealer payee,
-                                 String remark, String drawer, String account) {
+    public static int addInvoice(Invoice invoice) {
         String sql = "insert into invoice  values" +
                 "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
                 "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int changed = 0;
-        String codeId = code + id;
+        String codeId = invoice.getCode() + invoice.getId();
         PreparedStatement pst = setPreparedStatement(sql, codeId,
-                date, payer.getName(), payer.getId(), payer.getAddress(),
-                payer.getPhoneNumber(), payer.getBank(), payer.getBankId(),
-                items.getName(), items.getModel(), items.getUnit(),
-                items.getAmount(), items.getPrice(), items.getTaxRate(),
-                payee.getName(), payee.getId(), payee.getAddress(),
-                payee.getPhoneNumber(), payee.getBank(), payee.getBankId(),
-                remark, drawer, account);
+                invoice.getDate(), invoice.getPayer().getName(),
+                invoice.getPayer().getId(), invoice.getPayer().getAddress(),
+                invoice.getPayer().getPhoneNumber(), invoice.getPayer().getBank(),
+                invoice.getPayer().getBankId(), invoice.getItems().getName(),
+                invoice.getItems().getModel(), invoice.getItems().getUnit(),
+                invoice.getItems().getAmount(), invoice.getItems().getPrice(),
+                invoice.getItems().getTaxRate(), invoice.getPayee().getName(),
+                invoice.getPayee().getId(), invoice.getPayee().getAddress(),
+                invoice.getPayee().getPhoneNumber(), invoice.getPayee().getBank(),
+                invoice.getPayee().getBankId(), invoice.getRemark(),
+                invoice.getRemark(), invoice.getAccount());
         try {
             changed = pst.executeUpdate();
         } catch (Exception e) {
@@ -51,9 +53,7 @@ public class InvoiceDao extends SuperDao {
         return changed;
     }
 
-    public static int updateInvoice(String code, String id, String date,
-                                    Dealer payer, Goods items, Dealer payee,
-                                    String remark, String drawer, String account) {
+    public static int updateInvoice(Invoice invoice) {
         int changed = 0;
         String sql = "update invoice set date = ?, payer_name = ?," +
                 "payer_id = ?, payer_address = ?, payer_phonenumber = ?," +
@@ -63,15 +63,18 @@ public class InvoiceDao extends SuperDao {
                 "payee_id = ?, payee_address = ?, payee_phonenumber = ?," +
                 "payee_bank = ?, payee_bankid = ?, remark = ?, drawer = ?," +
                 "account = ? WHERE codeid = ?";
-        String codeId= code + id;
-        PreparedStatement pst = setPreparedStatement(sql, date,
-                payer.getName(), payer.getId(), payer.getAddress(),
-                payer.getPhoneNumber(), payer.getBank(), payer.getBankId(),
-                items.getName(), items.getModel(), items.getUnit(),
-                items.getAmount(), items.getPrice(), items.getTaxRate(),
-                payee.getName(), payee.getId(), payee.getAddress(),
-                payee.getPhoneNumber(), payee.getBank(), payee.getBankId(),
-                remark, drawer, account, codeId);
+        String codeId = invoice.getCode() + invoice.getId();
+        PreparedStatement pst = setPreparedStatement(sql, invoice.getDate(),
+                invoice.getPayer().getName(), invoice.getPayer().getId(),
+                invoice.getPayer().getAddress(), invoice.getPayer().getPhoneNumber(),
+                invoice.getPayer().getBank(), invoice.getPayer().getBankId(),
+                invoice.getItems().getName(), invoice.getItems().getModel(),
+                invoice.getItems().getUnit(), invoice.getItems().getAmount(),
+                invoice.getItems().getPrice(), invoice.getItems().getTaxRate(),
+                invoice.getPayee().getName(), invoice.getPayee().getId(),
+                invoice.getPayee().getAddress(), invoice.getPayee().getPhoneNumber(),
+                invoice.getPayee().getBank(), invoice.getPayee().getBankId(),
+                invoice.getRemark(), invoice.getDrawer(), invoice.getAccount(), codeId);
         try {
             changed = pst.executeUpdate();
         } catch (Exception e) {
