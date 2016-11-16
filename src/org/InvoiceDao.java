@@ -59,7 +59,7 @@ public class InvoiceDao extends SuperDao {
                 "payer_id = ?, payer_address = ?, payer_phonenumber = ?," +
                 "payer_bank = ?, payer_bankid = ?, items_name = ?," +
                 "items_model = ?, items_unit = ?, items_amount = ?," +
-                "items_price = ?, items_taxrate = ?, payee_name," +
+                "items_price = ?, items_taxrate = ?, payee_name = ?, " +
                 "payee_id = ?, payee_address = ?, payee_phonenumber = ?," +
                 "payee_bank = ?, payee_bankid = ?, remark = ?, drawer = ?," +
                 "account = ? WHERE codeid = ?";

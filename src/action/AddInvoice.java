@@ -38,8 +38,4 @@ public class AddInvoice extends ActionSupport{
         tip = "error";
         return INPUT;
     }
-
-    public String goAddInvoice() {
-        return SUCCESS;
-    }
 }

@@ -1,6 +1,5 @@
 package service;
 
-import com.opensymphony.xwork2.ActionContext;
 import data.Invoice;
 import org.InvoiceDao;
 
@@ -167,5 +166,72 @@ public class InvoiceService {
      */
     public static Invoice searchInvoice(String code, String id, String account) {
         return InvoiceDao.searchInvoice(code, id, account);
+    }
+
+    public static void main(String[] args) {
+        Invoice test = new Invoice();
+        test.setCode("1234567890");
+        test.setId("87654321");
+        test.setDate("20160114");
+        test.getPayer().setName("aaa");
+        test.getPayer().setId("aaa");
+        test.getPayer().setAddress("aaa");
+        test.getPayer().setPhoneNumber("aaa");
+        test.getPayer().setBank("aaa");
+        test.getPayer().setBankId("aaa");
+        test.getItems().setName("aaa");
+        test.getItems().setModel("aaa");
+        test.getItems().setUnit("aaa");
+        test.getItems().setAmount(1);
+        test.getItems().setPrice(500);
+        test.getItems().setTaxRate(0.17);
+        test.getPayee().setName("testCom");
+        test.getPayee().setId("456");
+        test.getPayee().setAddress("baiNaoHui");
+        test.getPayee().setPhoneNumber("555");
+        test.getPayee().setBank("hbank");
+        test.getPayee().setBankId("456");
+        test.setRemark("testRemark");
+        test.setDrawer("testDrawer");
+        test.setAccount("654321");
+        addInvoice(test);
+        test = searchInvoice("1234567890", "12345678", "123456");
+        if (test == null) {
+            System.out.println("invoice doesn't exist");
+        } else {
+            System.out.println(test.getCode());
+            System.out.println(test.getPayer().getName());
+            System.out.println(test.getItems().getName());
+            System.out.println(test.getPayee().getName());
+            System.out.println(test.getItems().getTotal());
+            System.out.println(test.getItems().getTax());
+            System.out.println(test.getItems().getFinalTotal1());
+            System.out.println(test.getItems().getFinalTotal2());
+            System.out.println("----------------------------------------");
+        }
+        test = searchInvoice("1234567890", "87654321", "123456");
+        if (test == null) {
+            System.out.println("invoice doesn't exist");
+        } else {
+            System.out.println(test.getCode());
+            System.out.println(test.getPayer().getName());
+            System.out.println(test.getItems().getName());
+            System.out.println(test.getPayee().getName());
+            System.out.println(test.getItems().getTotal());
+            System.out.println(test.getItems().getTax());
+            System.out.println(test.getItems().getFinalTotal1());
+            System.out.println(test.getItems().getFinalTotal2());
+            System.out.println("-----------------------------------------------");
+        }
+        deleteInvoice("1234567890", "87654321", "654321");
+        test = searchInvoice("1234567890", "12345678", "123456");
+        System.out.println(test.getRemark());
+        System.out.println("---------------------------------------------");
+        test.setRemark("after format");
+        updateInvoice(test);
+        test = searchInvoice(test.getCode(), test.getId(), "123456");
+        System.out.println(test.getRemark());
+        test.setRemark("");
+        updateInvoice(test);
     }
 }

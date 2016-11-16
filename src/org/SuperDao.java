@@ -8,18 +8,18 @@ import java.sql.PreparedStatement;
  */
 public class SuperDao {
     protected static PreparedStatement setPreparedStatement(String sql, Object... param) {
-        Connection conn = DatabaseConn.getConn();
         PreparedStatement pst = null;
         int len = param.length;
         try {
+            Connection conn = DatabaseConn.getConnection();
             pst = conn.prepareStatement(sql);
             for (int i = 0; i < len; i++) {
                 if (param[i].getClass() == String.class) {
-                    pst.setString(i, String.valueOf(param[i]));
+                    pst.setString(i + 1, String.valueOf(param[i]));
                 } else if(param[i].getClass() == Integer.class) {
-                    pst.setInt(i, (int)param[i]);
+                    pst.setInt(i + 1, (int)param[i]);
                 } else if(param[i].getClass() == Double.class) {
-                    pst.setDouble(i, (double)param[i]);
+                    pst.setDouble(i + 1, (double)param[i]);
                 }
             }
         } catch (Exception e) {
