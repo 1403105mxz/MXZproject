@@ -49,10 +49,10 @@ public class InvoiceService {
     /**.
      * 判断税率是否合法
      * @param taxRate 税率
-     * @return 税率大于等于0则合法，返回false；税率非法返回true
+     * @return 税率大于0小于100则合法，返回false；税率非法返回true
      */
     private static boolean illegalTaxRate(double taxRate) {
-        return taxRate < 0.0;
+        return (taxRate >= 100 || taxRate <= 0);
     }
 
     /**.
@@ -206,8 +206,8 @@ public class InvoiceService {
             System.out.println(test.getPayee().getName());
             System.out.println(test.getItems().getTotal());
             System.out.println(test.getItems().getTax());
-            System.out.println(test.getItems().getFinalTotal1());
-            System.out.println(test.getItems().getFinalTotal2());
+            System.out.println(test.getItems().getIncome());
+            System.out.println(test.getItems().getTotal2());
             System.out.println("----------------------------------------");
         }
         test = searchInvoice("1234567890", "87654321", "123456");
@@ -220,8 +220,8 @@ public class InvoiceService {
             System.out.println(test.getPayee().getName());
             System.out.println(test.getItems().getTotal());
             System.out.println(test.getItems().getTax());
-            System.out.println(test.getItems().getFinalTotal1());
-            System.out.println(test.getItems().getFinalTotal2());
+            System.out.println(test.getItems().getIncome());
+            System.out.println(test.getItems().getTotal2());
             System.out.println("-----------------------------------------------");
         }
         deleteInvoice("1234567890", "87654321", "654321");
