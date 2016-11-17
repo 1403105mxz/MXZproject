@@ -30,6 +30,28 @@
             font-size: 13px;
             display: none;
         }
+        td {
+            padding: 0.25em 0.5em;
+            border-style: none;
+        }
+        td.a {
+            border-right-style: solid;
+            text-align: center;
+            letter-spacing: 1px;
+            border-collapse: collapse;
+        }
+
+        td.b {
+            border-style: solid;
+            text-align: center;
+            letter-spacing: 1px;
+            border-collapse: collapse;
+        }
+
+        input.a {
+            padding: 0;
+            border-collapse: collapse;
+        }
     </style>
     <script>
         function check() {
@@ -69,19 +91,59 @@
 <body onload="check()">
 <table border="1" cellpadding="10">
     <tr>
-        <td style="width: 1em;" rowspan="4">购贷单位</td>
-        <td style="width: 30em;">名称：</td>
-        <td style="width: 1em;" rowspan="4">密码区</td>
-        <td style="width: 20em;" rowspan="4"></td>
+        <td style="width: 2em; border-style: solid;" rowspan="4" colspan="2">购<div style="height: 12px"></div>贷<div style="height: 12px"></div>单<div style="height: 12px"></div>位</td>
+        <td style="width: 8em;" colspan="8">名&emsp;&emsp;&emsp;&emsp;称:</td>
+        <td style="width: 400px;" colspan="25"><input type="text" style="width: 384px" class="a" placeholder="请输入名称"></td>
+        <td style="width: 2em; border-style: solid;" rowspan="4" colspan="2">密<div style="height: 20px"></div>码<div style="height: 20px"></div>区</td>
+        <td style="width: 384px; border-style: solid;" rowspan="4" colspan="24"></td>
     </tr>
     <tr>
-        <td style="width: 30em;">纳税人识别号：</td>
+        <td colspan="8">纳税人识别号:</td>
+        <td colspan="25"><input type="text" style="width: 384px" class="a" placeholder="请输入识别号"></td>
     </tr>
     <tr>
-        <td style="width: 30em;">地址、电话：</td>
+        <td colspan="8">地&ensp;址、电&ensp;话</span>:</td>
+        <td colspan="25"><input type="text" style="width: 188px" class="a" placeholder="请输入地址">&ensp;<input type="text" style="width: 188px" class="a" placeholder="请输入电话"></td>
     </tr>
     <tr>
-        <td style="width: 30em;">开户行级账号：</td>
+        <td style="border-bottom-style: solid;" colspan="8">开户行及账号:</td>
+        <td style="border-bottom-style: solid;" colspan="25"><input type="text" style="width: 188px" class="a" placeholder="请输入开户行">&ensp;<input type="text" style="width: 188px" class="a" placeholder="请输入账号"></td>
+    </tr>
+    <tr>
+        <td class="a" colspan="15">货物或应税劳务名称</td>
+        <td class="a" colspan="8">规格型号</td>
+        <td class="a" colspan="4">单位</td>
+        <td class="a" colspan="6">数&emsp;量</td>
+        <td class="a" colspan="6">单&emsp;价</td>
+        <td class="a" colspan="9">金&emsp;额</td>
+        <td class="a" colspan="4">税率</td>
+        <td class="a" colspan="9">税&emsp;额</td>
+    </tr>
+    <tr>
+        <td style="border-right-style: solid;" colspan="15"><textarea rows="11" cols="25"></textarea></td>
+        <td style="border-right-style: solid;" colspan="8"><textarea rows="11" cols="11"></textarea></td>
+        <td style="border-right-style: solid;" colspan="4"><textarea rows="11" cols="3"></textarea></td>
+        <td style="border-right-style: solid;" colspan="6"><textarea rows="11" cols="7"></textarea></td>
+        <td style="border-right-style: solid;" colspan="6"><textarea rows="11" cols="7"></textarea></td>
+        <td style="border-right-style: solid;" colspan="9"><textarea rows="11" cols="13"></textarea></td>
+        <td style="border-right-style: solid;" colspan="4"><textarea rows="11" cols="3"></textarea></td>
+        <td style="border-right-style: solid;" colspan="9"><textarea rows="11" cols="13"></textarea></td>
+    </tr>
+    <tr>
+        <td class="a" colspan="15">合计</td>
+        <td class="a" colspan="8"></td>
+        <td class="a" colspan="4"></td>
+        <td class="a" colspan="6"></td>
+        <td class="a" colspan="6"></td>
+        <td class="a" colspan="9"></td>
+        <td class="a" colspan="4"></td>
+        <td class="a" colspan="9"></td>
+    </tr>
+    <tr>
+        <td class="a" style="border-style: solid" colspan="15">税价合计（大写）</td>
+        <td class="a" colspan="27"></td>
+        <td class="a" colspan="6">（小写）</td>
+        <td class="a" colspan="13"></td>
     </tr>
 </table>
 <%--
@@ -91,7 +153,7 @@
             <div class="form-group">
                 <label for="invoiceCode" class="col-sm-2 control-label">类别代码</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="code" id="invoiceCode" pattern="([0-9]{10})|([0-9]{12})" title="10或12位数字" maxlength="12" placeholder="10或12位数字" onblur="onBlur('invoiceCode')" required value="${code}">
+                    <input type="text" style="height:17px;" class="form-control" name="code" id="invoiceCode" pattern="([0-9]{10})|([0-9]{12})" title="10或12位数字" maxlength="12" placeholder="10或12位数字" onblur="onBlur('invoiceCode')" required value="${code}">
                 </div>
                 <div class="inputError alert alert-danger col-sm-4" role="alert" id="invoiceCodeError">
                     应为10或12位数字
@@ -103,7 +165,7 @@
             <div class="form-group">
                 <label for="invoiceId" class="col-sm-2 control-label">发票编号</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="id" id="invoiceId" pattern="[0-9]{8}" title="8位数字" maxlength="8" placeholder="8位数字" onblur="onBlur('invoiceId')" required value="${id}"/>
+                    <input type="text" style="height:17px;" class="form-control" name="id" id="invoiceId" pattern="[0-9]{8}" title="8位数字" maxlength="8" placeholder="8位数字" onblur="onBlur('invoiceId')" required value="${id}"/>
                 </div>
                 <div class="inputError alert alert-danger col-sm-4" role="alert" id="invoiceIdError">
                     应为8位数字
@@ -119,13 +181,13 @@
             <div class="form-group">
                 <label for="payer" class="col-sm-2 control-label">付款方</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="payer" id="payer" maxlength="45" required value="${payer}">
+                    <input type="text" style="height:17px;" class="form-control" name="payer" id="payer" maxlength="45" required value="${payer}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="items" class="col-sm-2 control-label">付款项</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="items" id="items" maxlength="45" required value="${items}">
+                    <input type="text" style="height:17px;" class="form-control" name="items" id="items" maxlength="45" required value="${items}">
                 </div>
             </div>
             <div class="form-group">
@@ -137,25 +199,25 @@
             <div class="form-group">
                 <label for="price" class="col-sm-2 control-label">单价(人民币)</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="price" id="price" pattern="[0-9]+(.[0-9]+)?" title="不小于零的数字" required value="${price}">
+                    <input type="text" style="height:17px;" class="form-control" name="price" id="price" pattern="[0-9]+(.[0-9]+)?" title="不小于零的数字" required value="${price}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="remark" class="col-sm-2 control-label">备注</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="remark" id="remark" maxlength="45" value="${remark}">
+                    <input type="text" style="height:17px;" class="form-control" name="remark" id="remark" maxlength="45" value="${remark}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="payee" class="col-sm-2 control-label">收款方</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="payee" id="payee" maxlength="45" required value="${payee}">
+                    <input type="text" style="height:17px;" class="form-control" name="payee" id="payee" maxlength="45" required value="${payee}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="drawer" class="col-sm-2 control-label">开票人</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="drawer" id="drawer" maxlength="45" required value="${drawer}">
+                    <input type="text" style="height:17px;" class="form-control" name="drawer" id="drawer" maxlength="45" required value="${drawer}">
                 </div>
             </div>
             <div class="form-group">
