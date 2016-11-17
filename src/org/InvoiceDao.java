@@ -17,7 +17,7 @@ public class InvoiceDao extends SuperDao {
     public static int addInvoice(Invoice invoice) {
         String sql = "insert into invoice  values" +
                 "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
-                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int changed = 0;
         String codeId = invoice.getCode() + invoice.getId();
         PreparedStatement pst = setPreparedStatement(sql, codeId,
@@ -31,7 +31,7 @@ public class InvoiceDao extends SuperDao {
                 invoice.getPayee().getId(), invoice.getPayee().getAddress(),
                 invoice.getPayee().getPhoneNumber(), invoice.getPayee().getBank(),
                 invoice.getPayee().getBankId(), invoice.getRemark(),
-                invoice.getRemark(), invoice.getAccount());
+                invoice.getRemark(), invoice.getAccount(), invoice.getCheckCode());
         try {
             changed = pst.executeUpdate();
         } catch (Exception e) {
@@ -62,7 +62,7 @@ public class InvoiceDao extends SuperDao {
                 "items_price = ?, items_taxrate = ?, payee_name = ?, " +
                 "payee_id = ?, payee_address = ?, payee_phonenumber = ?," +
                 "payee_bank = ?, payee_bankid = ?, remark = ?, drawer = ?," +
-                "account = ? WHERE codeid = ?";
+                "account = ?, checkcode = ? WHERE codeid = ?";
         String codeId = invoice.getCode() + invoice.getId();
         PreparedStatement pst = setPreparedStatement(sql, invoice.getDate(),
                 invoice.getPayer().getName(), invoice.getPayer().getId(),
@@ -74,7 +74,8 @@ public class InvoiceDao extends SuperDao {
                 invoice.getPayee().getName(), invoice.getPayee().getId(),
                 invoice.getPayee().getAddress(), invoice.getPayee().getPhoneNumber(),
                 invoice.getPayee().getBank(), invoice.getPayee().getBankId(),
-                invoice.getRemark(), invoice.getDrawer(), invoice.getAccount(), codeId);
+                invoice.getRemark(), invoice.getDrawer(), invoice.getAccount(),
+                invoice.getCheckCode(), codeId);
         try {
             changed = pst.executeUpdate();
         } catch (Exception e) {
@@ -102,7 +103,8 @@ public class InvoiceDao extends SuperDao {
                         resultSet.getDouble(13), resultSet.getDouble(14));
                 invoice = Invoice.makeInvoice(code, id, resultSet.getString(2),
                         payer, items, payee, resultSet.getString(21),
-                        resultSet.getString(22), resultSet.getString(23));
+                        resultSet.getString(22), resultSet.getString(23),
+                        resultSet.getString(24));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -129,7 +131,8 @@ public class InvoiceDao extends SuperDao {
                         resultSet.getDouble(13), resultSet.getDouble(14));
                 invoice = Invoice.makeInvoice(code, id, resultSet.getString(2),
                         payer, items, payee, resultSet.getString(21),
-                        resultSet.getString(22), resultSet.getString(23));
+                        resultSet.getString(22), resultSet.getString(23),
+                        resultSet.getString(24));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -158,7 +161,8 @@ public class InvoiceDao extends SuperDao {
                         resultSet.getDouble(13), resultSet.getDouble(14));
                 Invoice invoice = Invoice.makeInvoice(code, id, resultSet.getString(2),
                         payer, items, payee, resultSet.getString(21),
-                        resultSet.getString(22), resultSet.getString(23));
+                        resultSet.getString(22), resultSet.getString(23),
+                        resultSet.getString(24));
                 invoiceList.add(invoice);
             }
         } catch (Exception e) {

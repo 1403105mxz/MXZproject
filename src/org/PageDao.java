@@ -36,7 +36,8 @@ public class PageDao extends SuperDao {
                         resultSet.getDouble(13), resultSet.getDouble(14));
                 Invoice invoice = Invoice.makeInvoice(code, id, resultSet.getString(2),
                         payer, items, payee, resultSet.getString(21),
-                        resultSet.getString(22), resultSet.getString(23));
+                        resultSet.getString(22), resultSet.getString(23),
+                        resultSet.getString(24));
                 invoiceList.add(invoice);
             }
         } catch (Exception e) {

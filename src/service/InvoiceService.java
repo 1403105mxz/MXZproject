@@ -194,6 +194,7 @@ public class InvoiceService {
         test.setRemark("testRemark");
         test.setDrawer("testDrawer");
         test.setAccount("654321");
+        test.setCheckCode("111");
         addInvoice(test);
         test = searchInvoice("1234567890", "12345678", "123456");
         if (test == null) {
@@ -231,7 +232,7 @@ public class InvoiceService {
         updateInvoice(test);
         test = searchInvoice(test.getCode(), test.getId(), "123456");
         System.out.println(test.getRemark());
-        test.setRemark("");
+        test.setRemark("before format");
         updateInvoice(test);
     }
 }
