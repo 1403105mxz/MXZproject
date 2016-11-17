@@ -2,6 +2,7 @@ package action;
 import data.User;
 import org.DatabaseConn;
 import org.apache.struts2.ServletActionContext;
+import service.SignService;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import static java.util.jar.Pack200.Packer.ERROR;
+import static service.SignService.signCheck;
 
 /**
  * Created by dell on 2016/10/24.
@@ -54,43 +56,13 @@ public class Sign {
     }
 
     public String signIn(){
-        Connection conn;
-        try {
-            user = new User();
-            conn = DatabaseConn.getConnection();
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM user");
-            while(rs.next()){
-                if (username.equals(rs.getString(1))){
-                    if(password.equals((rs.getString(2)))){
-                        user.setUsername(rs.getString(1));
-                        user.setPassword(rs.getString(2));
-                        user.setName(rs.getString(3));
-                        user.setId(rs.getInt(4));
-                        user.setQuestion(rs.getString(5));
-                        user.setAnswer( rs.getString(6));
-                        HttpServletRequest request = ServletActionContext.getRequest();
-                        request.getSession().setAttribute("newusername",username);     //用Session保存用户名
-                        request.getSession().setAttribute("newpassword",password);
-                        request.getSession().setAttribute("newname", user.getName());
-                        request.getSession().setAttribute("newid", user.getId());
-                        request.getSession().setAttribute("newquestion", user.getQuestion());
-                        request.getSession().setAttribute("newanswer", user.getAnswer());
-                        return SUCCESS;
-                    }
-                    else
-                    {
-                        tips = "用户名或密码错误。";
-                        return INPUT;
-                    }
-                }
-            }
-            tips = "用户名或密码错误。";
+        user = signCheck(username, password);
+        if(user == null){
+            tips = "用户名或密码错误";
             return INPUT;
         }
-        catch(Exception e){
-            e.printStackTrace();
-            return ERROR;
+        else{
+            return SUCCESS;
         }
     }
 

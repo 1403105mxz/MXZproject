@@ -102,8 +102,10 @@ public class Goods {
         Goods goods = new Goods();
 
         double total = price * amount;
+        BigDecimal tmp = new BigDecimal(total);
+        total = tmp.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
         double tax = taxRate * total;
-        BigDecimal tmp = new BigDecimal(tax);
+        tmp = new BigDecimal(tax);
         tax = tmp.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
         double finalTotal1 = tax + total;
         tmp = new BigDecimal(finalTotal1);

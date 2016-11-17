@@ -1,6 +1,8 @@
 package action;
 import org.DatabaseConn;
+import org.UserDao;
 import org.apache.struts2.ServletActionContext;
+import service.SignService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -77,54 +79,32 @@ public class EditInfo {
         HttpSession session = request.getSession();
         username = (String) session.getAttribute("newusername");
         String temp = (String) session.getAttribute("newpassword");
-        if (!temp.equals(Oldpassword)) {
+        if (!SignService.passwordCompare(temp, Oldpassword)) {
             tip = "原密码错误！";
             return INPUT;
         }
-        if (Oldpassword.length() > 20 || Oldpassword.length() < 6) {
+        if (!SignService.checkLength(Editpassword)) {
             tip = "密码的长度为6-20个字符";
             return INPUT;
         }
-        if (!Editpassword.equals(Editpassword2)) {
+        if (!SignService.passwordCompare(temp, Oldpassword)) {
             tip = "两次输入的密码不一致";
             return INPUT;
         }
-        Connection conn;
-        try {
-            conn = DatabaseConn.getConnection();
-            Statement st = conn.createStatement();
-            String sql = "UPDATE user SET password ='" + Editpassword + "'where username = '" + username+"'";
-            st.executeUpdate(sql);
-            request.getSession().setAttribute("newpassword",Editpassword);
-            tip = "修改成功";
-            return SUCCESS;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ERROR;
-        }
+        UserDao.changePassword(Editpassword, username);
+        return SUCCESS;
     }
 
     public String editName() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         username = (String) session.getAttribute("newusername");
-        if (Editname.length() > 20 || Editname.length() < 2) {
+        if (!SignService.checkNameLength(Editname)) {
             tip = "姓名的长度为2-20个字符";
             return INPUT;
         }
-        Connection conn;
-        try {
-            conn = DatabaseConn.getConnection();
-            Statement st = conn.createStatement();
-            String sql = "UPDATE user SET name ='" + Editname + "'where username = '" + username+"'";
-            st.executeUpdate(sql);
-            request.getSession().setAttribute("newname",Editname);
-            tip = "修改成功";
-            return SUCCESS;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ERROR;
-        }
+        UserDao.changeName(Editname, username);
+       return SUCCESS;
     }
 }
 

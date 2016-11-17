@@ -9,6 +9,8 @@ import java.sql.Statement;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import static java.util.jar.Pack200.Packer.ERROR;
+import service.SignService;
+import org.UserDao;
 /**
  * Created by dell on 2016/10/25.
  */
@@ -46,45 +48,29 @@ public class Register {
         return signinUser;
     }
     public String register(){
-        Connection conn;
         int num = 1 ;
-        try {
-            if (signinUser.getUsername().length() > 20 || signinUser.getUsername().length() < 6) {
-                tips2 = "用户名的长度为6-20个字符";
-                return INPUT;
-            }
-            if (signinUser.getPassword().length() > 20 || signinUser.getPassword().length() < 6) {
-                tips2 = "密码的长度为6-20个字符";
-                return INPUT;
-            }
-            if (!signinUser.getPassword().equals(signinPassword)) {
-                tips2 = "两次输入的密码不一致";
-                return INPUT;
-            }
-            if (signinUser.getName().length() > 20 || signinUser.getName().length() < 2) {
-                tips2 = "姓名的长度为2-20个字符";
-                return INPUT;
-            }
-            conn = DatabaseConn.getConnection();
-            Statement st = conn.createStatement();
-            Statement st2 = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM user");
-            while(rs.next()){
-                if (signinUser.getUsername().equals(rs.getString(1))){
-                    tips2 = "用户名已存在。";
-                    return INPUT;
-                }
-            }
-            String sql = "INSERT INTO user (username, password, name, id, question, answer) VALUES " +
-                    "('"+signinUser.getUsername()+"','"+signinUser.getPassword()+"','"+signinUser.getName()+"','"+num
-                    +"','"+signinUser.getQuestion()+"','"+signinUser.getAnswer()+"')";
-            st2.executeUpdate(sql);
-            successTips = "注册成功";
-            return SUCCESS;
+        if (!SignService.checkLength(signinUser.getUsername())) {
+            tips2 = "用户名的长度为6-20个字符";
+            return INPUT;
         }
-        catch(Exception e){
-            e.printStackTrace();
-            return ERROR;
+        if (!SignService.checkLength(signinUser.getPassword())) {
+            tips2 = "密码的长度为6-20个字符";
+            return INPUT;
         }
+        if (!SignService.passwordCompare(signinUser.getPassword(), signinPassword)) {
+            tips2 = "两次输入的密码不一致";
+            return INPUT;
+        }
+        if (!SignService.checkNameLength(signinUser.getName())) {
+            tips2 = "姓名的长度为2-20个字符";
+            return INPUT;
+        }
+        if(!SignService.duplicateDetection(signinUser.getUsername())){
+            tips2 = "用户名已存在";
+            return INPUT;
+        }
+        UserDao.Register(signinUser, num);
+        successTips = "注册成功";
+        return SUCCESS;
     }
 }

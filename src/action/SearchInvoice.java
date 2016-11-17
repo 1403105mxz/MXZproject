@@ -2,9 +2,9 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import data.Invoice;
-import org.InvoiceDao;
 
 import com.opensymphony.xwork2.ActionContext;
+import service.InvoiceService;
 
 /**
  * Created by 祥根_2 on 2016/10/25.
@@ -39,19 +39,17 @@ public class SearchInvoice extends ActionSupport {
     }
 
     public String searchInvoice() {
-        String account = (String) ActionContext.getContext().getSession().get("newusername");
-        if (code == null && id == null) {
-            return "jump";
-        }
-        invoice = InvoiceDao.searchInvoice(code, id, account);
-        if (invoice == null)
+        String account = (String)ActionContext.getContext().getSession().get("newusername");
+        invoice = InvoiceService.searchInvoice(code, id, account);
+        if (invoice == null) {
             return ERROR;
+        }
         return SUCCESS;
     }
 
     public String detailInvoice() {
         String account = (String) ActionContext.getContext().getSession().get("newusername");
-        invoice = InvoiceDao.searchInvoice(code, id, account);
+        invoice = InvoiceService.searchInvoice(code, id, account);
         if (invoice == null) {
             return ERROR;
         }
