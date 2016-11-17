@@ -49,10 +49,10 @@ public class InvoiceService {
     /**.
      * 判断税率是否合法
      * @param taxRate 税率
-     * @return 税率大于等于0则合法，返回false；税率非法返回true
+     * @return 税率大于0小于100则合法，返回false；税率非法返回true
      */
     private static boolean illegalTaxRate(double taxRate) {
-        return taxRate < 0.0;
+        return (taxRate >= 100 || taxRate <= 0);
     }
 
     /**.
@@ -109,7 +109,7 @@ public class InvoiceService {
                 longerThan45(invoice.getPayee().getId()) || longerThan100(invoice.getPayee().getAddress()) ||
                 longerThan45(invoice.getPayee().getPhoneNumber()) || longerThan100(invoice.getPayee().getBank()) ||
                 longerThan45(invoice.getPayee().getBankId()) || longerThan45(invoice.getDrawer()) ||
-                longerThan100(invoice.getRemark()));
+                longerThan100(invoice.getRemark()) || longerThan45(invoice.getCheckCode()));
     }
 
     /**.
@@ -194,6 +194,7 @@ public class InvoiceService {
         test.setRemark("testRemark");
         test.setDrawer("testDrawer");
         test.setAccount("654321");
+        test.setCheckCode("111");
         addInvoice(test);
         test = searchInvoice("1234567890", "12345678", "123456");
         if (test == null) {
@@ -205,8 +206,8 @@ public class InvoiceService {
             System.out.println(test.getPayee().getName());
             System.out.println(test.getItems().getTotal());
             System.out.println(test.getItems().getTax());
-            System.out.println(test.getItems().getFinalTotal1());
-            System.out.println(test.getItems().getFinalTotal2());
+            System.out.println(test.getItems().getIncome());
+            System.out.println(test.getItems().getTotal2());
             System.out.println("----------------------------------------");
         }
         test = searchInvoice("1234567890", "87654321", "123456");
@@ -219,8 +220,8 @@ public class InvoiceService {
             System.out.println(test.getPayee().getName());
             System.out.println(test.getItems().getTotal());
             System.out.println(test.getItems().getTax());
-            System.out.println(test.getItems().getFinalTotal1());
-            System.out.println(test.getItems().getFinalTotal2());
+            System.out.println(test.getItems().getIncome());
+            System.out.println(test.getItems().getTotal2());
             System.out.println("-----------------------------------------------");
         }
         deleteInvoice("1234567890", "87654321", "654321");
@@ -231,7 +232,7 @@ public class InvoiceService {
         updateInvoice(test);
         test = searchInvoice(test.getCode(), test.getId(), "123456");
         System.out.println(test.getRemark());
-        test.setRemark("");
+        test.setRemark("before format");
         updateInvoice(test);
     }
 }

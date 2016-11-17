@@ -44,6 +44,8 @@ public class Invoice {
      */
     private String account;
 
+    private String checkCode;
+
     public String getCode() {
         return code;
     }
@@ -116,11 +118,19 @@ public class Invoice {
         this.account = account;
     }
 
+    public String getCheckCode() {
+        return checkCode;
+    }
+
+    public void setCheckCode(String checkCode) {
+        this.checkCode = checkCode;
+    }
+
     public static Invoice makeInvoice(String code, String id,
                                       String date, Dealer payer,
                                       Goods items, Dealer payee,
                                       String remark, String drawer,
-                                      String account) {
+                                      String account, String checkCode) {
         Invoice invoice = new Invoice();
         invoice.setCode(code);
         invoice.setId(id);
@@ -131,6 +141,7 @@ public class Invoice {
         invoice.setPayee(payee);
         invoice.setDrawer(drawer);
         invoice.setAccount(account);
+        invoice.setCheckCode(checkCode);
         return invoice;
     }
 

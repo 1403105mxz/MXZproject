@@ -35,14 +35,6 @@
             border-style: solid;
         }
     </style>
-    <script>
-        function del(code, id) {
-            var r = confirm("确认作废该发票吗？");
-            if(r == true) {
-                location.href = "DeleteInvoice?code=" + code + "&id=" + id;
-            }
-        }
-    </script>
 </head>
 <body>
 <table>
@@ -61,7 +53,7 @@
             <td>${id}</td>
             <td>${items.name}</td>
             <td><script>
-                document.write(fmoney(${items.finalTotal1},2));
+                document.write(fmoney(${items.income},2));
             </script></td>
             <td><input type = "button" value = "作废" onclick="delInvoice('${code}', '${id}')"/>
                 <input type = "button" value = "详情"

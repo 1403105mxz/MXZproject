@@ -14,8 +14,8 @@ public class Goods {
     private double total;
     private double taxRate;
     private double tax;
-    private double finalTotal1;
-    private String finalTotal2;
+    private double income;
+    private String total2;
 
     public String getName() {
         return name;
@@ -81,20 +81,20 @@ public class Goods {
         this.tax = tax;
     }
 
-    public double getFinalTotal1() {
-        return finalTotal1;
+    public double getIncome() {
+        return income;
     }
 
-    public void setFinalTotal1(double finalTotal1) {
-        this.finalTotal1 = finalTotal1;
+    public void setIncome(double income) {
+        this.income = income;
     }
 
-    public String getFinalTotal2() {
-        return finalTotal2;
+    public String getTotal2() {
+        return total2;
     }
 
-    public void setFinalTotal2(String finalTotal2) {
-        this.finalTotal2 = finalTotal2;
+    public void setTotal2(String total2) {
+        this.total2 = total2;
     }
 
     public static Goods makeGoods(String name, String model, String unit,
@@ -104,12 +104,14 @@ public class Goods {
         double total = price * amount;
         BigDecimal tmp = new BigDecimal(total);
         total = tmp.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-        double tax = taxRate * total;
+
+        double tax = taxRate * total / 100;
         tmp = new BigDecimal(tax);
         tax = tmp.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-        double finalTotal1 = tax + total;
-        tmp = new BigDecimal(finalTotal1);
-        String finalTotal2 = Tool.number2CNMontrayUnit(tmp);
+
+        double income = total - tax;
+        tmp = new BigDecimal(total);
+        String total2 = Tool.number2CNMontrayUnit(tmp);
 
         goods.setName(name);
         goods.setModel(model);
@@ -119,8 +121,8 @@ public class Goods {
         goods.setTotal(total);
         goods.setTaxRate(taxRate);
         goods.setTax(tax);
-        goods.setFinalTotal1(finalTotal1);
-        goods.setFinalTotal2(finalTotal2);
+        goods.setIncome(income);
+        goods.setTotal2(total2);
         return goods;
     }
 }

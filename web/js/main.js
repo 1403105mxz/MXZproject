@@ -25,6 +25,6 @@ function fmoney(s, n) {
 function delInvoice(code, id) {
     var r = confirm("确认作废该发票吗？");
     if(r == true) {
-        location.href = "deleteInvoice?code=" + code + "&id=" + id;
+        location.href = "DeleteInvoice?code=" + code + "&id=" + id;
     }
 }

@@ -23,15 +23,16 @@
 </head>
 <body onload="invoiceCheck()">
 <div class="container bs-docs-container">
+    <h1 id="overview" class="page-header">新增发票</h1>
     <form action="AddInvoice.action" method="post">
         <div style="height: 900px; width: 1000px; position: absolute;">
             <input type="text" name="invoice.code" id="invoiceCode" class="invoiceCode" pattern="([0-9]{10})|([0-9]{12})" title="10或12位数字" maxlength="12" placeholder="类别代码" required value="${invoice.code}">
             <div class="invoiceTableHead">增值税普通发票<br/>════════════<br/>发票联</div>
             <div class="invoiceIdArea">
-                <img src="/img/No.png"><input type="text" name="invoice.id" id="invoiceId" class="invoiceId" pattern="[0-9]{8}" title="8位数字" maxlength="8" placeholder="8位数字" required value="${invoice.id}"/>
+                <span style="font-family: Times New Roman">№</span><input type="text" name="invoice.id" id="invoiceId" class="invoiceId" pattern="[0-9]{8}" title="8位数字" maxlength="8" placeholder="8位数字" required value="${invoice.id}"/>
             </div>
             <div class="invoiceCheckCodeArea">
-                校验码：<input type="text" name="checkCode" id="checkCode" class="invoiceCheckCode">
+                校验码：<input type="text" name="invoice.checkCode" id="checkCode" class="invoiceCheckCode" maxlength="45" required value="${invoice.checkCode}">
             </div>
             <div class="invoiceDateArea">
                 开票日期：<input type="date" name="invoice.date" id="date" class="invoiceDate" pattern="^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-))$"
@@ -118,7 +119,7 @@
                 <tr>
                     <td colspan="30"></td>
                     <td colspan="5">开票人：</td>
-                    <td colspan="8"><input type="text" name="invoice.drawer" id="drawer" style="width: 112px;"></td>
+                    <td colspan="8"><input type="text" name="invoice.drawer" id="drawer" style="width: 112px;" required value="${invoice.drawer}"></td>
                     <td colspan="9">销贷单位：（章）</td>
                 </tr>
             </table>

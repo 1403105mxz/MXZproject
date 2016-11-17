@@ -9,16 +9,7 @@ import service.InvoiceService;
  * Created by 祥根_2 on 2016/11/12.
  */
 public class EditInvoice extends ActionSupport {
-    private Invoice oldInvoice = new Invoice();
     private Invoice newInvoice = new Invoice();
-
-    public Invoice getOldInvoice() {
-        return oldInvoice;
-    }
-
-    public void setOldInvoice(Invoice oldInvoice) {
-        this.oldInvoice = oldInvoice;
-    }
 
     public Invoice getNewInvoice() {
         return newInvoice;
@@ -31,7 +22,6 @@ public class EditInvoice extends ActionSupport {
     @Override
     public String execute() throws Exception {
         String account = (String) ActionContext.getContext().getSession().get("newusername");
-        setOldInvoice(InvoiceService.searchInvoice(oldInvoice.getCode(), oldInvoice.getId(), account));
         newInvoice.setAccount(account);
         InvoiceService.updateInvoice(newInvoice);
         return SUCCESS;

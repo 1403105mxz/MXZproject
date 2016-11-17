@@ -76,7 +76,7 @@
         </action>
         <action name="EditInvoice" class="action.EditInvoice" method="execute">
             <result name="input">editInvoice.jsp</result>
-            <result type="redirect" name="success">invoiceOperation</result>
+            <result type="redirect" name="success">InvoiceOperation</result>
         </action>
         <action name="ChangePassword" class = "action.EditInfo" method="editPassword">
             <result type="redirect" name = "success">GoOperationIndex</result>

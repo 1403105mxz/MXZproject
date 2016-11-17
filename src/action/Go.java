@@ -1,6 +1,9 @@
 package action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import data.Invoice;
+import service.InvoiceService;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
 
@@ -9,6 +12,34 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
  */
 public class Go{
     private String changep;
+    private Invoice oldInvoice;
+    private String code;
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Invoice getOldInvoice() {
+        return oldInvoice;
+    }
+
+    public void setOldInvoice(Invoice oldInvoice) {
+        this.oldInvoice = oldInvoice;
+    }
 
     public String getChangep() {
         return changep;
@@ -23,6 +54,8 @@ public class Go{
     }
 
     public String goEditInvoice() {
+        String account = (String) ActionContext.getContext().getSession().get("newusername");
+        oldInvoice = InvoiceService.searchInvoice(code, id, account);
         return SUCCESS;
     }
 
