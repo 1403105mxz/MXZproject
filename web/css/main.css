@@ -14,7 +14,7 @@ div.m {
 div.signIn {
     padding: 20px;
     border-style: solid;
-    border-radius: 30px ;
+    border-radius: 30px;
     border-color: #ffffff;
     box-shadow: 0px 0px 50px #000000;
 }
@@ -39,4 +39,20 @@ i.warning {
     font-style: normal;
     color: red;
     display: none;
+}
+
+*.danger1{
+
+}
+
+*.danger2 {
+    visibility: hidden;
+}
+
+table.invoiceTable {
+    margin: 1em auto;
+    table-layout: fixed;
+    width: 403px;
+    position: relative;
+    border-style: none;
 }

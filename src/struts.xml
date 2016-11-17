@@ -51,7 +51,7 @@
             <result name="success">invoiceOperation.jsp</result>
         </action>
         <action name="DeleteInvoice" class="action.DeleteInvoice" method="execute">
-            <result type="chain" name="success">invoiceOperation</result>
+            <result type="chain" name="success">InvoiceOperation</result>
         </action>
         <action name="DetailInvoice" class="action.SearchInvoice" method="detailInvoice">
             <result name="success">detailInvoice.jsp</result>

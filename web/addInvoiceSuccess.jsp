@@ -21,10 +21,10 @@
         if("${tip}" == "success") {
             var r = confirm("添加成功\n是否继续添加？");
             if(r == true){
-                location.href = "addInvoice";
+                location.href = "GoAddInvoice";
             }
             else {
-                location.href = "invoiceOperation"
+                location.href = "InvoiceOperation"
             }
         }
     </script>

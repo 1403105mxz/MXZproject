@@ -50,8 +50,8 @@
             <td><s:property value="username"></s:property> </td>
             <td><s:property value="name"></s:property></td>
             <td><s:property value="id"></s:property> </td>
-            <td colspan="2"><a href = "Showbranchinvoice.action?changep=${username}&changeName=${name}">查看</a>
-            <a href = "Gochangeid.action?changep=${username}">修改权限</a></td>
+            <td colspan="2"><a href = "ShowBranchInvoice.action?changep=${username}&changeName=${name}">查看</a>
+            <a href = "GoChangeId.action?changep=${username}">修改权限</a></td>
         </tr>
     </s:iterator>
 </table>

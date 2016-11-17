@@ -65,7 +65,7 @@
     </script>
 </head>
 <body onload="check()">
-<form name = "answer" action ="Editpassword.action" method="post">
+<form name = "answer" action ="EditPassword.action" method="post">
     <table>
         <tr>
             <td class="第一列"><label for="password">新的密码：</label></td>

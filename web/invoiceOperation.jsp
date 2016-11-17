@@ -18,6 +18,7 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <script src="/js/main.js"></script>
     <style>
         table {
             border-style: solid;
@@ -38,18 +39,8 @@
         function del(code, id) {
             var r = confirm("确认作废该发票吗？");
             if(r == true) {
-                location.href = "deleteInvoice?code=" + code + "&id=" + id;
+                location.href = "DeleteInvoice?code=" + code + "&id=" + id;
             }
-        }
-        function fmoney(s, n) {
-            n = n > 0 && n <= 20 ? n : 2;
-            s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
-            var l = s.split(".")[0].split("").reverse(), r = s.split(".")[1];
-            t = "";
-            for (i = 0; i < l.length; i++) {
-                t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
-            }
-            return t.split("").reverse().join("") + "." + r;
         }
     </script>
 </head>
@@ -68,15 +59,15 @@
         <tr>
             <td>${code}</td>
             <td>${id}</td>
-            <td>${items}</td>
+            <td>${items.name}</td>
             <td><script>
-                document.write(fmoney(${total},2));
+                document.write(fmoney(${items.finalTotal1},2));
             </script></td>
-            <td><input type = "button" value = "作废" onclick="del('${code}', '${id}')"/>
+            <td><input type = "button" value = "作废" onclick="delInvoice('${code}', '${id}')"/>
                 <input type = "button" value = "详情"
-                       onclick="location.href='detailInvoice?code=${code}&id=${id}'">
+                       onclick="location.href='DetailInvoice?code=${code}&id=${id}'">
                 <input type = "button" value = "编辑"
-                       onclick="location.href='editInvoice?code=${code}&id=${id}&firstTime=${'firstTime'}'"></td>
+                       onclick="location.href='GoEditInvoice?code=${code}&id=${id}'"></td>
         </tr>
     </s:iterator>
 </table>
