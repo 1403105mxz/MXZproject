@@ -42,7 +42,9 @@ i.warning {
 }
 
 *.danger1{
-
+    display: none;
+    height: 40px;
+    padding: 12px;
 }
 
 *.danger2 {

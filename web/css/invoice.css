@@ -18,7 +18,7 @@ td.invoiceB {
 td.invoiceC {
     border-right-style: solid;
     vertical-align: top;
-    height: 243px;
+    height: 150px;
 }
 
 td.invoiceD {
@@ -26,7 +26,7 @@ td.invoiceD {
     vertical-align: top;
     text-align: center;
     letter-spacing: 1px;
-    height: 243px;
+    height: 150px;
 }
 
 input.invoiceA {

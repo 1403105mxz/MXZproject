@@ -25,7 +25,7 @@
     <div class="container bs-docs-container">
         <h1 id="overview" class="page-header">编辑发票</h1>
         <form action="EditInvoice.action" method="post">
-            <div style="height: 900px; width: 1000px; position: absolute;">
+            <div style="height: 720px; width: 977px; position: absolute;">
                 <input type="text" name="newInvoice.code" id="invoiceCode" class="invoiceCode" pattern="([0-9]{10})|([0-9]{12})" title="10或12位数字" maxlength="12" placeholder="类别代码" required value="${oldInvoice.code}" readonly>
                 <div class="invoiceTableHead">增值税普通发票<br/>════════════<br/>发票联</div>
                 <div class="invoiceIdArea">
@@ -123,9 +123,6 @@
                         <td colspan="9">销贷单位：（章）</td>
                     </tr>
                 </table>
-                <div class="alert alert-danger danger2" id="codeIdRepeat" role="alert">
-                    编号代码重复！
-                </div>
                 <input type="submit" class="btn btn-default btn-primary" value="保存">
             </div>
         </form>

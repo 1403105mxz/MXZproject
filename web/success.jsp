@@ -18,12 +18,12 @@
     <link rel="stylesheet" href="css/main.css">
     <script>
         var i = 5;
-        var intervalid;
-        intervalid = setInterval("fun()", 1000);
+        var interValid;
+        interValid = setInterval("fun()", 1000);
         function fun() {
             if(i==0) {
                 location.href = 'index.jsp';
-                clearInterval(intervalid);
+                clearInterval(interValid);
             }
             else {
                 document.getElementById("mes").innerHTML = i;
@@ -33,7 +33,6 @@
     </script>
 </head>
 <body>
-
     ${successTips},将在<span id="mes">5</span>秒后返回主页。<br/>
     <INPUT name="back" type="button" value="返回" onclick="location.href='index.jsp'">
     <script src="/js/jquery.min.js"></script>

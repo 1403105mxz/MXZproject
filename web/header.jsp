@@ -45,7 +45,7 @@
                     </ul>
                 </li>--%>
             </ul>
-            <form class="navbar-form navbar-left" role="search" action="SearchInvoice.action" method="POST">
+            <form class="navbar-form navbar-left" role="search" action="SearchInvoice.action" method="get">
                 <div class="form-group">
                     <input type="text" class="form-control" name="code" id="code" pattern="([0-9]{10})|([0-9]{12})"
                            title="10或12位数字" maxlength="12" placeholder="类别代码(10或12位)" required/> - <input

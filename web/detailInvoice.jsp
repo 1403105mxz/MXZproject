@@ -10,7 +10,7 @@
 <%@ include file="header.jsp"%>
 <html>
 <head>
-    <title>搜索结果</title>
+    <title>发票详情</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, User-scalable=no">
@@ -34,7 +34,7 @@
 <body>
     <div class="container bs-docs-container">
         <h1 id="overview" class="page-header">发票详情</h1>
-        <div style="height: 900px; width: 1000px; position: absolute;">
+        <div style="height: 720px; width: 977px; position: absolute;">
             <div class="invoiceCodeArea">${invoice.code}</div>
             <div class="invoiceTableHead">增值税普通发票<br/>════════════<br/>发票联</div>
             <div class="invoiceIdArea">
@@ -122,10 +122,11 @@
                     <td colspan="9">销贷单位：（章）</td>
                 </tr>
             </table>
+            <input type="button" class="btn btn-default btn-danger" style="position:absolute; right: 100px" value="作废" onclick="delInvoice(${code},${id})">
+            <input type="button" class="btn btn-default btn-primary" style="position:absolute; right: 200px"value="编辑" onclick="location.href='GoEditInvoice?code=${code}&id=${id}'"></td>
+            <input type="button" class="btn btn-default " style="position:absolute; right: 0px"value="返回" onclick="location.href='InvoiceOperation'"></td>
         </div>
     </div>
-    <input type="button" value="作废" onclick="delInvoice(${code},${id})">
-    <input type="button" value="编辑" onclick="location.href='GoEditInvoice?code=${code}&id=${id}'"></td>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </body>

@@ -9,7 +9,7 @@
 <%@ include file="header.jsp"%>
 <html>
 <head>
-    <title>搜索结果不存在</title>
+    <title>没有此发票</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, User-scalable=no">
@@ -19,7 +19,12 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-您搜索的发票不存在
+<div class="container bs-docs-container">
+    <h1 id="overview" class="page-header">发票详情</h1>
+    <div class="jumbotron alert-danger">
+        <h2>发票编码为${code}-${id}的发票不存在。</h2>
+    </div>
+</div>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </body>

@@ -101,7 +101,7 @@ public class Jurisdiction {
         return SUCCESS;
     }
 
-    public String changeid(){
+    public String changeId(){
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         int id = (int)session.getAttribute("newid");
@@ -120,7 +120,7 @@ public class Jurisdiction {
     }
 
 
-    public String showbranchinvoice(){
+    public String showBranchInvoice(){
         Connection conn;
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();

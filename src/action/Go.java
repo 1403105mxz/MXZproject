@@ -63,7 +63,7 @@ public class Go{
         return SUCCESS;
     }
 
-    public String goChangeid() {
+    public String goChangeId() {
         return SUCCESS;
     }
 }

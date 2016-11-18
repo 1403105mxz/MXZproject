@@ -35,7 +35,7 @@ public class AddInvoice extends ActionSupport{
             tip = "success";
             return SUCCESS;
         }
-        tip = "error";
+        tip = "invoiceError";
         return INPUT;
     }
 }
