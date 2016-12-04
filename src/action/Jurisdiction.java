@@ -114,9 +114,19 @@ public class Jurisdiction {
             tips4 = "新的权限等级不可以小于0也不可以大于你自身的等级";
             return INPUT;
         }
-        UserDao.changeID(newpower, changep);
-        branch = UserDao.getBranch(id);
-        return SUCCESS;
+        int judge = UserDao.changeID(newpower, changep);
+        if (judge > 0) {
+            branch = UserDao.getBranch(id);
+            return SUCCESS;
+        }
+        else if(judge == -2){
+            tips4 = "瞎改什么，你权限够么";
+            return ERROR;
+        }
+        else{
+            tips4 = "未知错误";
+            return INPUT;
+        }
     }
 
 
