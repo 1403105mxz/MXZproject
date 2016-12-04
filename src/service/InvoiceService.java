@@ -244,9 +244,20 @@ public class InvoiceService {
         System.out.println("---------------------------------------------");
         test.setRemark("after format");
         updateInvoice(test);
+        System.out.println("----------------------------------------");
         test = searchInvoice(test.getCode(), test.getId(), "123456");
         System.out.println(test.getRemark());
         test.setRemark("before format");
         updateInvoice(test);
+
+        List<Invoice> list = allInvoice(1, 2, "123456");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getItems().getName());
+        }
+        System.out.println("-------------------------");
+        list = allInvoice(2, 2, "123456");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getItems().getName());
+        }
     }
 }

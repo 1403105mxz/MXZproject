@@ -16,7 +16,7 @@ import java.util.List;
 public class PageDao extends SuperDao {
     public static List<Invoice> allInvoice(int pageNumber, int pageSize, String account) {
         List<Invoice> invoiceList = new ArrayList<Invoice>();
-        String sql = "select * from invoice WHERE account = ? AND limit ?, ?";
+        String sql = "select * from invoice WHERE account = ? limit ?, ?";
         PreparedStatement pst = setPreparedStatement(sql, account,
                 (pageNumber - 1) * pageSize, pageSize);
         try {
