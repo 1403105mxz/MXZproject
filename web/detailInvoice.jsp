@@ -31,10 +31,10 @@
 
     </script>
 </head>
-<body>
+<body onload="checkDetailInvoice('${branchAccount}')">
     <div class="container bs-docs-container">
         <h1 id="overview" class="page-header">发票详情</h1>
-        <div style="height: 720px; width: 977px; position: absolute;">
+        <div class="invoice">
             <div class="invoiceCodeArea">${invoice.code}</div>
             <div class="invoiceTableHead">增值税普通发票<br/>════════════<br/>发票联</div>
             <div class="invoiceIdArea">
@@ -122,9 +122,9 @@
                     <td colspan="9">销贷单位：（章）</td>
                 </tr>
             </table>
-            <input type="button" class="btn btn-default btn-danger" style="position:absolute; right: 100px" value="作废" onclick="delInvoice(${code},${id})">
-            <input type="button" class="btn btn-default btn-primary" style="position:absolute; right: 200px"value="编辑" onclick="location.href='GoEditInvoice?code=${code}&id=${id}'"></td>
-            <input type="button" class="btn btn-default " style="position:absolute; right: 0px"value="返回" onclick="location.href='InvoiceOperation'"></td>
+            <input type="button" id="delete" class="btn btn-danger" style="position:absolute; right: 100px" value="作废" onclick="delInvoice(${code},${id})">
+            <input type="button" id="edit" class="btn btn-primary" style="position:absolute; right: 200px"value="编辑" onclick="location.href='GoEditInvoice?code=${code}&id=${id}'">
+            <input type="button" class="btn btn-default " style="position:absolute; right: 0px"value="返回" onclick="location.href='InvoiceOperation'">
         </div>
     </div>
 <script src="/js/jquery.min.js"></script>

@@ -1,3 +1,8 @@
+div.invoice{
+    width: 977px;
+    position: relative;
+    margin:0 auto;
+}
 td {
     padding: 0.25em 0.5em;
     border-style: none;
@@ -87,4 +92,10 @@ div.invoiceDateArea {
 }
 input.invoiceDate {
     height: 26px;
+}
+table.invoiceTable {
+    margin: 1em auto;
+    table-layout: fixed;
+    width: 976px;
+    border-style: none;
 }

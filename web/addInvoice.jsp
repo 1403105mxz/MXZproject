@@ -28,7 +28,7 @@
         编号代码重复！
     </div>
     <form action="AddInvoice.action" method="post">
-        <div style="height: 720px; width: 977px; position: absolute;">
+        <div class="invoice">
             <input type="text" name="invoice.code" id="invoiceCode" class="invoiceCode" pattern="([0-9]{10})|([0-9]{12})" title="10或12位数字" maxlength="12" placeholder="类别代码" required value="${invoice.code}">
             <div class="invoiceTableHead">增值税普通发票<br/>════════════<br/>发票联</div>
             <div class="invoiceIdArea">
@@ -126,7 +126,7 @@
                     <td colspan="9">销贷单位：（章）</td>
                 </tr>
             </table>
-            <input type="submit" class="btn btn-default btn-primary" value="保存">
+            <input type="submit" class="btn btn-primary" style="value="保存">
         </div>
     </form>
 </div>

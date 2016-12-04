@@ -51,10 +51,3 @@ i.warning {
     visibility: hidden;
 }
 
-table.invoiceTable {
-    margin: 1em auto;
-    table-layout: fixed;
-    width: 403px;
-    position: relative;
-    border-style: none;
-}

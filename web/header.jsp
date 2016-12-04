@@ -67,7 +67,7 @@
                         <li><a href="ShowBranch.action">查看下属</a></li>
                     </ul>
                 </li>
-                <li><a href="SignOut.action">注销</a></li>
+                <li><a href="SignOut.action">退出<span class="glyphicon glyphicon-log-out"></span></a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

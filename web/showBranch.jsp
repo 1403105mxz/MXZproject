@@ -20,41 +20,48 @@
     <link rel="stylesheet" href="css/main.css">
     <style>
         table {
-            border-style: solid;
-            border-collapse: collapse;
-            margin: 100px auto;
+
         }
         tr {
-            background-color: #CCCCCC;
+
         }
         th {
-            border-style: solid;
-            text-align: center;
+
         }
         td {
-            border-style: solid;
+
         }
     </style>
 </head>
 <body>
-<br/>
-<table>
-        <tr>
-            <th>用户名</th>
-            <th>姓名</th>
-            <th>ID</th>
-            <th>操作</th>
-        </tr>
-    <s:iterator value="branch" status="st">
-        <tr>
-            <td><s:property value="username"></s:property> </td>
-            <td><s:property value="name"></s:property></td>
-            <td><s:property value="id"></s:property> </td>
-            <td colspan="2"><a href = "ShowBranchInvoice.action?changep=${username}&changeName=${name}">查看</a>
-            <a href = "GoChangeId.action?changep=${username}">修改权限</a></td>
-        </tr>
-    </s:iterator>
-</table>
+    <div class="container bs-docs-container">
+        <h1 id="overview" class="page-header">你的下属</h1>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>用户名</th>
+                        <th>姓名</th>
+                        <th>权限等级</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <s:iterator value="branch" status="st">
+                        <tr>
+                            <td><s:property value="username"></s:property> </td>
+                            <td><s:property value="name"></s:property></td>
+                            <td><s:property value="id"></s:property> </td>
+                            <td colspan="2">
+                                <a class="btn btn-info" href = "ShowBranchInvoice.action?changep=${username}&changeName=${name}">查看</a>
+                                <a class="btn btn-primary" href = "GoChangeId.action?changep=${username}">修改权限</a>
+                            </td>
+                        </tr>
+                    </s:iterator>
+                </tbody>
+            </table>
+        </div>
+    </div>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </body>

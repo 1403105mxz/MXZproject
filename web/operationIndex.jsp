@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <img src="/img/wrth.png" style="margin: 200px 500px"/>
+    <img src="/img/wrth.png" class="img-responsive" style="margin: 250px auto"/>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </body>
