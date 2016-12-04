@@ -111,7 +111,7 @@ public class InvoiceService {
                 longerThan45(invoice.getPayee().getId()) || longerThan100(invoice.getPayee().getAddress()) ||
                 longerThan45(invoice.getPayee().getPhoneNumber()) || longerThan100(invoice.getPayee().getBank()) ||
                 longerThan45(invoice.getPayee().getBankId()) || longerThan45(invoice.getDrawer()) ||
-                longerThan100(invoice.getRemark()));
+                longerThan100(invoice.getRemark()) || longerThan45(invoice.getCheckCode()));
     }
 
     /**.

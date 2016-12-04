@@ -16,11 +16,12 @@ import static java.util.jar.Pack200.Packer.ERROR;
  * Created by 59783 on 2016/11/14.
  */
 public class EditInfo {
-        private String Editname;
-        private String Editpassword;
-        private String Editpassword2;
-        private String Oldpassword;
-        private String tip;
+    private String Editname;
+    private String Editpassword;
+    private String Editpassword2;
+    private String Oldpassword;
+    private String tip;
+
     private String username;
 
     public String getUsername() {

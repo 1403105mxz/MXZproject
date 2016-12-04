@@ -41,7 +41,7 @@
     </script>
 </head>
 <body onload="check()">
-<form action ="Findpassword.action" method="post">
+<form action ="FindPassword.action" method="post">
     <table>
         <tr>
             <td class="第一列"><label for="fpUsername">请输入您的用户名：</label></td>

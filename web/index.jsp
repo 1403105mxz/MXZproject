@@ -26,7 +26,7 @@
 <body class="signIn" onload="check()">
 <div class="container col-md-offset-2 col-md-8 m">
   <div class="container col-md-offset-4 col-md-4 signIn">
-    <img src="img/财务管理系统.png" style="width: 100%"/>
+    <img src="img/财务管理系统.png" class="img-responsive" style="width: 100%"/>
     <form action="SignIn.action" method="post">
       <input type="text" name="username" class="form-control signIn" placeholder="用户名" value="${username}" required autofocus>
       <input type="password" name="password" class="form-control signIn" placeholder="密码" value="${password}" required>

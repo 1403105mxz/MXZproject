@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<form name = "myForm" action ="Changeid.action" method="post">
+<form name = "myForm" action ="ChangeId.action" method="post">
     输入你的密码：<input name = "high" type = "password">
     新的权限等级：<input name = "newpower" type = "text">
     <input name = "changep" type = "hidden" value="${changep}">

@@ -7,8 +7,11 @@
 
 <struts>
     <package name="default" extends="struts-default">
-         <action name="SignIn" class = "action.Sign" method="signIn">
-            <result type="redirect" name = "success">GoOperationIndex</result>
+        <action name="GoOperationIndex" class="action.Go" method="goOperationIndex">
+            <result name="success">/operationIndex.jsp</result>
+        </action>
+        <action name="SignIn" class = "action.Sign" method="signIn">
+            <result type="redirect" name = "success">GoOperationIndex.action</result>
             <result name = "input">/index.jsp</result>
             <result name = "error">/error.jsp</result>
         </action>
@@ -35,11 +38,7 @@
             <result name = "input">/editPassword.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
-        <action name="GoOperationIndex" class="action.Go" method="goOperationIndex">
-            <result name="success">/operationIndex.jsp</result>
-        </action>
         <action name="SearchInvoice" class="action.SearchInvoice" method="searchInvoice">
-            <result name="jump">searchInvoice.jsp</result>
             <result name="success">detailInvoice.jsp</result>
             <result name="error">searchNoneResult.jsp</result>
         </action>
@@ -51,7 +50,7 @@
             <result name="success">invoiceOperation.jsp</result>
         </action>
         <action name="DeleteInvoice" class="action.DeleteInvoice" method="execute">
-            <result type="chain" name="success">invoiceOperation</result>
+            <result type="chain" name="success">InvoiceOperation</result>
         </action>
         <action name="DetailInvoice" class="action.SearchInvoice" method="detailInvoice">
             <result name="success">detailInvoice.jsp</result>
@@ -61,12 +60,12 @@
             <result name = "input">/operationIndex.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
-        <action name="ShowBranchInvoice" class = "action.Jurisdiction" method="showbranchinvoice">
+        <action name="ShowBranchInvoice" class = "action.Jurisdiction" method="showBranchInvoice">
             <result name = "success">/showBranchInvoice.jsp</result>
             <result name = "input">/showBranch.jsp</result>
             <result name ="error">/error.jsp</result>
         </action>
-        <action name="ChangeId" class = "action.Jurisdiction" method="changeid">
+        <action name="ChangeId" class = "action.Jurisdiction" method="changeId">
             <result name = "success">/showBranch.jsp</result>
             <result name = "input">/changeId.jsp</result>
             <result name ="error">/error.jsp</result>
@@ -76,22 +75,21 @@
         </action>
         <action name="EditInvoice" class="action.EditInvoice" method="execute">
             <result name="input">editInvoice.jsp</result>
-            <result type="redirect" name="success">invoiceOperation</result>
+            <result type="redirect" name="success">DetailInvoice.action?code=${newInvoice.code}&amp;id=${newInvoice.id}</result>
         </action>
         <action name="ChangePassword" class = "action.EditInfo" method="editPassword">
-            <result type="redirect" name = "success">GoOperationIndex</result>
+            <result type="redirect" name = "success">GoOperationIndex.action</result>
             <result type="chain" name = "input">GoOperationIndex</result>
             <result name ="error">/error.jsp</result>
         </action>
         <action name="ChangeName" class = "action.EditInfo" method="editName">
-            <result type="redirect" name = "success">GoOperationIndex</result>
-            <result name = "input">/changeName.jsp</result>
+            <result type="redirect" name = "success">GoOperationIndex.action</result>
             <result name ="error">/error.jsp</result>
         </action>
         <action name="GoAddInvoice" class="action.Go" method="goAddInvoice">
             <result name="success">/addInvoice.jsp</result>
         </action>
-        <action name="GoChangeId" class="action.Go" method="goChangeid">
+        <action name="GoChangeId" class="action.Go" method="goChangeId">
             <result name="success">/changeId.jsp</result>
         </action>
     </package>

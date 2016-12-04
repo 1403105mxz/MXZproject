@@ -45,7 +45,7 @@
     </script>
 </head>
 <body onload="check()">
-<form name = "answer" action ="Findanswer.action" method="post">
+<form name = "answer" action ="FindAnswer.action" method="post">
     <table>
         <tr>
             <td class="第一列">安全问题：</td>

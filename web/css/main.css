@@ -14,7 +14,7 @@ div.m {
 div.signIn {
     padding: 20px;
     border-style: solid;
-    border-radius: 30px ;
+    border-radius: 30px;
     border-color: #ffffff;
     box-shadow: 0px 0px 50px #000000;
 }
@@ -40,3 +40,14 @@ i.warning {
     color: red;
     display: none;
 }
+
+*.danger1{
+    display: none;
+    height: 40px;
+    padding: 12px;
+}
+
+*.danger2 {
+    visibility: hidden;
+}
+

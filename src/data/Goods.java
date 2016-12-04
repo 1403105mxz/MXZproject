@@ -110,7 +110,7 @@ public class Goods {
         tax = tmp.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 
         double income = total - tax;
-        tmp = new BigDecimal(income);
+        tmp = new BigDecimal(total);
         String total2 = Tool.number2CNMontrayUnit(tmp);
 
         goods.setName(name);

@@ -1,9 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<head>
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-</head>
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -47,7 +45,7 @@
                     </ul>
                 </li>--%>
             </ul>
-            <form class="navbar-form navbar-left" role="search" action="SearchInvoice.action" method="POST">
+            <form class="navbar-form navbar-left" role="search" action="SearchInvoice.action" method="get">
                 <div class="form-group">
                     <input type="text" class="form-control" name="code" id="code" pattern="([0-9]{10})|([0-9]{12})"
                            title="10或12位数字" maxlength="12" placeholder="类别代码(10或12位)" required/> - <input
@@ -69,7 +67,7 @@
                         <li><a href="ShowBranch.action">查看下属</a></li>
                     </ul>
                 </li>
-                <li><a href="SignOut.action">注销</a></li>
+                <li><a href="SignOut.action">退出<span class="glyphicon glyphicon-log-out"></span></a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

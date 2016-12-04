@@ -1,0 +1,101 @@
+div.invoice{
+    width: 977px;
+    position: relative;
+    margin:0 auto;
+}
+td {
+    padding: 0.25em 0.5em;
+    border-style: none;
+}
+td.invoiceA {
+    border-right-style: solid;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+td.invoiceB {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+td.invoiceC {
+    border-right-style: solid;
+    vertical-align: top;
+    height: 150px;
+}
+
+td.invoiceD {
+    border-right-style: solid;
+    vertical-align: top;
+    text-align: center;
+    letter-spacing: 1px;
+    height: 150px;
+}
+
+input.invoiceA {
+    padding: 0;
+    border-collapse: collapse;
+}
+
+input.invoiceCode {
+    padding: 0 14px;
+    font-size: 2em;
+    position: absolute;
+    width: 230px;
+    top: 40px;
+    left: 80px;
+}
+
+div.invoiceCodeArea {
+    font-size: 2em;
+    position: absolute;
+    top: 40px;
+    left: 80px;
+}
+
+div.invoiceIdArea {
+    font-size: 2em;
+    position: absolute;
+    top: 40px;
+    right: 80px;
+}
+
+input.invoiceId {
+    padding: 0 14px;
+    display: inline;
+    font-size: 1em;
+    width: 165px;
+}
+
+div.invoiceTableHead {
+    margin: auto;
+    text-align: center;
+    font-size: 2em;
+    position: relative;
+    width: 10em;
+}
+div.invoiceCheckCodeArea {
+    position: absolute;
+    top: 100px;
+    left: 80px;
+}
+input.invoiceCheckCode {
+    display: inline;
+    width: 200px;
+}
+div.invoiceDateArea {
+    position: absolute;
+    top: 100px;
+    right: 80px;
+}
+input.invoiceDate {
+    height: 26px;
+}
+table.invoiceTable {
+    margin: 1em auto;
+    table-layout: fixed;
+    width: 976px;
+    border-style: none;
+}

@@ -4,6 +4,7 @@ import data.User;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -72,15 +73,32 @@ public class UserDao {
         return branch;
     }
 
-    public static void changeID(int newpower, String changep){
+    public static int changeID(int newpower, String changep){
         try{
             Connection conn;
+            int tempid = 0;
+            HttpServletRequest request = ServletActionContext.getRequest();
+            HttpSession session = request.getSession();
+            int id = (int)session.getAttribute("newid");
             conn = DatabaseConn.getConnection();
             Statement st = conn.createStatement();
+            Statement st2 = conn.createStatement();
+            ResultSet rs = st2.executeQuery("SELECT * FROM USER ");
+            while (rs.next()) {
+                if (rs.getString(1).equals(changep)){
+                    tempid = rs.getInt(4);
+                    break;
+                }
+            }
+            if (tempid >= id){
+                return -2;
+            }
             String sql = "UPDATE user SET id ='" + newpower + "'where username = '" + changep + "'";
             st.executeUpdate(sql);
-            }catch(Exception e){
-                e.printStackTrace();
+            return 1;
+            }catch(Exception e) {
+            e.printStackTrace();
+            return 0;
         }
     }
 
