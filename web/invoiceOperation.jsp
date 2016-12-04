@@ -68,15 +68,15 @@
         <tr>
             <td>${code}</td>
             <td>${id}</td>
-            <td>${items}</td>
+            <td>${items.name}</td>
             <td><script>
-                document.write(fmoney(${total},2));
+                document.write(fmoney(${items.total},2));
             </script></td>
             <td><input type = "button" value = "作废" onclick="del('${code}', '${id}')"/>
                 <input type = "button" value = "详情"
-                       onclick="location.href='detailInvoice?code=${code}&id=${id}'">
+                       onclick="location.href='DetailInvoice?code=${code}&id=${id}'">
                 <input type = "button" value = "编辑"
-                       onclick="location.href='editInvoice?code=${code}&id=${id}&firstTime=${'firstTime'}'"></td>
+                       onclick="location.href='EditInvoice?code=${code}&id=${id}&firstTime=${'firstTime'}'"></td>
         </tr>
     </s:iterator>
 </table>

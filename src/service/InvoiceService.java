@@ -2,8 +2,10 @@ package service;
 
 import data.Invoice;
 import org.InvoiceDao;
+import org.PageDao;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by meng on 2016/11/16.
@@ -166,6 +168,18 @@ public class InvoiceService {
      */
     public static Invoice searchInvoice(String code, String id, String account) {
         return InvoiceDao.searchInvoice(code, id, account);
+    }
+
+
+    /**.
+     * 分页显示所有发票
+     * @param pageNumber 当前页号
+     * @param pageSize 页尺寸
+     * @param account 账号
+     * @return 当前页发票
+     */
+    public static List<Invoice> allInvoice(int pageNumber, int pageSize, String account) {
+            return PageDao.allInvoice(pageNumber, pageSize, account);
     }
 
     public static void main(String[] args) {
