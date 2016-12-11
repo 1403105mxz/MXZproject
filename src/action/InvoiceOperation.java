@@ -5,7 +5,6 @@ import org.InvoiceDao;
 import com.opensymphony.xwork2.ActionContext;
 import data.Invoice;
 import service.InvoiceService;
-import service.PageService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +44,7 @@ public class InvoiceOperation extends ActionSupport {
     @Override
     public String execute() {
         int pageSize = 10;
-        totalPage = PageService.totalPage(pageSize);
+        totalPage = InvoiceService.totalPage(pageSize);
         String account = (String) ActionContext.getContext().getSession().get("newusername");
         invoiceList = InvoiceDao.allInvoice(account);
         //invoiceList = InvoiceService.allInvoice(pageNumber, pageSize, account);

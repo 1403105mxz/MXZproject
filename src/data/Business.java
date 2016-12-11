@@ -59,6 +59,17 @@ public class Business {
         isIncome = income;
     }
 
+    public static int isIncomeToInt(boolean isIncome) {
+        if (isIncome) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public static boolean isIncomeToBool(int isIncome) {
+        return isIncome == 1;
+    }
+
     public static Business makeBusiness(int id, String date, double money,
                                         String remark, boolean isIncome,
                                         String account) {
