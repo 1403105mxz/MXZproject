@@ -66,14 +66,60 @@
         </div>
         <nav>
             <ul class="pagination">
-                <s:if test="pageNumber>1">
-                    <li><a href="InvoiceOperation.action?pageNumber=1">首页</a></li>
-                    <li><a href="InvoiceOperation.action?pageNumber=${pageNumber-1}">上一页</a></li>
-                </s:if>
-                <s:if test="pageNumber<totalPage">
-                    <li><a href="InvoiceOperation.action?pageNumber=${pageNumber+1}">下一页</a></li>
-                    <li><a href="InvoiceOperation.action?pageNumber=${totalPage}">末页</a></li>
-                </s:if>
+                <li><a href="InvoiceOperation.action?pageNumber=1">首页</a></li>
+                <li><a href="InvoiceOperation.action?pageNumber=${pageNumber-1}">上一页</a></li>
+                <script>
+                    var total = ${totalPage};
+                    var now = ${pageNumber};
+                    if(total < 10) {
+                        for(var i=1; i<=total; i++) {
+                            if (now == i) {
+                                document.write("<li class='active'><a href='#'>" + i + "<span class='sr-only'>(current)</span></a></li>");
+
+                            }
+                            else {
+                                document.write("<li><a href='InvoiceOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                            }
+                        }
+                    }
+                    else {
+                        if (now <= 5) {
+                            for(var i=1; i<=10; i++) {
+                                if (now == i) {
+                                    document.write("<li class='active'><a href='#'>" + i + "<span class='sr-only'>(current)</span></a></li>");
+
+                                }
+                            else {
+                                    document.write("<li><a href='InvoiceOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                                }
+                            }
+                        }
+                        else if (now >= total - 5) {
+                            for(var i=total-9; i<=total; i++) {
+                                if (now == i) {
+                                    document.write("<li class='active'><a href='#'>" + i + "<span class='sr-only'>(current)</span></a></li>");
+
+                                }
+                            else {
+                                    document.write("<li><a href='InvoiceOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                                }
+                            }
+                        }
+                        else {
+                            for(var i=now-4; i<=now+5; i++) {
+                                if (now == i) {
+                                    document.write("<li class='active'><a href='#'>" + i + "<span class='sr-only'>(current)</span></a></li>");
+
+                                }
+                                else {
+                                    document.write("<li><a href='InvoiceOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                                }
+                            }
+                        }
+                    }
+                    </script>
+                <li><a href="InvoiceOperation.action?pageNumber=${pageNumber+1}">下一页</a></li>
+                <li><a href="InvoiceOperation.action?pageNumber=${totalPage}">末页</a></li>
             </ul>
         </nav>
     </div>

@@ -124,7 +124,7 @@
             </table>
             <input type="button" id="delete" class="btn btn-danger" style="position:absolute; right: 100px" value="作废" onclick="delInvoice(${code},${id})">
             <input type="button" id="edit" class="btn btn-primary" style="position:absolute; right: 200px"value="编辑" onclick="location.href='GoEditInvoice?code=${code}&id=${id}'">
-            <input type="button" class="btn btn-default " style="position:absolute; right: 0px"value="返回" onclick="location.href='InvoiceOperation'">
+            <input type="button" id="back" class="btn btn-default " style="position:absolute; right: 0px"value="返回" onclick="location.href='InvoiceOperation'">
         </div>
     </div>
 <script src="/js/jquery.min.js"></script>

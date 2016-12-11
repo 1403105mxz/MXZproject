@@ -16,8 +16,9 @@ function checkTip(tip) {
 
 function checkDetailInvoice(branchAccount) {
     if (branchAccount != "") {
-        document.getElementById("delete").classList.add("disabled");
-        document.getElementById("edit").classList.add("disabled");
+        document.getElementById("delete").style.display = "none";
+        document.getElementById("edit").style.display = "none";
+        document.getElementById("back").style.display = "none";
     }
 }
 

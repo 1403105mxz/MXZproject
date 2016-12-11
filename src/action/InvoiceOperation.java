@@ -44,10 +44,15 @@ public class InvoiceOperation extends ActionSupport {
     @Override
     public String execute() {
         int pageSize = 10;
-        totalPage = InvoiceService.totalPage(pageSize);
         String account = (String) ActionContext.getContext().getSession().get("newusername");
+        totalPage = InvoiceService.totalPage(pageSize, account);
         //invoiceList = InvoiceDao.allInvoice(account);
-        pageNumber = (pageNumber == 0) ? 1 : pageNumber;
+        if (pageNumber <= 1) {
+            pageNumber = 1;
+        }
+        else if (pageNumber > totalPage) {
+            pageNumber = totalPage;
+        }
         invoiceList = InvoiceService.allInvoice(pageNumber, pageSize, account);
         return SUCCESS;
     }

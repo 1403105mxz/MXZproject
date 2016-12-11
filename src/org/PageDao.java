@@ -14,13 +14,13 @@ import java.util.List;
  * Created by meng on 2016/11/14.
  */
 public class PageDao extends SuperDao {
-    public static int getInvoiceAmount() {
+    public static int getInvoiceAmount(String account) {
         int i = 0;
-        String sql = "select * from invoice";
-        PreparedStatement pst = setPreparedStatement(sql);
+        String sql = "select * from invoice where account = ?";
+        PreparedStatement pst = setPreparedStatement(sql, account);
         try {
             ResultSet resultSet = pst.executeQuery();
-            if(resultSet.next()) {
+            while (resultSet.next()) {
                 i += 1;
             }
         } catch (Exception e) {

@@ -170,8 +170,8 @@ public class InvoiceService {
         return InvoiceDao.searchInvoice(code, id, account);
     }
 
-    public static int totalPage(int pageSize) {
-        int invoiceNumber = PageDao.getInvoiceAmount();
+    public static int totalPage(int pageSize, String account) {
+        int invoiceNumber = PageDao.getInvoiceAmount(account);
         return invoiceNumber % pageSize == 0 ? (invoiceNumber / pageSize) :
                 (invoiceNumber / pageSize + 1);
     }
@@ -189,8 +189,9 @@ public class InvoiceService {
 
     public static void main(String[] args) {
         Invoice test = new Invoice();
+        int j = 10000000;
         test.setCode("1234567890");
-        test.setId("87654321");
+        test.setId("" + j);
         test.setDate("20160114");
         test.getPayer().setName("aaa");
         test.getPayer().setId("aaa");
@@ -212,9 +213,12 @@ public class InvoiceService {
         test.getPayee().setBankId("456");
         test.setRemark("testRemark");
         test.setDrawer("testDrawer");
-        test.setAccount("654321");
+        test.setAccount("zhtr888");
         test.setCheckCode("111");
-        addInvoice(test);
+        for (;j<=10000200; j++) {
+            test.setId("" + j);
+            addInvoice(test);
+        }
         test = searchInvoice("1234567890", "12345678", "123456");
         if (test == null) {
             System.out.println("invoice doesn't exist");
