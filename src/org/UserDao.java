@@ -31,6 +31,7 @@ public class UserDao {
         }
     }
 
+
     public static void Register(User signinUser, int num){
         Connection conn;
         try {
@@ -40,6 +41,11 @@ public class UserDao {
                     "('"+signinUser.getUsername()+"','"+signinUser.getPassword()+"','"+signinUser.getName()+"','"+num
                     +"','"+signinUser.getQuestion()+"','"+signinUser.getAnswer()+"')";
             st.executeUpdate(sql);
+            Statement st2 = conn.createStatement();
+            sql = "INSERT INTO wages (username, name, id, attendanceday, basewage, bonus, deduction, total) VALUES " +
+                    "('"+signinUser.getUsername()+"','"+signinUser.getName()+"','"+ num +"','"+0
+                    +"','"+1000+"','"+0+"','"+0+"','"+1000+"')";
+            st2.executeUpdate(sql);
             return;
         } catch (Exception e) {
             e.printStackTrace();
