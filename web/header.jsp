@@ -24,7 +24,12 @@
                         <li><a href="GoAddInvoice.action">新增发票</a></li>
                     </ul>
                 </li>
-                <li><a href="#">报表管理</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">收支管理<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">收入管理</a></li>
+                        <li><a href="#">支出管理</a></li>
+                    </ul>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">薪资税率<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -32,18 +37,6 @@
                         <li><a href="#">税率计算</a></li>
                     </ul>
                 </li>
-                <%--<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>--%>
             </ul>
             <form class="navbar-form navbar-left" role="search" action="SearchInvoice.action" method="get">
                 <div class="form-group">

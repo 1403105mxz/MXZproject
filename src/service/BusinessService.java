@@ -111,6 +111,18 @@ public class BusinessService {
         return changed != 0;
     }
 
+    public static int totalBusinessPage(int pageSize, String account) {
+        int businessNumber = PageDao.getBusinessAmount(account);
+        return businessNumber % pageSize == 0 ? (businessNumber / pageSize) :
+                (businessNumber / pageSize + 1);
+    }
+
+    public static int totalDatePage(int pageSize, String account) {
+        int dateNumber = PageDao.getDateAmount(account);
+        return dateNumber % pageSize == 0 ? (dateNumber / pageSize) :
+                (dateNumber / pageSize + 1);
+    }
+
     public static void main(String[] args) {
         Business inTest = new Business();
         Business outTest = new Business();

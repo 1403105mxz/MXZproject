@@ -29,10 +29,10 @@ public class PageDao extends SuperDao {
         return i;
     }
 
-    public static int getBusinessAmount() {
+    public static int getBusinessAmount(String account) {
         int i = 0;
-        String sql = "select * from business";
-        PreparedStatement pst = setPreparedStatement(sql);
+        String sql = "select * from business where account = ?";
+        PreparedStatement pst = setPreparedStatement(sql, account);
         try {
             ResultSet resultSet = pst.executeQuery();
             if(resultSet.next()) {
@@ -44,10 +44,10 @@ public class PageDao extends SuperDao {
         return i;
     }
 
-    public static int getDateAmount() {
+    public static int getDateAmount(String account) {
         int i = 0;
-        String sql = "select date from business";
-        PreparedStatement pst = setPreparedStatement(sql);
+        String sql = "select date from business where account = ?";
+        PreparedStatement pst = setPreparedStatement(sql, account);
         try {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
