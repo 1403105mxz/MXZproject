@@ -35,7 +35,7 @@ public class PageDao extends SuperDao {
         PreparedStatement pst = setPreparedStatement(sql, account);
         try {
             ResultSet resultSet = pst.executeQuery();
-            if(resultSet.next()) {
+            while (resultSet.next()) {
                 i += 1;
             }
         } catch (Exception e) {
@@ -48,10 +48,15 @@ public class PageDao extends SuperDao {
         int i = 0;
         String sql = "select date from business where account = ?";
         PreparedStatement pst = setPreparedStatement(sql, account);
+        List<String> dateList = new ArrayList<String>();
         try {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
-                System.out.println(resultSet.getString(1));
+                String temp = resultSet.getString(1);
+                if (!dateList.contains(temp)) {
+                    dateList.add(temp);
+                    i++;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
