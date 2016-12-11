@@ -46,15 +46,14 @@ public class PageDao extends SuperDao {
         return invoiceList;
     }
 
-    public static int getInvoiceAmount() {
+    public static int getInvoiceAmount(String account) {
         int i = 0;
         Connection conn = DatabaseConn.getConn();
-        String sql = "select * from invoice";
-        PreparedStatement pst;
+        String sql = "select * from invoice WHERE account = ?";
+        PreparedStatement pst = setPreparedStatement(sql, account);
         try {
-            pst = conn.prepareStatement(sql);
             ResultSet resultSet = pst.executeQuery();
-            if(resultSet.next()) {
+            while(resultSet.next()) {
                 i += 1;
             }
         } catch (Exception e) {

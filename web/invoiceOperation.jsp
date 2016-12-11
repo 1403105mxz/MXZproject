@@ -19,19 +19,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <script src="/js/main.js"></script>
-    <style>
-        table {
-        }
-        tr {
-
-        }
-        th {
-
-        }
-        td {
-
-        }
-    </style>
 </head>
 <body>
     <div class="container bs-docs-container">
@@ -77,6 +64,18 @@
                 </tbody>
             </table>
         </div>
+        <nav>
+            <ul class="pagination">
+                <s:if test="pageNumber>1">
+                    <li><a href="InvoiceOperation.action?pageNumber=1">首页</a></li>
+                    <li><a href="InvoiceOperation.action?pageNumber=${pageNumber-1}">上一页</a></li>
+                </s:if>
+                <s:if test="pageNumber<totalPage">
+                    <li><a href="InvoiceOperation.action?pageNumber=${pageNumber+1}">下一页</a></li>
+                    <li><a href="InvoiceOperation.action?pageNumber=${totalPage}">末页</a></li>
+                </s:if>
+            </ul>
+        </nav>
     </div>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
