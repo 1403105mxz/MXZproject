@@ -45,10 +45,11 @@ public class PageDao extends SuperDao {
         return i;
     }
 
-    public static int getDateAmount(String account) {
+    public static int getDateAmount(boolean isIncome, String account) {
         int i = 0;
-        String sql = "select date from business where account = ?";
-        PreparedStatement pst = setPreparedStatement(sql, account);
+        String sql = "select date from business where isincome = ? account = ?";
+        PreparedStatement pst = setPreparedStatement(sql, Business.isIncomeToInt(isIncome),
+                account);
         List<String> dateList = new ArrayList<String>();
         try {
             ResultSet resultSet = pst.executeQuery();

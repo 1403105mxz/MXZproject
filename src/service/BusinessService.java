@@ -123,8 +123,14 @@ public class BusinessService {
                 (businessNumber / pageSize + 1);
     }
 
-    public static int totalDatePage(int pageSize, String account) {
-        int dateNumber = PageDao.getDateAmount(account);
+    public static int totalInDatePage(int pageSize, String account) {
+        int dateNumber = PageDao.getDateAmount(true, account);
+        return dateNumber % pageSize == 0 ? (dateNumber / pageSize) :
+                (dateNumber / pageSize + 1);
+    }
+
+    public static int totalOutDatePage(int pageSize, String account) {
+        int dateNumber = PageDao.getDateAmount(false, account);
         return dateNumber % pageSize == 0 ? (dateNumber / pageSize) :
                 (dateNumber / pageSize + 1);
     }
