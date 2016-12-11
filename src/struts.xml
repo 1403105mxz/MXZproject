@@ -92,5 +92,14 @@
         <action name="GoChangeId" class="action.Go" method="goChangeId">
             <result name="success">/changeId.jsp</result>
         </action>
+        <action name="InOperation" class="action.InOperation" method="inOperation">
+            <result name="success">inOperation.jsp</result>
+        </action>
+        <action name="GoAddInDate" class="action.Go" method="goAddInDate">
+            <result name="success">addInDate.jsp</result>
+        </action>
+        <action name="AddInDate" class="action.AddInDate" method="addInDate">
+            <result name="success">addInDateSuccess.jsp</result>
+        </action>
     </package>
 </struts>

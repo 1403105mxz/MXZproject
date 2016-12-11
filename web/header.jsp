@@ -27,7 +27,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">收支管理<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">收入管理</a></li>
+                        <li><a href="InOperation.action">收入管理</a></li>
                         <li><a href="#">支出管理</a></li>
                     </ul>
                 <li class="dropdown">

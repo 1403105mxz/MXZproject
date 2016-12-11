@@ -3,7 +3,7 @@
  */
 function checkDate(date) {
     var d = new Date();
-    if (date == "") {
+    if (date == "" || date == null) {
         document.getElementById("date").value = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
     }
 }
