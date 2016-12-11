@@ -49,7 +49,7 @@ public class DetailInDate extends ActionSupport {
         this.businessList = businessList;
     }
 
-    public String inOperation() {
+    public String detailInDate() {
         int pageSize = 10;
         String account = (String) ActionContext.getContext().getSession().get("newusername");
         totalPage = BusinessService.totalBusinessPage(pageSize, account, date);

@@ -21,52 +21,29 @@
     <script src="/js/main.js"></script>
 </head>
 <body>
-<div class="container bs-docs-container">
-    <h1 id="overview" class="page-header">收入管理</h1>
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered table-hover">
-            <tbody>
-                <s:iterator value="dateList" status="st">
-                    <tr>
-                        <td><a>${dateList}</a></td>
-                    </tr>
-                </s:iterator>
-            </tbody>
-        </table>
-    </div>
-    <input type="button" class="btn btn-primary" value="新增" onclick="location.href='GoAddInDate.action'">
-    <nav>
-        <ul class="pagination">
-            <li><a href="InOperation.action?pageNumber=1">首页</a></li>
-            <li><a href="InOperation.action?pageNumber=${pageNumber-1}">上一页</a></li>
-            <script>
-                var total = ${totalPage};
-                var now = ${pageNumber};
-                if(total < 10) {
-                    for(var i=1; i<=total; i++) {
-                        if (now == i) {
-                            document.write("<li class='active'><a href='#'>" + i + "<span class='sr-only'>(current)</span></a></li>");
-
-                        }
-                        else {
-                            document.write("<li><a href='InOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
-                        }
-                    }
-                }
-                else {
-                    if (now <= 5) {
-                        for(var i=1; i<=10; i++) {
-                            if (now == i) {
-                                document.write("<li class='active'><a href='#'>" + i + "<span class='sr-only'>(current)</span></a></li>");
-
-                            }
-                            else {
-                                document.write("<li><a href='InOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
-                            }
-                        }
-                    }
-                    else if (now >= total - 5) {
-                        for(var i=total-9; i<=total; i++) {
+    <div class="container bs-docs-container">
+        <h1 id="overview" class="page-header">收入管理</h1>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <tbody>
+                    <s:iterator value="dateList" status="st">
+                        <tr>
+                            <td><a href="DetailInDate.action?date=${dateList}">${dateList}</a></td>
+                        </tr>
+                    </s:iterator>
+                </tbody>
+            </table>
+        </div>
+        <input type="button" class="btn btn-primary" value="新增" onclick="location.href='GoAddInDate.action'">
+        <nav>
+            <ul class="pagination">
+                <li><a href="InOperation.action?pageNumber=1">首页</a></li>
+                <li><a href="InOperation.action?pageNumber=${pageNumber-1}">上一页</a></li>
+                <script>
+                    var total = ${totalPage};
+                    var now = ${pageNumber};
+                    if(total < 10) {
+                        for(var i=1; i<=total; i++) {
                             if (now == i) {
                                 document.write("<li class='active'><a href='#'>" + i + "<span class='sr-only'>(current)</span></a></li>");
 
@@ -77,23 +54,46 @@
                         }
                     }
                     else {
-                        for(var i=now-4; i<=now+5; i++) {
-                            if (now == i) {
-                                document.write("<li class='active'><a href='#'>" + i + "<span class='sr-only'>(current)</span></a></li>");
+                        if (now <= 5) {
+                            for(var i=1; i<=10; i++) {
+                                if (now == i) {
+                                    document.write("<li class='active'><a href='#'>" + i + "<span class='sr-only'>(current)</span></a></li>");
 
+                                }
+                                else {
+                                    document.write("<li><a href='InOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                                }
                             }
-                            else {
-                                document.write("<li><a href='InOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                        }
+                        else if (now >= total - 5) {
+                            for(var i=total-9; i<=total; i++) {
+                                if (now == i) {
+                                    document.write("<li class='active'><a href='#'>" + i + "<span class='sr-only'>(current)</span></a></li>");
+
+                                }
+                                else {
+                                    document.write("<li><a href='InOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                                }
+                            }
+                        }
+                        else {
+                            for(var i=now-4; i<=now+5; i++) {
+                                if (now == i) {
+                                    document.write("<li class='active'><a href='#'>" + i + "<span class='sr-only'>(current)</span></a></li>");
+
+                                }
+                                else {
+                                    document.write("<li><a href='InOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                                }
                             }
                         }
                     }
-                }
-            </script>
-            <li><a href="InOperation.action?pageNumber=${pageNumber+1}">下一页</a></li>
-            <li><a href="InOperation.action?pageNumber=${totalPage}">末页</a></li>
-        </ul>
-    </nav>
-</div>
+                </script>
+                <li><a href="InOperation.action?pageNumber=${pageNumber+1}">下一页</a></li>
+                <li><a href="InOperation.action?pageNumber=${totalPage}">末页</a></li>
+            </ul>
+        </nav>
+    </div>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </body>

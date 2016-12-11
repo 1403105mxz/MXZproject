@@ -99,7 +99,10 @@
             <result name="success">addInDate.jsp</result>
         </action>
         <action name="AddInDate" class="action.AddInDate" method="addInDate">
-            <result name="success">addInDateSuccess.jsp</result>
+            <result type="redirect" name="success">DetailInDate.action?date=${business.date}</result>
+        </action>
+        <action name="DetailInDate" class="action.DetailInDate" method="detailInDate">
+            <result name="success">detailInDate.jsp</result>
         </action>
     </package>
 </struts>
