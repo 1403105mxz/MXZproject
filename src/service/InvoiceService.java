@@ -170,6 +170,11 @@ public class InvoiceService {
         return InvoiceDao.searchInvoice(code, id, account);
     }
 
+    public static int totalPage(int pageSize) {
+        int invoiceNumber = PageDao.getInvoiceAmount();
+        return invoiceNumber % pageSize == 0 ? (invoiceNumber / pageSize) :
+                (invoiceNumber / pageSize + 1);
+    }
 
     /**.
      * 分页显示所有发票

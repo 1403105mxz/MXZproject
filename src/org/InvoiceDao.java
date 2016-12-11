@@ -140,6 +140,7 @@ public class InvoiceDao extends SuperDao {
         return invoice;
     }
 
+    //// TODO: 2016/12/11 allInvoice is waiting to be removed
     public static List<Invoice> allInvoice(String account) {
         String sql = "select * from invoice where account = ?";
         List<Invoice> invoiceList = new ArrayList<Invoice>();

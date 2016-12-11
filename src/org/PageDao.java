@@ -1,10 +1,10 @@
 package org;
 
+import data.Business;
 import data.Dealer;
 import data.Goods;
 import data.Invoice;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -14,11 +14,60 @@ import java.util.List;
  * Created by meng on 2016/11/14.
  */
 public class PageDao extends SuperDao {
+    public static int getInvoiceAmount() {
+        int i = 0;
+        String sql = "select * from invoice";
+        PreparedStatement pst = setPreparedStatement(sql);
+        try {
+            ResultSet resultSet = pst.executeQuery();
+            if(resultSet.next()) {
+                i += 1;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    public static int getBusinessAmount() {
+        int i = 0;
+        String sql = "select * from business";
+        PreparedStatement pst = setPreparedStatement(sql);
+        try {
+            ResultSet resultSet = pst.executeQuery();
+            if(resultSet.next()) {
+                i += 1;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    public static int getDateAmount() {
+        int i = 0;
+        String sql = "select date from business";
+        PreparedStatement pst = setPreparedStatement(sql);
+        try {
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
+
     public static List<Invoice> allInvoice(int pageNumber, int pageSize, String account) {
         List<Invoice> invoiceList = new ArrayList<Invoice>();
         String sql = "select * from invoice WHERE account = ? limit ?, ?";
-        PreparedStatement pst = setPreparedStatement(sql, account,
-                (pageNumber - 1) * pageSize, pageSize);
+        PreparedStatement pst = setPreparedStatement(
+                sql,
+                account,
+                (pageNumber - 1) * pageSize,
+                pageSize
+        );
         try {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
@@ -46,19 +95,48 @@ public class PageDao extends SuperDao {
         return invoiceList;
     }
 
-    public static int getInvoiceAmount(String account) {
-        int i = 0;
-        Connection conn = DatabaseConn.getConn();
-        String sql = "select * from invoice WHERE account = ?";
-        PreparedStatement pst = setPreparedStatement(sql, account);
+    public static List<Business> allBusiness(int pageNumber, int pageSize,
+                                             String date, boolean isIncome, String account) {
+        List<Business> businessList = new ArrayList<Business>();
+        int income = Business.isIncomeToInt(isIncome);
+        String sql = "select * from business WHERE date = ? and isincome = ? and account = ? limit ?, ?";
+        PreparedStatement pst = setPreparedStatement(sql, date,
+                income, account, (pageNumber - 1) * pageSize, pageSize
+        );
         try {
             ResultSet resultSet = pst.executeQuery();
-            while(resultSet.next()) {
-                i += 1;
+            while (resultSet.next()) {
+                Business business = Business.makeBusiness(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getDouble(3),
+                        resultSet.getString(4),
+                        Business.isIncomeToBool(resultSet.getInt(5)),
+                        resultSet.getString(6)
+                );
+                businessList.add(business);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return i;
+        return businessList;
+    }
+
+    public static List<String> allBusinessDate(int pageNumber, int pageSize,
+                                               boolean isIncome, String account) {
+        List<String> dateList = new ArrayList<String>();
+        int income = Business.isIncomeToInt(isIncome);
+        String sql = "select date from business WHERE isincome = ? and account = ? limit ?, ?";
+        PreparedStatement pst = setPreparedStatement(sql, income, account,
+                (pageNumber - 1) * pageSize, pageSize);
+        try {
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                dateList.add(resultSet.getString(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dateList;
     }
 }
