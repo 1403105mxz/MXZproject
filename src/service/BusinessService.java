@@ -111,14 +111,26 @@ public class BusinessService {
         return changed != 0;
     }
 
-    public static int totalBusinessPage(int pageSize, String account) {
-        int businessNumber = PageDao.getBusinessAmount(account);
+    public static int totalInBusinessPage(int pageSize, String date, String account) {
+        int businessNumber = PageDao.getBusinessAmount(date, true, account);
         return businessNumber % pageSize == 0 ? (businessNumber / pageSize) :
                 (businessNumber / pageSize + 1);
     }
 
-    public static int totalDatePage(int pageSize, String account) {
-        int dateNumber = PageDao.getDateAmount(account);
+    public static int totalOutBusinessPage(int pageSize, String date, String account) {
+        int businessNumber = PageDao.getBusinessAmount(date, false, account);
+        return businessNumber % pageSize == 0 ? (businessNumber / pageSize) :
+                (businessNumber / pageSize + 1);
+    }
+
+    public static int totalInDatePage(int pageSize, String account) {
+        int dateNumber = PageDao.getDateAmount(true, account);
+        return dateNumber % pageSize == 0 ? (dateNumber / pageSize) :
+                (dateNumber / pageSize + 1);
+    }
+
+    public static int totalOutDatePage(int pageSize, String account) {
+        int dateNumber = PageDao.getDateAmount(false, account);
         return dateNumber % pageSize == 0 ? (dateNumber / pageSize) :
                 (dateNumber / pageSize + 1);
     }

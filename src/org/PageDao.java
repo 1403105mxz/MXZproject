@@ -29,10 +29,11 @@ public class PageDao extends SuperDao {
         return i;
     }
 
-    public static int getBusinessAmount(String account) {
+    public static int getBusinessAmount(String date, boolean isIncome, String account) {
         int i = 0;
-        String sql = "select * from business where account = ?";
-        PreparedStatement pst = setPreparedStatement(sql, account);
+        String sql = "select * from business where date = ? and isincome = ? and account = ?";
+        PreparedStatement pst = setPreparedStatement(sql, date,
+                Business.isIncomeToInt(isIncome), account);
         try {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
@@ -44,10 +45,11 @@ public class PageDao extends SuperDao {
         return i;
     }
 
-    public static int getDateAmount(String account) {
+    public static int getDateAmount(boolean isIncome, String account) {
         int i = 0;
-        String sql = "select date from business where account = ?";
-        PreparedStatement pst = setPreparedStatement(sql, account);
+        String sql = "select date from business where isincome = ? account = ?";
+        PreparedStatement pst = setPreparedStatement(sql, Business.isIncomeToInt(isIncome),
+                account);
         List<String> dateList = new ArrayList<String>();
         try {
             ResultSet resultSet = pst.executeQuery();
@@ -64,13 +66,11 @@ public class PageDao extends SuperDao {
         return i;
     }
 
-    public static List<Invoice> allInvoice(int pageNumber, int pageSize,
-                                           String date, String account) {
+    public static List<Invoice> allInvoice(int pageNumber, int pageSize, String account) {
         List<Invoice> invoiceList = new ArrayList<Invoice>();
-        String sql = "select * from invoice WHERE date = ? and account = ? limit ?, ?";
+        String sql = "select * from invoice WHERE and account = ? limit ?, ?";
         PreparedStatement pst = setPreparedStatement(
                 sql,
-                date,
                 account,
                 (pageNumber - 1) * pageSize,
                 pageSize
@@ -106,7 +106,8 @@ public class PageDao extends SuperDao {
                                              String date, boolean isIncome, String account) {
         List<Business> businessList = new ArrayList<Business>();
         int income = Business.isIncomeToInt(isIncome);
-        String sql = "select * from business WHERE date = ? and isincome = ? and account = ? limit ?, ?";
+        String sql = "select * from business WHERE date = ? and isincome = ?" +
+                " and account = ? limit ?, ?";
         PreparedStatement pst = setPreparedStatement(sql, date,
                 income, account, (pageNumber - 1) * pageSize, pageSize
         );
