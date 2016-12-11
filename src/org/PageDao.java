@@ -64,11 +64,13 @@ public class PageDao extends SuperDao {
         return i;
     }
 
-    public static List<Invoice> allInvoice(int pageNumber, int pageSize, String account) {
+    public static List<Invoice> allInvoice(int pageNumber, int pageSize,
+                                           String date, String account) {
         List<Invoice> invoiceList = new ArrayList<Invoice>();
-        String sql = "select * from invoice WHERE account = ? limit ?, ?";
+        String sql = "select * from invoice WHERE date = ? and account = ? limit ?, ?";
         PreparedStatement pst = setPreparedStatement(
                 sql,
+                date,
                 account,
                 (pageNumber - 1) * pageSize,
                 pageSize
