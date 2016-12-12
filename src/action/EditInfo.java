@@ -80,15 +80,15 @@ public class EditInfo {
         username = (String) session.getAttribute("newusername");
         String temp = (String) session.getAttribute("newpassword");
         if (!SignService.passwordCompare(temp, Oldpassword)) {
-            tip = "原密码错误！";
+            tip = "1";
             return INPUT;
         }
         if (!SignService.checkLength(Editpassword)) {
             tip = "密码的长度为6-20个字符";
             return INPUT;
         }
-        if (!SignService.passwordCompare(temp, Oldpassword)) {
-            tip = "两次输入的密码不一致";
+        if (!SignService.passwordCompare(Editpassword2, Editpassword)) {
+            tip = "2";
             return INPUT;
         }
         UserDao.changePassword(Editpassword, username);

@@ -79,7 +79,7 @@
         </action>
         <action name="ChangePassword" class = "action.EditInfo" method="editPassword">
             <result type="redirect" name = "success">GoOperationIndex.action</result>
-            <result type="chain" name = "input">GoOperationIndex</result>
+            <result type="redirect" name = "input">GoOperationIndex.action?tip=${tip}</result>
             <result name ="error">/error.jsp</result>
         </action>
         <action name="ChangeName" class = "action.EditInfo" method="editName">

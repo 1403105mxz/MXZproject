@@ -25,7 +25,5 @@
         <h2>发票编码为${code}-${id}的发票不存在。</h2>
     </div>
 </div>
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -21,7 +21,5 @@
 </head>
 <body>
     <img src="/img/wrth.png" class="img-responsive" style="margin: 250px auto"/>
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

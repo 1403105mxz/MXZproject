@@ -45,7 +45,5 @@
             <input type="submit" class="btn btn-primary" value="保存">
         </form>
     </div>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
