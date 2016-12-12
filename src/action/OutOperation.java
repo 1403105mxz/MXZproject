@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by 54333 on 2016/12/11.
  */
-public class InOperation extends ActionSupport {
+public class OutOperation extends ActionSupport {
     private int pageNumber;
     private int totalPage;
     private List<String> dateList = new ArrayList<String>();
@@ -41,17 +41,17 @@ public class InOperation extends ActionSupport {
         this.dateList = dateList;
     }
 
-    public String inOperation() {
+    public String outOperation() {
         int pageSize = 10;
         String account = (String) ActionContext.getContext().getSession().get("newusername");
-        totalPage = BusinessService.totalInDatePage(pageSize, account);
+        totalPage = BusinessService.totalOutDatePage(pageSize, account);
         if (pageNumber <= 1) {
             pageNumber = 1;
         }
         else if (pageNumber > totalPage) {
             pageNumber = totalPage;
         }
-        dateList = BusinessService.allDateIn(pageNumber, pageSize, account);
+        dateList = BusinessService.allDateOut(pageNumber, pageSize, account);
         return SUCCESS;
     }
 

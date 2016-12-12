@@ -1,9 +1,8 @@
 package action;
 
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import data.Invoice;
+import data.Business;
 import service.BusinessService;
 
 import java.util.ArrayList;
@@ -12,10 +11,11 @@ import java.util.List;
 /**
  * Created by 54333 on 2016/12/11.
  */
-public class InOperation extends ActionSupport {
+public class DetailOutDate extends ActionSupport {
     private int pageNumber;
     private int totalPage;
-    private List<String> dateList = new ArrayList<String>();
+    private String date;
+    private List<Business> businessList = new ArrayList<Business>();
 
     public int getPageNumber() {
         return pageNumber;
@@ -33,26 +33,33 @@ public class InOperation extends ActionSupport {
         this.totalPage = totalPage;
     }
 
-    public List<String> getDateList() {
-        return dateList;
+    public String getDate() {
+        return date;
     }
 
-    public void setDateList(List<String> dateList) {
-        this.dateList = dateList;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String inOperation() {
+    public List<Business> getBusinessList() {
+        return businessList;
+    }
+
+    public void setBusinessList(List<Business> businessList) {
+        this.businessList = businessList;
+    }
+
+    public String detailOutDate() {
         int pageSize = 10;
         String account = (String) ActionContext.getContext().getSession().get("newusername");
-        totalPage = BusinessService.totalInDatePage(pageSize, account);
+        totalPage = BusinessService.totalOutBusinessPage(pageSize, date, account);
         if (pageNumber <= 1) {
             pageNumber = 1;
         }
         else if (pageNumber > totalPage) {
             pageNumber = totalPage;
         }
-        dateList = BusinessService.allDateIn(pageNumber, pageSize, account);
+        businessList = BusinessService.oneDayOutBusiness(pageNumber, pageSize, date, account);
         return SUCCESS;
     }
-
 }

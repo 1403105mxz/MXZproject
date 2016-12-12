@@ -8,7 +8,7 @@ import service.BusinessService;
 /**
  * Created by 54333 on 2016/12/11.
  */
-public class AddInDate extends ActionSupport{
+public class AddOutDate extends ActionSupport{
     private int pageNumber;
     private Business business = new Business();
     private String tip = "";
@@ -37,10 +37,10 @@ public class AddInDate extends ActionSupport{
         this.tip = tip;
     }
 
-    public String addInDate() {
+    public String addOutDate() {
         String account = (String) ActionContext.getContext().getSession().get("newusername");
         business.setAccount(account);
-        if (BusinessService.addInBusiness(business)) {
+        if (BusinessService.addOutBusiness(business)) {
             tip = "success";
             return SUCCESS;
         }

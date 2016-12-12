@@ -99,10 +99,28 @@
             <result name="success">addInDate.jsp</result>
         </action>
         <action name="AddInDate" class="action.AddInDate" method="addInDate">
-            <result type="redirect" name="success">DetailInDate.action?date=${business.date}</result>
+            <result type="redirect" name="success">DetailInDate.action?date=${business.date}&amp;pageNumber=${pageNumber}</result>
         </action>
         <action name="DetailInDate" class="action.DetailInDate" method="detailInDate">
             <result name="success">detailInDate.jsp</result>
+        </action>
+        <action name="OutOperation" class="action.OutOperation" method="outOperation">
+            <result name="success">outOperation.jsp</result>
+        </action>
+        <action name="GoAddOutDate" class="action.Go" method="goAddOutDate">
+            <result name="success">addOutDate.jsp</result>
+        </action>
+        <action name="AddOutDate" class="action.AddOutDate" method="addOutDate">
+            <result type="redirect" name="success">DetailOutDate.action?date=${business.date}&amp;pageNumber=${pageNumber}</result>
+        </action>
+        <action name="DetailOutDate" class="action.DetailOutDate" method="detailOutDate">
+            <result name="success">detailOutDate.jsp</result>
+        </action>
+        <action name="EditInBusiness" class="action.EditBusiness" method="editBusiness">
+            <result type="redirect" name="success">DetailInDate.action?date=${business.date}&amp;pageNumber=${pageNumber}</result>
+        </action>
+        <action name="EditOutBusiness" class="action.EditBusiness" method="editBusiness">
+            <result type="redirect" name="success">DetailOutDate.action?date=${business.date}&amp;pageNumber=${pageNumber}</result>
         </action>
     </package>
 </struts>

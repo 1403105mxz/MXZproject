@@ -52,7 +52,7 @@ public class DetailInDate extends ActionSupport {
     public String detailInDate() {
         int pageSize = 10;
         String account = (String) ActionContext.getContext().getSession().get("newusername");
-        totalPage = BusinessService.totalBusinessPage(pageSize, account, date);
+        totalPage = BusinessService.totalInBusinessPage(pageSize, date, account);
         if (pageNumber <= 1) {
             pageNumber = 1;
         }

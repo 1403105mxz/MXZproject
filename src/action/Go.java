@@ -70,6 +70,9 @@ public class Go{
     public String goAddInDate() {
         return SUCCESS;
     }
+    public String goAddOutDate() {
+        return SUCCESS;
+    }
 }
 
 

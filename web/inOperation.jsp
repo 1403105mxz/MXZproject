@@ -26,9 +26,9 @@
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover">
                 <tbody>
-                    <s:iterator value="dateList" status="st">
+                    <s:iterator value="dateList" id="number" status="st">
                         <tr>
-                            <td><a href="DetailInDate.action?date=${dateList}">${dateList}</a></td>
+                            <td><a href="DetailInDate.action?date=${number}">${number}</a></td>
                         </tr>
                     </s:iterator>
                 </tbody>
