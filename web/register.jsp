@@ -95,7 +95,7 @@
     </script>
 </head>
 <body onload="check()">
-<form name="login" action ="Signin.action" method="post" onsubmit="onSubmit()">
+<form name="login" action ="Register.action" method="post" onsubmit="onSubmit()">
     <table>
         <tr>
             <td class="第一列"><label for="username">用户名<sup>*</sup></label></td>
