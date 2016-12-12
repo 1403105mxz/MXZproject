@@ -127,7 +127,5 @@
             <%--<input type="button" id="back" class="btn btn-default " style="position:absolute; right: 0px"value="返回" onclick="location.href='InvoiceOperation'">--%>
         </div>
     </div>
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

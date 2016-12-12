@@ -134,13 +134,15 @@
         </div>
     </div>
 </div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <script>
-    if("${tip}" == "原密码错误！") {
+    if("${tip}" == "1") {
         //document.getElementById("修改密码").classList.remove("fade");
         document.getElementById("changePassword").click();
         document.getElementById("passwordError").style.display = "block";
     }
-    else if("${tip}" == "两次输入的密码不一致") {
+    else if("${tip}" == "2") {
         //document.getElementById("修改密码").classList.remove("fade");
         document.getElementById("changePassword").click();
         document.getElementById("confirmPasswordError").style.display = "block";

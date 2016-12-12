@@ -15,6 +15,15 @@ public class Go{
     private Invoice oldInvoice;
     private String code;
     private String id;
+    private String tip;
+
+    public String getTip() {
+        return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
+    }
 
     public String getId() {
         return id;

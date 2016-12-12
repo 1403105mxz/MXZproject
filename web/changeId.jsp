@@ -26,7 +26,5 @@
     <input type = "submit" name = "check" value = "修改"><br/>
     ${tips4}
 </form>
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
