@@ -104,14 +104,15 @@ public class Goods {
         double total = price * amount;
         BigDecimal tmp = new BigDecimal(total);
         total = tmp.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        String total2 = Tool.number2CNMontrayUnit(tmp);
 
         double tax = taxRate * total / 100;
         tmp = new BigDecimal(tax);
         tax = tmp.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 
         double income = total - tax;
-        tmp = new BigDecimal(total);
-        String total2 = Tool.number2CNMontrayUnit(tmp);
+        tmp = new BigDecimal(income);
+        income = tmp.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 
         goods.setName(name);
         goods.setModel(model);

@@ -4,6 +4,7 @@ import data.Business;
 import org.BusinessDao;
 import org.PageDao;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +35,17 @@ public class BusinessService {
                 longerThan45(business.getRemark()) || longerThan45(business.getDate());
     }
 
+    private static Double twoPricePrecision(Double price) {
+        BigDecimal bigDecimal = new BigDecimal(price);
+        return bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+
     public static boolean addInBusiness(Business business) {
         if (wrongBusiness(business)) {
             return false;
         }
         business.setIncome(true);
+        business.setMoney(twoPricePrecision(business.getMoney()));
         int changed = BusinessDao.addBusiness(business);
         return changed != 0;
     }
@@ -48,6 +55,7 @@ public class BusinessService {
             return false;
         }
         business.setIncome(false);
+        business.setMoney(twoPricePrecision(business.getMoney()));
         int changed = BusinessDao.addBusiness(business);
         return changed != 0;
     }
@@ -61,6 +69,7 @@ public class BusinessService {
         if (wrongBusiness(business)) {
             return false;
         }
+        business.setMoney(twoPricePrecision(business.getMoney()));
         int changed = BusinessDao.updateBusiness(business);
         return changed != 0;
     }
@@ -146,55 +155,11 @@ public class BusinessService {
     }
 
     public static void main(String[] args) {
-        Business inTest = new Business();
-        Business outTest = new Business();
-
-        inTest.setDate("2016-5-9");
-        inTest.setMoney(100.1);
-        inTest.setRemark("卖肾");
-        inTest.setIncome(true);
-        inTest.setAccount("123456");
-
-        outTest.setDate("2015-11-11");
-        outTest.setMoney(55.5);
-        outTest.setRemark("剁手节花销");
-        outTest.setIncome(false);
-        outTest.setAccount("123456");
-
-        for (int i = 0; i < 5; i++) {
-            addInBusiness(inTest);
-        }
-        inTest.setDate("2055-5-5");
-        for (int i = 0; i < 2; i++) {
-            addInBusiness(inTest);
-        }
-        inTest.setDate("2099-6-6");
-        addInBusiness(inTest);
-        addOutBusiness(outTest);
-
-        List<String> dateInList = allDateIn(1, 5, "123456");
-        List<String> dateOutList = allDateOut(1, 1, "123456");
-        for (int i = 0; i < dateInList.size(); i++) {
-            System.out.println(dateInList.get(i));
-        }
-        System.out.println("--------------------");
-        for (int i = 0; i < dateOutList.size(); i++) {
-            System.out.println(dateOutList.get(i));
-        }
-        System.out.println("----------------------");
-        List<Business> businessInList = oneDayInBusiness(1, 5, dateInList.get(0), "123456");
-        List<Business> businessOutList = oneDayOutBusiness(1, 5, dateOutList.get(0), "123456");
-        for (int i = 0; i < businessInList.size(); i++) {
-            System.out.println(businessInList.get(i).getRemark());
-        }
-        System.out.println("--------------------");
-        for (int i = 0; i < businessOutList.size(); i++) {
-            System.out.println(businessOutList.get(i).getRemark());
-        }
-        System.out.println("--------------------");
-        deleteInDate("2016-5-9", "123456");
-        deleteInDate("2055-5-5", "123456");
-        deleteInDate("2099-6-6", "123456");
-        deleteOutDate("2015-11-11", "123456");
+        Business in = new Business();
+        in.setDate("2016-12-28");
+        in.setMoney(198.0);
+        in.setRemark("键盘");
+        in.setAccount("manager");
+        addOutBusiness(in);
     }
 }

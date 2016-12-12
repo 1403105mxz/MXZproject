@@ -5,6 +5,7 @@ import org.InvoiceDao;
 import org.PageDao;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -188,85 +189,36 @@ public class InvoiceService {
     }
 
     public static void main(String[] args) {
-        Invoice test = new Invoice();
-        int j = 10000000;
-        test.setCode("1234567890");
-        test.setId("" + j);
-        test.setDate("20160114");
-        test.getPayer().setName("aaa");
-        test.getPayer().setId("aaa");
-        test.getPayer().setAddress("aaa");
-        test.getPayer().setPhoneNumber("aaa");
-        test.getPayer().setBank("aaa");
-        test.getPayer().setBankId("aaa");
-        test.getItems().setName("aaa");
-        test.getItems().setModel("aaa");
-        test.getItems().setUnit("aaa");
-        test.getItems().setAmount(1);
-        test.getItems().setPrice(500);
-        test.getItems().setTaxRate(0.17);
-        test.getPayee().setName("testCom");
-        test.getPayee().setId("456");
-        test.getPayee().setAddress("baiNaoHui");
-        test.getPayee().setPhoneNumber("555");
-        test.getPayee().setBank("hbank");
-        test.getPayee().setBankId("456");
-        test.setRemark("testRemark");
-        test.setDrawer("testDrawer");
-        test.setAccount("zhtr888");
-        test.setCheckCode("111");
-        for (;j<=10000200; j++) {
-            test.setId("" + j);
-            addInvoice(test);
-        }
-        test = searchInvoice("1234567890", "12345678", "123456");
-        if (test == null) {
-            System.out.println("invoice doesn't exist");
-        } else {
-            System.out.println(test.getCode());
-            System.out.println(test.getPayer().getName());
-            System.out.println(test.getItems().getName());
-            System.out.println(test.getPayee().getName());
-            System.out.println(test.getItems().getTotal());
-            System.out.println(test.getItems().getTax());
-            System.out.println(test.getItems().getIncome());
-            System.out.println(test.getItems().getTotal2());
-            System.out.println("----------------------------------------");
-        }
-        test = searchInvoice("1234567890", "87654321", "123456");
-        if (test == null) {
-            System.out.println("invoice doesn't exist");
-        } else {
-            System.out.println(test.getCode());
-            System.out.println(test.getPayer().getName());
-            System.out.println(test.getItems().getName());
-            System.out.println(test.getPayee().getName());
-            System.out.println(test.getItems().getTotal());
-            System.out.println(test.getItems().getTax());
-            System.out.println(test.getItems().getIncome());
-            System.out.println(test.getItems().getTotal2());
-            System.out.println("-----------------------------------------------");
-        }
-        deleteInvoice("1234567890", "87654321", "654321");
-        test = searchInvoice("1234567890", "12345678", "123456");
-        System.out.println(test.getRemark());
-        System.out.println("---------------------------------------------");
-        test.setRemark("after format");
-        updateInvoice(test);
-        System.out.println("----------------------------------------");
-        test = searchInvoice(test.getCode(), test.getId(), "123456");
-        System.out.println(test.getRemark());
-        test.setRemark("before format");
-        updateInvoice(test);
-
-        List<Invoice> list = allInvoice(1, 2, "123456");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getItems().getName());
-        }
-        System.out.println("-------------------------");
-        list = allInvoice(2, 2, "123456");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getItems().getName());
+        Invoice input = new Invoice();
+        input.setCode("1234567890");
+        input.setDate("2016-10-9");
+        input.getPayer().setName("test buyer");
+        input.getPayer().setId("12345678900987654321");
+        input.getPayer().setAddress("someplace");
+        input.getPayer().setPhoneNumber("88888888");
+        input.getPayer().setBank("test bank");
+        input.getPayer().setBankId("123455");
+        input.getItems().setName("test things");
+        input.getItems().setModel("19C");
+        input.getItems().setUnit("个");
+        input.getItems().setAmount(4);
+        input.getItems().setPrice(9.8);
+        input.getItems().setTaxRate(17);
+        input.getPayee().setName("test seller");
+        input.getPayee().setId("09876543210123456789");
+        input.getPayee().setAddress("another place");
+        input.getPayee().setPhoneNumber("77777777");
+        input.getPayee().setBank("test bank");
+        input.getPayee().setBankId("123454");
+        input.setRemark("test remark");
+        input.setDrawer("test drawer");
+        input.setCheckCode("01234567899876543211");
+        input.setAccount("cinder");
+        String id;
+        for (int i = 0; i <= 7; i++) {
+            id = "0000020" + String.valueOf(i);
+            input.setId(id);
+            addInvoice(input);
         }
     }
 }

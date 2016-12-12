@@ -31,7 +31,7 @@ public class InvoiceDao extends SuperDao {
                 invoice.getPayee().getId(), invoice.getPayee().getAddress(),
                 invoice.getPayee().getPhoneNumber(), invoice.getPayee().getBank(),
                 invoice.getPayee().getBankId(), invoice.getRemark(),
-                invoice.getRemark(), invoice.getAccount(), invoice.getCheckCode());
+                invoice.getDrawer(), invoice.getAccount(), invoice.getCheckCode());
         try {
             changed = pst.executeUpdate();
         } catch (Exception e) {
