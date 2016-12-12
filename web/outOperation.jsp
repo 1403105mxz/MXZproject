@@ -37,8 +37,8 @@
     <input type="button" class="btn btn-primary" value="新增" onclick="location.href='GoAddOutDate.action'">
     <nav>
         <ul class="pagination">
-            <li><a href="InOperation.action?pageNumber=1">首页</a></li>
-            <li><a href="InOperation.action?pageNumber=${pageNumber-1}">上一页</a></li>
+            <li><a href="OutOperation.action?pageNumber=1">首页</a></li>
+            <li><a href="OutOperation.action?pageNumber=${pageNumber-1}">上一页</a></li>
             <script>
                 var total = ${totalPage};
                 var now = ${pageNumber};
@@ -49,7 +49,7 @@
 
                         }
                         else {
-                            document.write("<li><a href='InOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                            document.write("<li><a href='OutOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
                         }
                     }
                 }
@@ -61,7 +61,7 @@
 
                             }
                             else {
-                                document.write("<li><a href='InOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                                document.write("<li><a href='OutOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
                             }
                         }
                     }
@@ -72,7 +72,7 @@
 
                             }
                             else {
-                                document.write("<li><a href='InOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                                document.write("<li><a href='OutOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
                             }
                         }
                     }
@@ -83,14 +83,14 @@
 
                             }
                             else {
-                                document.write("<li><a href='InOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
+                                document.write("<li><a href='OutOperation.action?pageNumber=" + i + "'>" + i + "</a></li>");
                             }
                         }
                     }
                 }
             </script>
-            <li><a href="InOperation.action?pageNumber=${pageNumber+1}">下一页</a></li>
-            <li><a href="InOperation.action?pageNumber=${totalPage}">末页</a></li>
+            <li><a href="OutOperation.action?pageNumber=${pageNumber+1}">下一页</a></li>
+            <li><a href="OutOperation.action?pageNumber=${totalPage}">末页</a></li>
         </ul>
     </nav>
 </div>

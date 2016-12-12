@@ -2,6 +2,11 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
 }
 
+div.success {
+    margin-top: 200px;
+    box-shadow: 0px 0px 50px #000000;
+}
+
 body.signIn {
     background-image: url("/img/登录界面.png");
 }
@@ -45,9 +50,13 @@ i.warning {
     display: none;
     height: 40px;
     padding: 12px;
+    margin: 0;
 }
 
 *.danger2 {
-    visibility: hidden;
+    display: none;
+    height: 34px;
+    padding: 6px;
+    margin: 0;
 }
 

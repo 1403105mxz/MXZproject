@@ -10,7 +10,7 @@
 <%@ include file="header.jsp"%>
 <html lang="zh-CN">
 <head>
-    <title>财务管理系统</title>
+    <title>税率计算</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, User-scalable=no">
@@ -20,7 +20,21 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <img src="/img/wrth.png" class="img-responsive" style="margin: 250px auto"/>
+<div class="container bs-docs-container">
+    <h1 id="overview" class="page-header">税率计算</h1>
+    <div class="row">
+        <div class="form-group input-group-lg col-md-3">
+            <label for="before"><big>税前工资</big></label>
+            <input type="text" class="form-control " id="before" onchange="tax()"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group input-group-lg col-md-3">
+            <label for="after"><big>税后工资</big></label>
+            <input type="text" class="form-control" id="after" readonly/>
+        </div>
+    </div>
+<script src="/js/main.js"></script>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </body>

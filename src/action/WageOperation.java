@@ -31,6 +31,30 @@ public class WageOperation {
         this.wage = wage;
     }
 
+    public List<Wage> getWagelist() {
+        return wagelist;
+    }
+
+    public void setWagelist(List<Wage> wagelist) {
+        this.wagelist = wagelist;
+    }
+
+    public String getTip() {
+        return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
+    }
+
+    public String getEusername() {
+        return eusername;
+    }
+
+    public void setEusername(String eusername) {
+        this.eusername = eusername;
+    }
+
     public String showWage(){
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
@@ -67,14 +91,14 @@ public class WageOperation {
             return SUCCESS;
         }
         tip = "你无法进行此操作";
-        return INPUT;
+        return ERROR;
     }
 
     public String editWage(){
         int judge = WageDao.editWage(wage);
         if (judge < 0){
             tip = "你无法进行此操作";
-            return INPUT;
+            return ERROR;
         }
         else{
             return SUCCESS;

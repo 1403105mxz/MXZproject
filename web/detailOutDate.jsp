@@ -116,8 +116,8 @@
     </div>
     <nav>
         <ul class="pagination">
-            <li><a href="DetailInDate.action?date=${date}&pageNumber=1">首页</a></li>
-            <li><a href="DetailInDate.action?date=${date}&pageNumber=${pageNumber-1}">上一页</a></li>
+            <li><a href="DetailOutDate.action?date=${date}&pageNumber=1">首页</a></li>
+            <li><a href="DetailOutDate.action?date=${date}&pageNumber=${pageNumber-1}">上一页</a></li>
             <script>
                 var total = ${totalPage};
                 var now = ${pageNumber};
@@ -128,7 +128,7 @@
 
                         }
                         else {
-                            document.write("<li><a href='DetailInDate.action?date=${date}&pageNumber=" + i + "'>" + i + "</a></li>");
+                            document.write("<li><a href='DetailOutDate.action?date=${date}&pageNumber=" + i + "'>" + i + "</a></li>");
                         }
                     }
                 }
@@ -140,7 +140,7 @@
 
                             }
                             else {
-                                document.write("<li><a href='DetailInDate.action?date=${date}&pageNumber=" + i + "'>" + i + "</a></li>");
+                                document.write("<li><a href='DetailOutDate.action?date=${date}&pageNumber=" + i + "'>" + i + "</a></li>");
                             }
                         }
                     }
@@ -151,7 +151,7 @@
 
                             }
                             else {
-                                document.write("<li><a href='DetailInDate.action?date=${date}&pageNumber=" + i + "'>" + i + "</a></li>");
+                                document.write("<li><a href='DetailOutDate.action?date=${date}&pageNumber=" + i + "'>" + i + "</a></li>");
                             }
                         }
                     }
@@ -162,14 +162,14 @@
 
                             }
                             else {
-                                document.write("<li><a href='DetailInDate.action?date=${date}&pageNumber=" + i + "'>" + i + "</a></li>");
+                                document.write("<li><a href='DetailOutDate.action?date=${date}&pageNumber=" + i + "'>" + i + "</a></li>");
                             }
                         }
                     }
                 }
             </script>
-            <li><a href="DetailInDate.action?date=${date}&pageNumber=${pageNumber+1}">下一页</a></li>
-            <li><a href="DetailInDate.action?date=${date}&pageNumber=${totalPage}">末页</a></li>
+            <li><a href="DetailOutDate.action?date=${date}&pageNumber=${pageNumber+1}">下一页</a></li>
+            <li><a href="DetailOutDate.action?date=${date}&pageNumber=${totalPage}">末页</a></li>
         </ul>
     </nav>
 </div>

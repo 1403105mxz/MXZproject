@@ -44,3 +44,54 @@ function delInvoice(code, id) {
         location.href = "DeleteInvoice?code=" + code + "&id=" + id;
     }
 }
+
+function checkWage(id) {
+    if(id == 5) {
+        document.getElementById("myWage").style.display = "none";
+    }
+    else if(id <= 3) {
+        document.getElementById("wageList").style.display = "none";
+    }
+}
+
+function tax() {
+    var salaryBeforeTax = document.getElementById("before").value;
+    var taxbase=salaryBeforeTax-3500;
+    var Taxrate=0;//这里税率没有除以百分比；
+    var Quickdeduction=0;
+    var salaryAfterTax;
+    if(taxbase <=0)//低于个税起征点
+    {
+        salaryAfterTax = salaryBeforeTax;
+    }else if(taxbase <=1500)
+    {
+        Taxrate=3;
+        Quickdeduction=0;
+    }else if(taxbase <=4500)
+    {
+        Taxrate=10;
+        Quickdeduction=105;
+    }else if(taxbase <=9000)
+    {
+        Taxrate=20;
+        Quickdeduction=555;
+    }else if(taxbase <=35000)
+    {
+        Taxrate=25;
+        Quickdeduction=1005;
+    }else if(taxbase <=55000)
+    {
+        Taxrate=30;
+        Quickdeduction=2755;
+    }else if(taxbase <=80000)
+    {
+        Taxrate=35;
+        Quickdeduction=5505;
+    }else
+    {
+        Taxrate=45;
+        Quickdeduction=13505;
+    }
+    salaryAfterTax = salaryBeforeTax-((salaryBeforeTax-3500)*Taxrate/100-Quickdeduction);
+    document.getElementById("after").value = salaryAfterTax;
+}

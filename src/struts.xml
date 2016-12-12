@@ -122,5 +122,19 @@
         <action name="EditOutBusiness" class="action.EditBusiness" method="editBusiness">
             <result type="redirect" name="success">DetailOutDate.action?date=${business.date}&amp;pageNumber=${pageNumber}</result>
         </action>
+        <action name="GoTax" class="action.Go" method="goTax">
+            <result name="success">/Tax.jsp</result>
+        </action>
+        <action name="ShowWage" class="action.WageOperation" method="showWage">
+            <result name="success">/showWage.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="EditWage" class="action.WageOperation" method="editWage">
+            <result type="redirect" name="success">ShowWage.action</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="Tax" class="action.Taxrate" method="salaryAfterTax">
+            <result name="success">/Tax.jsp</result>
+        </action>
     </package>
 </struts>

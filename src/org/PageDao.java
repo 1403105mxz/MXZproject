@@ -130,13 +130,11 @@ public class PageDao extends SuperDao {
         return businessList;
     }
 
-    public static List<String> allBusinessDate(int pageNumber, int pageSize,
-                                               boolean isIncome, String account) {
+    public static List<String> allBusinessDate(boolean isIncome, String account) {
         List<String> dateList = new ArrayList<String>();
         int income = Business.isIncomeToInt(isIncome);
-        String sql = "select date from business WHERE isincome = ? and account = ? limit ?, ?";
-        PreparedStatement pst = setPreparedStatement(sql, income, account,
-                (pageNumber - 1) * pageSize, pageSize);
+        String sql = "select date from business WHERE isincome = ? and account = ?";
+        PreparedStatement pst = setPreparedStatement(sql, income, account);
         try {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {

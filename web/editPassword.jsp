@@ -64,27 +64,31 @@
         }
     </script>
 </head>
-<body onload="check()">
-<form name = "answer" action ="EditPassword.action" method="post">
-    <table>
-        <tr>
-            <td class="第一列"><label for="password">新的密码：</label></td>
-            <td class="第二列"><input type="password" name="fpUser.password" id="password" maxlength="20" minlength="6" required onblur="onBlur('password')" onfocus="onFocus('password')" placeholder="6-20个字符"/></td>
-            <td><i id="passwordError">密码长度不得小于6个字符</i></td>
-        </tr>
-        <tr>
-            <td><label for="confirmPassword">确认密码：</label></td>
-            <td><input type="password" name="fpUsername" id="confirmPassword" maxlength="20" minlength="6" required onblur="onBlur('confirmPassword')" onfocus="onFocus('confirmPassword')"/></td>
-            <td><i id="confirmPasswordError">两次输入的密码不一致</i></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" name="mySubmit" value="确定"/>
-                <input name="back" type="button" value="返回" onclick="location.href='index.jsp'"/>
-            </td>
-        </tr>
-    </table>
+<body onload="check()" class="signIn">
+<div class="container bs-docs-container">
+    <h1 id="overview" class="page-header">找回密码</h1>
+<form name = "answer" class="form-horizontal" role="form" action ="EditPassword.action" method="post">
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">新的密码</label>
+        <div class="col-sm-5">
+            <input type="password" class="form-control" name="fpUser.password" id="password" maxlength="20" minlength="6" required onblur="onBlur('password')" onfocus="onFocus('password')" placeholder="6-20个字符"/>
+        </div>
+        <div class="alert alert-danger col-sm-5 danger2" id="passwordError">
+            密码长度不得小于6个字符
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword" class="col-sm-2 control-label">确认密码</label>
+        <div class="col-sm-5">
+            <input type="password" class="form-control" name="fpUsername" id="confirmPassword" maxlength="20" minlength="6" required onblur="onBlur('confirmPassword')" onfocus="onFocus('confirmPassword')"/>
+        </div>
+        <div class="alert alert-danger col-sm-5 danger2" id="confirmPasswordError">
+            两次输入的密码不一致
+        </div>
+    </div>
     <input type="hidden" name="fpUser.username" value="${fpUser.username}"/>
+    <button type="submit" class="btn btn-primary" name="mySubmit">确定</button>&emsp;
+    <button name="back" type="button" class="btn btn-danger" onclick="location.href='index.jsp'">返回</button>
 </form>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
