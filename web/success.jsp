@@ -35,7 +35,7 @@
 <body class="signIn">
 <div class="container bs-docs-container">
     <div class="jumbotron success">
-        <h1>注册成功</h1>
+        <h1>${successTips}</h1>
         <p>将在<span id="mes">5</span>秒后返回主页。</p>
         <p><a class="btn btn-primary btn-lg" href="index.jsp" role="button">立即返回</a></p>
     </div>
