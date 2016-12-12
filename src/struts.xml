@@ -136,5 +136,17 @@
         <action name="Tax" class="action.Taxrate" method="salaryAfterTax">
             <result name="success">/Tax.jsp</result>
         </action>
+        <action name="DeleteInDate" class="action.DeleteInDate" method="deleteInDate">
+            <result type="redirect" name="success">InOperation.action</result>
+        </action>
+        <action name="DeleteOutDate" class="action.DeleteOutDate" method="deleteOutDate">
+            <result type="redirect" name="success">OutOperation.action</result>
+        </action>
+        <action name="DeleteInBusiness" class="action.DeleteBusiness" method="deleteBusiness">
+            <result type="redirect" name="success">DetailInDate.action?date=${date}&amp;pageNumber=${pageNumber}</result>
+        </action>
+        <action name="DeleteOutBusiness" class="action.DeleteBusiness" method="deleteBusiness">
+            <result type="redirect" name="success">DetailOutDate.action?date=${date}&amp;pageNumber=${pageNumber}</result>
+        </action>
     </package>
 </struts>

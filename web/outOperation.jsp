@@ -28,7 +28,9 @@
             <tbody>
             <s:iterator value="dateList" id="number" status="st">
                 <tr>
-                    <td><a href="DetailInDate.action?date=${number}">${number}</a></td>
+                    <td><a href="DetailOutDate.action?date=${number}">${number}</a></td>
+                    <td><input type = "button" class="btn btn-danger" value = "删除"
+                               onclick="delOutDate('${number}')"/></td>
                 </tr>
             </s:iterator>
             </tbody>

@@ -18,6 +18,7 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <script src="/js/main.js"></script>
 </head>
 <body>
 <div class="container bs-docs-container" style="position: relative">
@@ -36,7 +37,11 @@
                 <tr>
                     <td>${money}</td>
                     <td>${remark}</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#修改${id}">修改</button></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#修改${id}">修改</button>
+                        <input type = "button" class="btn btn-danger" value = "删除"
+                               onclick="delOutBusiness('${id}','${pageNumber}','${date}')"/>
+                    </td>
                 </tr>
                 <div class="modal fade" id="修改${id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">

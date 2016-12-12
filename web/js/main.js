@@ -45,6 +45,34 @@ function delInvoice(code, id) {
     }
 }
 
+function delInDate(date) {
+    var r = confirm("确认删除这一天的所有收入吗？");
+    if (r == true) {
+        location.href = "DeleteInDate?date=" + date;
+    }
+}
+
+function delOutDate(date) {
+    var r = confirm("确认删除这一天的所有支出吗？");
+    if (r == true) {
+        location.href = "DeleteOutDate?date=" + date;
+    }
+}
+
+function delInBusiness(id, pageNumber, date) {
+    var r = confirm("确认删除这一项吗？");
+    if (r == true) {
+        location.href = "DeleteInBusiness?id=" + id + "&pageNumber=" + pageNumber + "&date=" +date;
+    }
+}
+
+function delOutBusiness(id, pageNumber, date) {
+    var r = confirm("确认删除这一项吗？");
+    if (r == true) {
+        location.href = "DeleteOutBusiness?id=" + id + "&pageNumber=" + pageNumber + "&date=" +date;
+    }
+}
+
 function checkWage(id) {
     if(id == 5) {
         document.getElementById("myWage").style.display = "none";
