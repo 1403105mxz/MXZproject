@@ -156,10 +156,12 @@ public class BusinessService {
 
     public static void main(String[] args) {
         Business in = new Business();
-        in.setDate("2016-12-28");
-        in.setMoney(198.0);
+        in.setDate("2016-12-15");
+        in.setMoney(100.0);
         in.setRemark("键盘");
         in.setAccount("manager");
-        addOutBusiness(in);
+        for (int i = 0; i < 8; i++){
+            addInBusiness(in);
+        }
     }
 }
