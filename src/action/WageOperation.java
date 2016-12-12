@@ -31,6 +31,30 @@ public class WageOperation {
         this.wage = wage;
     }
 
+    public List<Wage> getWagelist() {
+        return wagelist;
+    }
+
+    public void setWagelist(List<Wage> wagelist) {
+        this.wagelist = wagelist;
+    }
+
+    public String getTip() {
+        return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
+    }
+
+    public String getEusername() {
+        return eusername;
+    }
+
+    public void setEusername(String eusername) {
+        this.eusername = eusername;
+    }
+
     public String showWage(){
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();

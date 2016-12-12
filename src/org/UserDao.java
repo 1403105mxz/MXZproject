@@ -43,8 +43,8 @@ public class UserDao {
             st.executeUpdate(sql);
             Statement st2 = conn.createStatement();
             sql = "INSERT INTO wages (username, name, id, attendanceday, basewage, bonus, deduction, total) VALUES " +
-                    "('"+signinUser.getUsername()+"','"+signinUser.getName()+"','"+ num +"','"+0
-                    +"','"+1000+"','"+0+"','"+0+"','"+1000+"')";
+                    "('"+signinUser.getUsername()+"','"+signinUser.getName()+"','"+ num +"','"+20
+                    +"','"+1000+"','"+0+"','"+0+"','"+2000+"')";
             st2.executeUpdate(sql);
             return;
         } catch (Exception e) {
@@ -89,6 +89,7 @@ public class UserDao {
             conn = DatabaseConn.getConnection();
             Statement st = conn.createStatement();
             Statement st2 = conn.createStatement();
+            Statement st3 = conn.createStatement();
             ResultSet rs = st2.executeQuery("SELECT * FROM USER ");
             while (rs.next()) {
                 if (rs.getString(1).equals(changep)){
@@ -101,8 +102,10 @@ public class UserDao {
             }
             String sql = "UPDATE user SET id ='" + newpower + "'where username = '" + changep + "'";
             st.executeUpdate(sql);
+            sql = "UPDATE wages SET id ='" + newpower + "'where username = '" + changep + "'";
+            st3.executeUpdate(sql);
             return 1;
-            }catch(Exception e) {
+            } catch(Exception e) {
             e.printStackTrace();
             return 0;
         }

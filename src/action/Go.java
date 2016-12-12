@@ -67,6 +67,14 @@ public class Go{
         return SUCCESS;
     }
 
+
+    public String goAddInDate() {
+        return SUCCESS;
+    }
+    public String goAddOutDate() {
+        return SUCCESS;
+    }
+
     public String goTax() {
         return SUCCESS;
     }

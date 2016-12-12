@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: 54333
@@ -9,7 +10,7 @@
 <%@ include file="header.jsp"%>
 <html lang="zh-CN">
 <head>
-    <title>Title</title>
+    <title>财务管理系统</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, User-scalable=no">

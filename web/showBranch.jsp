@@ -53,7 +53,7 @@
                             <td><s:property value="name"></s:property></td>
                             <td><s:property value="id"></s:property> </td>
                             <td colspan="2">
-                                <a class="btn btn-info" href = "ShowBranchInvoice.action?changep=${username}&changeName=${name}">查看</a>
+                                <a class="btn btn-info" href = "ShowBranchInvoice.action?changep=${username}&changeName=${name}">查看发票</a>
                                 <a class="btn btn-primary" href = "GoChangeId.action?changep=${username}">修改权限</a>
                             </td>
                         </tr>

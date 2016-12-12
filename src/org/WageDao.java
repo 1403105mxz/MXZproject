@@ -78,6 +78,7 @@ public class WageDao {
             return -1;
         }
         int total = wage.getBasewage() + ((wage.getAttendanceday() - 20) * 100) + wage.getBonus() - wage.getDeduction();
+        total = total<0 ? 0 : total;
         Connection conn;
         try {
             conn = DatabaseConn.getConnection();

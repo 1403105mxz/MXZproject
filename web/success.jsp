@@ -32,9 +32,14 @@
         }
     </script>
 </head>
-<body>
-    ${successTips},将在<span id="mes">5</span>秒后返回主页。<br/>
-    <INPUT name="back" type="button" value="返回" onclick="location.href='index.jsp'">
+<body class="signIn">
+<div class="container bs-docs-container">
+    <div class="jumbotron success">
+        <h1>注册成功</h1>
+        <p>将在<span id="mes">5</span>秒后返回主页。</p>
+        <p><a class="btn btn-primary btn-lg" href="index.jsp" role="button">立即返回</a></p>
+    </div>
+</div>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 </body>

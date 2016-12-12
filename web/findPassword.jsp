@@ -16,22 +16,6 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <style>
-        i {
-            font-style: normal;
-            color: red;
-            font-size: 13px;
-            display: none;
-        }
-        table {
-            margin: 20em 40%;
-            table-layout: fixed;
-            width: 500px;
-        }
-        *.第一列 {
-            width: 9em;
-        }
-    </style>
     <script>
         function check() {
             if("${tips3}" != "") {
@@ -40,17 +24,21 @@
         }
     </script>
 </head>
-<body onload="check()">
-<form action ="FindPassword.action" method="post">
-    <table>
-        <tr>
-            <td class="第一列"><label for="fpUsername">请输入您的用户名：</label></td>
-            <td><input type="text" name="fpUsername" id="fpUsername" autofocus value="${fpUsername}"></td>
-            <td><i id="nameError">用户名不存在</i></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" name="mySubmit" value="确定"/>　　<input name="back" type="button" value="返回" onclick="location.href='index.jsp'"></td>
-        </tr>
+<body onload="check()" class="signIn">
+<div class="container bs-docs-container">
+    <h1 id="overview" class="page-header">找回密码</h1>
+    <form action ="FindPassword.action" class="form-horizontal" role="form" method="post">
+        <div class="form-group">
+            <label for="fpUsername" class="col-sm-2 control-label">请输入您的用户名：</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" name="fpUsername" id="fpUsername" autofocus value="${fpUsername}">
+            </div>
+            <div class="alert alert-danger col-sm-5 danger2" id="nameError">
+                用户名不存在
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" name="mySubmit">确定</button>&emsp;
+        <button name="back" type="button" class="btn btn-danger" onclick="location.href='index.jsp'">返回</button>
     </table>
 </form>
 <script src="/js/jquery.min.js"></script>

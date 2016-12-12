@@ -126,7 +126,7 @@
                     <td colspan="9">销贷单位：（章）</td>
                 </tr>
             </table>
-            <input type="submit" class="btn btn-primary" style="value="保存">
+            <input type="submit" class="btn btn-primary" value="保存">
         </div>
     </form>
 </div>

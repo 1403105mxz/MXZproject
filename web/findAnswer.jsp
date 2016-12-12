@@ -17,25 +17,6 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <style>
-        table {
-            margin: 20em auto;
-            table-layout: fixed;
-            width: 332px;
-        }
-        *.第一列 {
-            width: 5em;
-        }
-        *.第二列 {
-            width: 173px;
-        }
-        i {
-            font-style: normal;
-            color: red;
-            font-size: 13px;
-            display: none;
-        }
-    </style>
     <script>
         function check() {
             if("${tips3}" != "") {
@@ -44,28 +25,32 @@
         }
     </script>
 </head>
-<body onload="check()">
-<form name = "answer" action ="FindAnswer.action" method="post">
-    <table>
-        <tr>
-            <td class="第一列">安全问题：</td>
-            <td class="第二列">${fpUser.question}</td>
-        </tr>
-        <tr>
-            <td><label for="fpAnswer">答案：</label></td>
-            <td><input type="text" name="fpAnswer" id="fpAnswer"/></td>
-            <td><i id="fpAnswerError">回答错误！</i></td>
-        </tr>
-        <tr>
-            <td><input type = "submit" name = "mySubmit" value = "确定" ></td>
-            <td><input name="back" type="button" value="返回" onclick="location.href='index.jsp'"></td>
-        </tr>
-    </table>
-    <br/>
-    <input type="hidden" name="fpUser.answer" value="${fpUser.answer}"/>
-    <input type="hidden" name="fpUser.question" value="${fpUser.question}">
-    <input type="hidden" name="fpUser.username" value="${fpUser.username}"/>
-</form>
+<body onload="check()" class="signIn">
+<div class="container bs-docs-container">
+    <h1 id="overview" class="page-header">找回密码</h1>
+    <form class="form-horizontal" role="form" action ="FindAnswer.action" method="post">
+        <div class="form-group">
+            <label for="question" class="col-sm-2 control-label">安全问题：</label>
+            <div class="col-sm-5">
+                <input id="question" class="form-control" value="${fpUser.question}" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">答案：</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" name="fpAnswer" id="fpAnswer"/>
+            </div>
+            <div class="alert alert-danger danger2 col-sm-5" id="fpAnswerError">
+                回答错误！
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" name="mySubmit">确定</button>&emsp;
+        <button name="back" type="button" class="btn btn-danger" onclick="location.href='index.jsp'">返回</button>
+        <br/>
+        <input type="hidden" name="fpUser.answer" value="${fpUser.answer}"/>
+        <input type="hidden" name="fpUser.question" value="${fpUser.question}">
+        <input type="hidden" name="fpUser.username" value="${fpUser.username}"/>
+    </form>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </body>

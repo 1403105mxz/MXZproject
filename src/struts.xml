@@ -92,6 +92,36 @@
         <action name="GoChangeId" class="action.Go" method="goChangeId">
             <result name="success">/changeId.jsp</result>
         </action>
+        <action name="InOperation" class="action.InOperation" method="inOperation">
+            <result name="success">inOperation.jsp</result>
+        </action>
+        <action name="GoAddInDate" class="action.Go" method="goAddInDate">
+            <result name="success">addInDate.jsp</result>
+        </action>
+        <action name="AddInDate" class="action.AddInDate" method="addInDate">
+            <result type="redirect" name="success">DetailInDate.action?date=${business.date}&amp;pageNumber=${pageNumber}</result>
+        </action>
+        <action name="DetailInDate" class="action.DetailInDate" method="detailInDate">
+            <result name="success">detailInDate.jsp</result>
+        </action>
+        <action name="OutOperation" class="action.OutOperation" method="outOperation">
+            <result name="success">outOperation.jsp</result>
+        </action>
+        <action name="GoAddOutDate" class="action.Go" method="goAddOutDate">
+            <result name="success">addOutDate.jsp</result>
+        </action>
+        <action name="AddOutDate" class="action.AddOutDate" method="addOutDate">
+            <result type="redirect" name="success">DetailOutDate.action?date=${business.date}&amp;pageNumber=${pageNumber}</result>
+        </action>
+        <action name="DetailOutDate" class="action.DetailOutDate" method="detailOutDate">
+            <result name="success">detailOutDate.jsp</result>
+        </action>
+        <action name="EditInBusiness" class="action.EditBusiness" method="editBusiness">
+            <result type="redirect" name="success">DetailInDate.action?date=${business.date}&amp;pageNumber=${pageNumber}</result>
+        </action>
+        <action name="EditOutBusiness" class="action.EditBusiness" method="editBusiness">
+            <result type="redirect" name="success">DetailOutDate.action?date=${business.date}&amp;pageNumber=${pageNumber}</result>
+        </action>
         <action name="GoTax" class="action.Go" method="goTax">
             <result name="success">/Tax.jsp</result>
         </action>
@@ -99,12 +129,8 @@
             <result name="success">/showWage.jsp</result>
             <result name="error">/error.jsp</result>
         </action>
-        <action name="GoEditWage" class="action.WageOperation" method="goeditWage">
-            <result name="success">/editWage.jsp</result>
-            <result name="error">/error.jsp</result>
-        </action>
         <action name="EditWage" class="action.WageOperation" method="editWage">
-            <result name="success">/operationIndex.jsp</result>
+            <result type="redirect" name="success">ShowWage.action</result>
             <result name="error">/error.jsp</result>
         </action>
         <action name="Tax" class="action.Taxrate" method="salaryAfterTax">

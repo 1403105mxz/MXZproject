@@ -9,10 +9,19 @@
 <html lang="zh-CN">
 <head>
     <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, User-scalable=no">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body onload="check()">
 <div>
-    <div style="width: 977px; height: 720px; margin:0 auto;"></div>
+    <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-star"></span> Star
+    </button>
 </div>
 </body>
 </html>

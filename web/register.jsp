@@ -17,39 +17,6 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <style>
-        td {
-            text-align: center;
-        }
-        i {
-            font-style: normal;
-            color: red;
-            font-size: 13px;
-            display: none;
-        }
-        kbd {
-            font-style: normal;
-            color: #636363;
-        }
-        sup {
-            color: red;
-        }
-        *.提示 {
-            width: 13em;
-        }
-        *.第一列 {
-            width: 7em;
-        }
-        *.输入框 {
-            margin-left: 28px;
-            width: 218px;
-        }
-        table {
-            margin: 20em auto;
-            table-layout: fixed;
-            width: 584px;
-        }
-    </style>
     <script>
         function onBlur(id) {
             var input = document.getElementById(id);
@@ -72,80 +39,84 @@
             var idError = document.getElementById(id+"Error");
             idError.style.display = "none";
         }
-        function onSubmit() {
-            var question = document.getElementsByName("signinUser.question");
-            var question1 = document.getElementById("question1");
-            var question2 = document.getElementById("question2");
-            if(question[0].checked) {
-                question[0].value = question1.value;
-            }
-            else {
-                question[1].value = question2.value;
-            }
-        }
         function check() {
             var tip = "${tips2}";
             if(tip == "两次输入的密码不一致") {
                 document.getElementById("confirmPasswordError").style.display = "inline";
             }
-            if(tip == "用户名已存在。") {
+            if(tip == "用户名已存在") {
                 document.getElementById("usernameRepeat").style.display = "inline";
             }
         }
     </script>
 </head>
-<body onload="check()">
-<form name="login" action ="Register.action" method="post" onsubmit="onSubmit()">
-    <table>
-        <tr>
-            <td class="第一列"><label for="username">用户名<sup>*</sup></label></td>
-            <td><input class="输入框" type="text" name ="signinUser.username" id="username" maxlength="20" minlength="6" required onblur="onBlur('username')" onfocus="onFocus('username')" placeholder="6-20个字符" value=${signinUser.username} ></td>
-            <td class="提示">
-                <i id="usernameError">用户名长度不得小于6个字符</i>
-                <i id="usernameRepeat">用户名已存在</i>
-            </td>
-        </tr>
-        <tr>
-            <td><label for="password">密码<sup>*</sup></label></td>
-            <td><input class="输入框" type="password" name="signinUser.password" id="password" maxlength="20" minlength="6" required onblur="onBlur('password')" onfocus="onFocus('password')" placeholder="6-20个字符"></td>
-            <td class="提示"><i id="passwordError">密码长度不得小于6个字符</i></td>
-        </tr>
-        <tr>
-            <td><label for="confirmPassword">确认密码<sup>*</sup></label></td>
-            <td><input class="输入框" type="password" name="signinPassword" id="confirmPassword" maxlength="20" minlength="6" required onblur="onBlur('confirmPassword')" onfocus="onFocus('confirmPassword')"></td>
-            <td class="提示"><i id="confirmPasswordError">两次输入的密码不一致</i></td>
-        </tr>
-        <tr>
-            <td><label for="name">姓名<sup>*</sup></label></td>
-            <td><input class="输入框" type="text" name="signinUser.name" id="name" maxlength="20" minlength="2" required onblur="onBlur('name')" onfocus="onFocus('name')" placeholder="2-20个字符" value=${signinUser.name} ></td>
-            <td class="提示"><i id="nameError">姓名长度不得小于2个字符</i></td>
-        </tr>
-        <tr>
-            <td><label>安全问题</label></td>
-            <td style="text-align: left">
-                <input type="radio" name="signinUser.question" checked>
-                    <select id="question1">
-                        <option value="你的偶像是？">你的偶像是？</option>
+<body class="signIn" onload="check()">
+<div class="container bs-docs-container">
+    <h1 id="overview" class="page-header">注册</h1>
+        <form name="login" class="form-horizontal" role="form" action ="Register.action" method="post">
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">用户名<sup>*</sup></label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name ="signinUser.username" id="username" maxlength="20" minlength="6" required onblur="onBlur('username')" onfocus="onFocus('username')" placeholder="6-20个字符" value=${signinUser.username}>
+                </div>
+                <div class="alert alert-danger col-sm-5 danger2" id="usernameError">
+                    用户名长度不得小于6个字符
+                </div>
+                <div class="alert alert-danger col-sm-5 danger2" id="usernameRepeat">
+                    用户名已存在
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">密码<sup>*</sup></label>
+                <div class="col-sm-5">
+                    <input type="password" class="form-control" name="signinUser.password" id="password" maxlength="20" minlength="6" required onblur="onBlur('password')" onfocus="onFocus('password')" placeholder="6-20个字符">
+                </div>
+                <div class="alert alert-danger col-sm-5 danger2" id="passwordError">
+                    密码长度不得小于6个字符
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword" class="col-sm-2 control-label">确认密码<sup>*</sup></label>
+                <div class="col-sm-5">
+                    <input type="password" class="form-control" name="signinPassword" id="confirmPassword" maxlength="20" minlength="6" required onblur="onBlur('confirmPassword')" onfocus="onFocus('confirmPassword')">
+                </div>
+                <div class="alert alert-danger col-sm-5 danger2" id="confirmPasswordError">
+                    两次输入的密码不一致
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">姓名<sup>*</sup></label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="signinUser.name" id="name" maxlength="20" minlength="2" required onblur="onBlur('name')" onfocus="onFocus('name')" placeholder="2-20个字符" value=${signinUser.name}>
+                </div>
+                <div class="alert alert-danger col-sm-5 danger2" id="nameError">
+                    姓名长度不得小于2个字符
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="question" class="col-sm-2 control-label">安全问题</label>
+                <div class="col-sm-5">
+                    <select class="form-control" name="signinUser.question" id="question">
+                        <option value="你的偶像是？" selected>你的偶像是？</option>
+                        <option value="你母亲的名字？" selected>你母亲的名字？</option>
+                        <option value="你父亲的名字？" selected>你父亲的名字？</option>
+                        <option value="你的小学名称是什么？" selected>你的小学名称是什么？</option>
+                        <option value="你的第一个宠物叫什么？" selected>你的第一个宠物叫什么？</option>
+                        <option value="你的生日？" selected>你的生日？</option>
+                        <option value="你的身份证后六位？" selected>你的身份证后六位？</option>
                     </select>
-                </input><br/>
-                <input type="radio" name="signinUser.question">
-                    <input type="text" id="question2"/>
-                </input>
-            </td>
-        </tr>
-        <tr>
-            <td><label for="answer">安全问题答案<sup>*</sup></label></td>
-            <td><input class="输入框" type="text" name="signinUser.answer" id="answer" required value=${signinUser.answer}></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" name="mySubmit" value="注册" >　　
-                <input name="back" type="button" value="返回" onclick="location.href='index.jsp'">
-            </td>
-        </tr>
-    </table>
-
-</form>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="answer" class="col-sm-2 control-label">安全问题答案<sup>*</sup></label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="signinUser.answer" id="answer" required value=${signinUser.answer}></td>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" name="mySubmit">注册</button>&emsp;
+            <button name="back" type="button" class="btn btn-danger" onclick="location.href='index.jsp'">返回</button>
+        </form>
+    </div>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </body>
