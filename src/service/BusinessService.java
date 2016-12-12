@@ -5,9 +5,7 @@ import org.BusinessDao;
 import org.PageDao;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by meng on 2016/12/10.
@@ -78,25 +76,37 @@ public class BusinessService {
     }
 
     public static List<String> allDateIn(int pageNumber, int pageSize, String account) {
-        List<String> dateList = PageDao.allBusinessDate(pageNumber, pageSize,
-                true, account);
+        List<String> dateList = PageDao.allBusinessDate(true, account);
+        List<String> temp = new ArrayList<String>();
         List<String> result = new ArrayList<String>();
         for (String date : dateList) {
-            if (!result.contains(date)) {
-                result.add(date);
+            if (!temp.contains(date)) {
+                temp.add(date);
             }
+        }
+        int start = (pageNumber - 1) * pageSize;
+        int number = 0;
+        while (number < pageSize && start + number < temp.size()) {
+            result.add(temp.get(start + number));
+            number++;
         }
         return result;
     }
 
     public static List<String> allDateOut(int pageNumber, int pageSize, String account) {
-        List<String> dateList = PageDao.allBusinessDate(pageNumber, pageSize,
-                false, account);
+        List<String> dateList = PageDao.allBusinessDate(false, account);
+        List<String> temp = new ArrayList<String>();
         List<String> result = new ArrayList<String>();
         for (String date : dateList) {
-            if (!result.contains(date)) {
-                result.add(date);
+            if (!temp.contains(date)) {
+                temp.add(date);
             }
+        }
+        int start = (pageNumber - 1) * pageSize;
+        int number = 0;
+        while (number < pageSize && start + number < temp.size()) {
+            result.add(temp.get(start + number));
+            number++;
         }
         return result;
     }
@@ -151,11 +161,19 @@ public class BusinessService {
         outTest.setIncome(false);
         outTest.setAccount("123456");
 
+        for (int i = 0; i < 5; i++) {
+            addInBusiness(inTest);
+        }
+        inTest.setDate("2055-5-5");
+        for (int i = 0; i < 2; i++) {
+            addInBusiness(inTest);
+        }
+        inTest.setDate("2099-6-6");
         addInBusiness(inTest);
         addOutBusiness(outTest);
 
         List<String> dateInList = allDateIn(1, 5, "123456");
-        List<String> dateOutList = allDateOut(1, 5, "123456");
+        List<String> dateOutList = allDateOut(1, 1, "123456");
         for (int i = 0; i < dateInList.size(); i++) {
             System.out.println(dateInList.get(i));
         }
@@ -174,10 +192,9 @@ public class BusinessService {
             System.out.println(businessOutList.get(i).getRemark());
         }
         System.out.println("--------------------");
-        inTest = businessInList.get(0);
-        outTest = businessOutList.get(0);
-        deleteBusiness(inTest.getId(), "123456");
-        outTest.setMoney(100000000.1);
-        deleteOutDate(outTest.getDate(), "123456");
+        deleteInDate("2016-5-9", "123456");
+        deleteInDate("2055-5-5", "123456");
+        deleteInDate("2099-6-6", "123456");
+        deleteOutDate("2015-11-11", "123456");
     }
 }
