@@ -92,5 +92,23 @@
         <action name="GoChangeId" class="action.Go" method="goChangeId">
             <result name="success">/changeId.jsp</result>
         </action>
+        <action name="GoTax" class="action.Go" method="goTax">
+            <result name="success">/Tax.jsp</result>
+        </action>
+        <action name="ShowWage" class="action.WageOperation" method="showWage">
+            <result name="success">/showWage.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="GoEditWage" class="action.WageOperation" method="goeditWage">
+            <result name="success">/editWage.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="EditWage" class="action.WageOperation" method="editWage">
+            <result name="success">/operationIndex.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="Tax" class="action.Taxrate" method="salaryAfterTax">
+            <result name="success">/Tax.jsp</result>
+        </action>
     </package>
 </struts>
