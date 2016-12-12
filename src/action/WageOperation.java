@@ -67,14 +67,14 @@ public class WageOperation {
             return SUCCESS;
         }
         tip = "你无法进行此操作";
-        return INPUT;
+        return ERROR;
     }
 
     public String editWage(){
         int judge = WageDao.editWage(wage);
         if (judge < 0){
             tip = "你无法进行此操作";
-            return INPUT;
+            return ERROR;
         }
         else{
             return SUCCESS;

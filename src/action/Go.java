@@ -66,6 +66,10 @@ public class Go{
     public String goChangeId() {
         return SUCCESS;
     }
+
+    public String goTax() {
+        return SUCCESS;
+    }
 }
 
 
